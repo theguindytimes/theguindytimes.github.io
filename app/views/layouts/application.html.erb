@@ -67,6 +67,19 @@
             <li><a class="smoothscroll" href="#gallery">Gallery</a></li>
             <li><a class="smoothscroll" href="#calender">Calender</a></li>
             <li><a class="smoothscroll" href="#contact">Contact</a></li>
+            <% if user_signed_in? %>
+              <li><%= link_to 'Edit account', edit_user_registration_path %></li>
+              <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+            <% else %>
+              <li><%= link_to 'Sign in', new_user_session_path %></li>
+              <li><%= link_to 'Sign up', new_user_registration_path %></li>
+            <% end %>
+            <% if user_signed_in? %>
+              <% if current_user.admin? %>
+                <li><%= link_to 'Users', users_path %></li>
+              <% end %>
+            <% end %>
+
          </ul> <!-- end #nav -->
 
       </nav> <!-- end #nav-wrap -->
@@ -584,7 +597,8 @@
             <h1>Articles</h1>
 
             <div class="hs"><ul>
-               <li><a href="article-01.html">Ties with China priority of India's foreign policy: SM Krishna</a></li>
+               <%= yield %>
+               <!-- <li><a href="article-01.html">Ties with China priority of India's foreign policy: SM Krishna</a></li>
                <li><a href="www.gmail.com">Ajit Singh urges FM to revert to old service tax</a></li>        
                <li><a href="www.google.com">PM calls meeting to review infra projects</a></li><br />
                <li><a href="www.google.com">Indigo flight makes precautionary landing</a></li>
@@ -606,7 +620,7 @@
                <li><a href="www.google.com">Monsoon hits Kerala, may move along western coast</a></li>
                <li><a href="www.google.com">No relief for Prasad in APIIC-Emaar case</a></li><br/>
                <li><a href="www.google.com">Deshmukh, Shinde being probed in Adarsh case</a></li>
-               <li><a href="www.google.com">Deshmukh, Shinde being probed in Adarsh case</a></li>
+               <li><a href="www.google.com">Deshmukh, Shinde being probed in Adarsh case</a></li> -->
               </ul>
             </div> 
 

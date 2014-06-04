@@ -6,8 +6,21 @@ class User < ActiveRecord::Base
   enum role: [:user, :vip, :admin]
   after_initialize :set_default_role, :if => :new_record?
 
+  has_many :articles
+  has_many :comments
+
   def set_default_role
-    self.role ||= :user
+    self.role ||= :admin
+  end
+
+  extend FriendlyId
+    friendly_id :slug_candidates, use: :slugged
+
+  def slug_candidates
+    [
+      :name,
+      [:name, :id],
+    ]
   end
 
 end

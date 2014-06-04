@@ -34,7 +34,11 @@
 
    <!-- Script
    ================================================== -->
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+
+  <%# javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= requirejs_include_tag "application" %>
+
   <!--<script src="js/modernizr.js"></script>-->
 
    <!-- Favicons

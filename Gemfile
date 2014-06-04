@@ -17,8 +17,9 @@ gem 'pundit'
 gem 'simple_form'
 gem 'therubyracer', :platform=>:ruby
 gem 'friendly_id', '~> 5.0.0'
-gem "twitter-bootstrap-rails"
+gem "less-rails"
 gem "font-awesome-rails"
+gem 'requirejs-rails'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_20]

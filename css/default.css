@@ -803,8 +803,8 @@ font-weight: normal;
 }
 
 .new{
-   margin-left: 58px;
-   margin-top: -10px;
+   margin-left: 48px;
+   margin-top: 30px;
    font-size: 26px;
    color: #fff;
    font-family: 'opensans-bold', sans-serif;
@@ -812,11 +812,46 @@ font-weight: normal;
 }
 
 .new1{
-   margin-left: 12px;
-      margin-top: -10px;
+   margin-left: 0px;
+      margin-top: 30px;
    font-size: 26px;
    color: #fff;
    font-family: 'opensans-bold', sans-serif;
    font-weight: normal;
 
+}
+
+.blah{
+   margin-left: -100px;
+}
+
+.line1{
+   margin-left: -900px;
+}
+.line2{
+   margin-left: 600px;
+   margin-top: -360px;
+}
+.line3{
+   margin-left: 560px;
+   margin-top: -360px;
+}
+
+.line4{ 
+   margin-left: 550px;
+   margin-top: -360px;
+}
+
+.line5{
+   margin-left: -1720px;
+}
+
+.line6{
+   margin-left: 600px;
+   margin-top: -360px;
+}
+
+.line7{
+   margin-left: 560px;
+   margin-top: -360px;
 }

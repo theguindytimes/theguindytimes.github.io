@@ -11,5 +11,6 @@ class Article < ActiveRecord::Base
       [:title, :id],
     ]
   end
+  acts_as_taggable 
 
 end

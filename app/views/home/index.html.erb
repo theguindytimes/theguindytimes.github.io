@@ -1,7 +1,1025 @@
-<h3>Home</h3>
 
-<% @articles.each do |article| %>
-	<%= link_to article.title,article %><br>
-<% end %>
+   <!-- Header
+   ================================================== -->
+   <header id="home">
 
-<%=render :partial => 'articles/new.html.erb'%>
+      <nav id="nav-wrap">
+
+         <a class="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
+        <a class="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>
+
+         <ul id="nav" class="nav">
+            <li><%= image_tag('favicon.png') %></li>
+            <li class="current"><a class="smoothscroll" href="#home">Home</a></li>
+            <li><a class="smoothscroll" href="#about">About</a></li>
+           <li><a class="smoothscroll" href="#newstrend">News trending</a></li>
+            <li><a class="smoothscroll" href="#articles">Articles</a></li>
+            <li><a class="smoothscroll" href="#gallery">Gallery</a></li>
+            <li><a class="smoothscroll" href="#calender">Calender</a></li>
+            <li><a class="smoothscroll" href="#contact">Contact</a></li>
+            <% if user_signed_in? %>
+              <li><%= link_to 'Edit account', edit_user_registration_path %></li>
+              <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+            <% else %>
+              <li><%= link_to 'Sign in', new_user_session_path %></li>
+              <li><%= link_to 'Sign up', new_user_registration_path %></li>
+            <% end %>
+            <% if user_signed_in? %>
+              <% if current_user.admin? %>
+                <li><%= link_to 'Users', users_path %></li>
+              <% end %>
+            <% end %>
+
+         </ul> <!-- end #nav -->
+
+      </nav> <!-- end #nav-wrap -->
+
+      <div class="row banner">
+         <div class="banner-text">
+            <h1 class="responsive-headline">The Guindy Times</h1>
+            <h3>The Guindy Times is the official students' magazine of CEG, SAP and ACT
+            campuses of Anna University,Chennai.</h3>
+            <hr />
+            <ul class="social">
+               <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+               <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+               <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+               <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+               <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+               <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+               <li><a href="#"><i class="fa fa-skype"></i></a></li>
+            </ul>
+         </div>
+      </div>
+
+      <p class="scrolldown">
+         <a class="smoothscroll" href="#about"><i class="icon-down-circle"></i></a>
+      </p>
+
+   </header> <!-- Header End -->
+
+
+   <!-- About Section
+   ================================================== -->
+   <section id="about">
+
+      <div class="row">
+
+         <div class="three columns">
+            <img class="profile-pic"  src="assets/gt.jpg" alt="" />
+         </div>
+
+         <div class="nine columns main-col">
+
+            <h2>About Us</h2>
+
+            <p>The Guindy Times is the official students' magazine of CEG, ACT and SAP campuses of Anna University,Chennai.
+            It was established in some blah blahThe Guindy Times is the official students' magazine of CEG, ACT and SAP campuses of Anna University,Chennai.
+            It was established in some blah blahThe Guindy Times is the official students' magazine of CEG, ACT and SAP campuses of Anna University,Chennai.
+            It was established in some blah blahThe Guindy Times is the official students' magazine of CEG, ACT and SAP campuses of Anna University,Chennai.
+            It was established in some blah blahThe Guindy Times is the official students' magazine of CEG, ACT and SAP campuses of Anna University,Chennai.
+            It was established in some blah blahThe Guindy Times is the official students' magazine of CEG, ACT and SAP campuses of Anna University,Chennai.
+            It was established in some blah blahThe Guindy Times is the official students' magazine of CEG, ACT and SAP campuses of Anna University,Chennai.
+            It was established in some blah blah
+            </p>
+
+            <div class="row">
+
+               <div class="columns contact-details">
+
+                  <h2>Contact Details</h2>
+                  <p class="address">
+               <span>The Guindy Times</span><br>
+               <span>College of Engineering,Guindy<br>
+                     Anna University, Chennai-25.
+                     </span><br>
+               <span>(123)456-7890</span><br>
+                     <span>anyone@website.com</span>
+             </p>
+
+               </div>
+
+
+            </div> <!-- end row -->
+
+         </div> <!-- end .main-col -->
+
+      </div>
+
+   </section> <!-- About Section End-->
+
+
+   
+
+   
+<!-- News trending Section 
+================================================= ------>
+      <section id="newstrend">
+
+      <div class="row">
+
+         <div class="twelve columns collapsed">
+         <br />
+         <br />
+         <br />
+            <h1>News trending</h1>
+
+            <!-- gallery-wrapper -->
+            <div id="portfolio-wrapper" class="bgrid-quarters s-bgrid-thirds cf">
+            <div class="line1">
+            <div class="container">
+            
+            <div class="new">Reviews</div>
+            <div id="content-slider">
+            <div id="slider">
+            <div id="mask">
+            <ul>
+            <li id="first" class="firstanimation">
+            <a href="#">
+            <img src="assets/portfolio/retrocam.jpg" alt="Cougar"/>
+            </a>
+            <div class="tooltip">
+            <h1>Cougar</h1>
+            </div>
+            </li>
+
+            <li id="second" class="secondanimation">
+            <a href="#">
+            <img src="assets/portfolio/coffee.jpg" alt="Lions"/>
+            </a>
+            <div class="tooltip">
+            <h1>Lions</h1>
+            </div>
+            </li>
+            
+            <li id="third" class="thirdanimation">
+            <a href="#">
+            <img src="assets/portfolio/coffe.jpg" alt="Snowalker"/>
+            </a>
+            <div class="tooltip">
+            <h1>Snowalker</h1>
+            </div>
+            </li>
+            <li id="fourth" class="fourthanimation">
+            <a href="#">
+            <img src="assets/img_4.jpg" alt="Howling"/>
+            </a>
+            <div class="tooltip">
+            <h1>Howling</h1>
+            </div>
+            </li>
+                        
+            <li id="fifth" class="fifthanimation">
+            <a href="#">
+            <img src="assets/img_5.jpg" alt="Sunbathing"/>
+            </a>
+            <div class="tooltip">
+            <h1>Sunbathing</h1>
+            </div>
+            </li>
+         </ul>
+      </div>
+      </div>
+      </div>
+      </div>
+         <div class="line2">
+         <div class="container">
+            <div class="new">Sports</div>
+            <div id="content-slider">
+
+            <div id="slider">
+            <div id="mask">
+            <ul>
+            <li id="first" class="firstanimation">
+            <a href="#">
+            <img src="assets/sports/1.jpg" alt="Cougar"/>
+            </a>
+            <div class="tooltip">
+            <h1>Cougar</h1>
+            </div>
+            </li>
+
+            <li id="second" class="secondanimation">
+            <a href="#">
+            <img src="assets/sports/2.jpg" alt="Lions"/>
+            </a>
+            <div class="tooltip">
+            <h1>Lions</h1>
+            </div>
+            </li>
+            
+            <li id="third" class="thirdanimation">
+            <a href="#">
+            <img src="assets/sports/3.jpg" alt="Snowalker"/>
+            </a>
+            <div class="tooltip">
+            <h1>Snowalker</h1>
+            </div>
+            </li>
+            <li id="fourth" class="fourthanimation">
+            <a href="#">
+            <img src="assets/sports/4.jpg" alt="Howling"/>
+            </a>
+            <div class="tooltip">
+            <h1>Howling</h1>
+            </div>
+            </li>
+                        
+            <li id="fifth" class="fifthanimation">
+            <a href="#">
+            <img src="assets/sports/5.jpg" alt="Sunbathing"/>
+            </a>
+            <div class="tooltip">
+            <h1>Sunbathing</h1>
+            </div>
+            </li>
+         </ul>
+      </div>
+      </div>
+      </div>
+      </div>
+
+         <div class="line3">
+         <div class="container">
+            <div class="new1">Oppurtunities</div>
+            <div id="content-slider">
+            <div id="slider">
+            <div id="mask">
+            <ul>
+            <li id="first" class="firstanimation">
+            <a href="#">
+            <img src="assets/portfolio/retrocam.jpg" alt="Cougar"/>
+            </a>
+            <div class="tooltip">
+            <h1>Cougar</h1>
+            </div>
+            </li>
+
+            <li id="second" class="secondanimation">
+            <a href="#">
+            <img src="assets/portfolio/coffee.jpg" alt="Lions"/>
+            </a>
+            <div class="tooltip">
+            <h1>Lions</h1>
+            </div>
+            </li>
+            
+            <li id="third" class="thirdanimation">
+            <a href="#">
+            <img src="assets/portfolio/coffe.jpg" alt="Snowalker"/>
+            </a>
+            <div class="tooltip">
+            <h1>Snowalker</h1>
+            </div>
+            </li>
+            <li id="fourth" class="fourthanimation">
+            <a href="#">
+            <img src="assets/img_4.jpg" alt="Howling"/>
+            </a>
+            <div class="tooltip">
+            <h1>Howling</h1>
+            </div>
+            </li>
+                        
+            <li id="fifth" class="fifthanimation">
+            <a href="#">
+            <img src="assets/img_5.jpg" alt="Sunbathing"/>
+            </a>
+            <div class="tooltip">
+            <h1>Sunbathing</h1>
+            </div>
+            </li>
+         </ul>
+      </div>
+      </div>
+      </div>
+      </div>
+
+
+         <div class="line4">
+         <div class="container">
+            <div class="new1">What's hot</div>
+            <div id="content-slider">
+            <div id="slider">
+            <div id="mask">
+            <ul>
+            <li id="first" class="firstanimation">
+            <a href="#">
+            <img src="assets/portfolio/retrocam.jpg" alt="Cougar"/>
+            </a>
+            <div class="tooltip">
+            <h1>Cougar</h1>
+            </div>
+            </li>
+
+            <li id="second" class="secondanimation">
+            <a href="#">
+            <img src="assets/portfolio/coffee.jpg" alt="Lions"/>
+            </a>
+            <div class="tooltip">
+            <h1>Lions</h1>
+            </div>
+            </li>
+            
+            <li id="third" class="thirdanimation">
+            <a href="#">
+            <img src="assets/portfolio/coffe.jpg" alt="Snowalker"/>
+            </a>
+            <div class="tooltip">
+            <h1>Snowalker</h1>
+            </div>
+            </li>
+            <li id="fourth" class="fourthanimation">
+            <a href="#">
+            <img src="assets/img_4.jpg" alt="Howling"/>
+            </a>
+            <div class="tooltip">
+            <h1>Howling</h1>
+            </div>
+            </li>
+                        
+            <li id="fifth" class="fifthanimation">
+            <a href="#">
+            <img src="assets/img_5.jpg" alt="Sunbathing"/>
+            </a>
+            <div class="tooltip">
+            <h1>Sunbathing</h1>
+            </div>
+            </li>
+         </ul>
+      </div>
+      </div>
+      </div>
+      </div>
+
+         <div class="line5">
+         <div class="container">
+            <div class="new">Events</div>
+            <div id="content-slider">
+            <div id="slider">
+            <div id="mask">
+            <ul>
+            <li id="first" class="firstanimation">
+            <a href="#">
+            <img src="assets/portfolio/retrocam.jpg" alt="Cougar"/>
+            </a>
+            <div class="tooltip">
+            <h1>Cougar</h1>
+            </div>
+            </li>
+
+            <li id="second" class="secondanimation">
+            <a href="#">
+            <img src="assets/portfolio/coffee.jpg" alt="Lions"/>
+            </a>
+            <div class="tooltip">
+            <h1>Lions</h1>
+            </div>
+            </li>
+            
+            <li id="third" class="thirdanimation">
+            <a href="#">
+            <img src="assets/portfolio/coffe.jpg" alt="Snowalker"/>
+            </a>
+            <div class="tooltip">
+            <h1>Snowalker</h1>
+            </div>
+            </li>
+            <li id="fourth" class="fourthanimation">
+            <a href="#">
+            <img src="assets/img_4.jpg" alt="Howling"/>
+            </a>
+            <div class="tooltip">
+            <h1>Howling</h1>
+            </div>
+            </li>
+                        
+            <li id="fifth" class="fifthanimation">
+            <a href="#">
+            <img src="assets/img_5.jpg" alt="Sunbathing"/>
+            </a>
+            <div class="tooltip">
+            <h1>Sunbathing</h1>
+            </div>
+            </li>            
+         </ul>
+      </div>
+      </div>
+      </div>
+      </div>
+
+         <div class="line6">
+         <div class="container">
+            <div class="new">My Space</div>
+            <div id="content-slider">
+            <div id="slider">
+            <div id="mask">
+            <ul>
+            <li id="first" class="firstanimation">
+            <a href="#">
+            <img src="assets/portfolio/retrocam.jpg" alt="Cougar"/>
+            </a>
+            <div class="tooltip">
+            <h1>Cougar</h1>
+            </div>
+            </li>
+
+            <li id="second" class="secondanimation">
+            <a href="#">
+            <img src="assets/portfolio/coffee.jpg" alt="Lions"/>
+            </a>
+            <div class="tooltip">
+            <h1>Lions</h1>
+            </div>
+            </li>
+            
+            <li id="third" class="thirdanimation">
+            <a href="#">
+            <img src="assets/portfolio/coffe.jpg" alt="Snowalker"/>
+            </a>
+            <div class="tooltip">
+            <h1>Snowalker</h1>
+            </div>
+            </li>
+            <li id="fourth" class="fourthanimation">
+            <a href="#">
+            <img src="assets/img_4.jpg" alt="Howling"/>
+            </a>
+            <div class="tooltip">
+            <h1>Howling</h1>
+            </div>
+            </li>
+                        
+            <li id="fifth" class="fifthanimation">
+            <a href="#">
+            <img src="assets/img_5.jpg" alt="Sunbathing"/>
+            </a>
+            <div class="tooltip">
+            <h1>Sunbathing</h1>
+            </div>
+            </li>
+         </ul>
+      </div>
+      </div>
+      </div>
+      </div>
+
+               <div class="line7">
+         <div class="container">
+            <div class="new1">News & Views</div>
+            <div id="content-slider">
+            <div id="slider">
+            <div id="mask">
+            <ul>
+            <li id="first" class="firstanimation">
+            <a href="#">
+            <img src="assets/portfolio/retrocam.jpg" alt="Cougar"/>
+            </a>
+            <div class="tooltip">
+            <h1>Cougar</h1>
+            </div>
+            </li>
+
+            <li id="second" class="secondanimation">
+            <a href="#">
+            <img src="assets/portfolio/coffee.jpg" alt="Lions"/>
+            </a>
+            <div class="tooltip">
+            <h1>Lions</h1>
+            </div>
+            </li>
+            
+            <li id="third" class="thirdanimation">
+            <a href="#">
+            <img src="assets/portfolio/coffe.jpg" alt="Snowalker"/>
+            </a>
+            <div class="tooltip">
+            <h1>Snowalker</h1>
+            </div>
+            </li>
+            <li id="fourth" class="fourthanimation">
+            <a href="#">
+            <img src="assets/img_4.jpg" alt="Howling"/>
+            </a>
+            <div class="tooltip">
+            <h1>Howling</h1>
+            </div>
+            </li>
+                        
+            <li id="fifth" class="fifthanimation">
+            <a href="#">
+            <img src="assets/img_5.jpg" alt="Sunbathing"/>
+            </a>
+            <div class="tooltip">
+            <h1>Sunbathing</h1>
+            </div>
+            </li>            
+         </ul>
+      </div>
+      </div>
+      </div>
+      </div>
+
+
+            </div> <!-- portfolio-wrapper end -->
+
+         </div> <!-- twelve columns end -->
+
+
+
+
+      </div> <!-- row End -->
+
+   </section> <!-- News trending Section End-->
+   
+   
+<!-- Articles Section
+   ================================================== -->
+   <section id="articles">
+
+      <div class="row">
+
+         <div class="twelve columns collapsed">
+         <br />
+         <br />
+         <br />
+
+            <h1>Articles</h1>
+
+            <div class="hs"><ul>
+                    <% @articles.each do |a| %>
+                        <%= link_to a.title,a %>
+                    <% end %>
+               <!-- <li><a href="article-01.html">Ties with China priority of India's foreign policy: SM Krishna</a></li>
+               <li><a href="www.gmail.com">Ajit Singh urges FM to revert to old service tax</a></li>        
+               <li><a href="www.google.com">PM calls meeting to review infra projects</a></li><br />
+               <li><a href="www.google.com">Indigo flight makes precautionary landing</a></li>
+               <li><a href="www.google.com">CBI probe into Ranvir Sena chief killing: Kumar</a></li>
+               <li><a href="www.google.com">US naval strategy 'untimely', says China</a></li><br />
+               <li><a href="www.google.com">Air Force version of 'Akash' missile test fired</a></li>
+               <li><a href="www.google.com">When the clock stopped working in a game of ches</a></li>
+               <li><a href="www.google.com">Industry waste asphyxiated Noyyal & destroyed livelihoods</a></li><br />
+               <li><a href="www.google.com">Cong not to field a candidate against Dimple Yadav</a></li>
+               <li><a href="www.google.com">DMK, Left demand collegium to select ECs & CAG</a></li>
+               <li><a href="www.google.com">Plan panel's self-allocation: 35 lakh for 2 loos</a></li><br />
+               <li><a href="www.google.com">Panetta asks India to be more active in Afghanistan</a></li>
+               <li><a href="www.google.com">Haldia elections: Left defeats Trinamool 15-11</a></li>
+               <li><a href="www.google.com">Rare Transit of Venus unfolds in morning sky</a></li><br />
+               <li><a href="www.google.com">India pitches for SCO's membership, Afghan role</a></li>
+               <li><a href="www.google.com">'Indian-Americans are strong symbol of best of US'</a></li>
+               <li><a href="www.google.com">'MGNREGA-type programmes harming economy'</a></li><br />
+               <li><a href="www.google.com">PM should be investigated in coalgate: BJP</a></li>
+               <li><a href="www.google.com">Monsoon hits Kerala, may move along western coast</a></li>
+               <li><a href="www.google.com">No relief for Prasad in APIIC-Emaar case</a></li><br/>
+               <li><a href="www.google.com">Deshmukh, Shinde being probed in Adarsh case</a></li>
+               <li><a href="www.google.com">Deshmukh, Shinde being probed in Adarsh case</a></li> -->
+              </ul>
+            </div> 
+
+      </div> <!-- row End -->
+
+   </section> <!-- Articles Section End-->
+
+<!-- Gallery Section
+   ================================================== -->
+   <section id="gallery">
+
+      <div class="row">
+
+         <div class="twelve columns collapsed">
+         <br />
+         <br />
+         <br />
+
+            <h1>Gallery</h1>
+
+            <!-- gallery-wrapper -->
+            <div id="portfolio-wrapper" class="bgrid-quarters s-bgrid-thirds cf">
+
+               <div class="columns portfolio-item">
+                  <div class="item-wrap">
+
+                     <a href="#modal-01" title="">
+                        <img alt="" src="assets/portfolio/coffee.jpg">
+                        <div class="overlay">
+                           <div class="portfolio-item-meta">
+                              <h5>Sports day</h5>
+                              <p>Annual</p>
+                           </div>
+                        </div>
+                        <div class="link-icon"><i class="icon-plus"></i></div>
+                     </a>
+
+                  </div>
+               </div> <!-- item end -->
+
+               <div class="columns portfolio-item">
+                  <div class="item-wrap">
+
+                     <a href="#modal-01" title="">
+                        <img alt="" src="assets/portfolio/coffee.jpg">
+                        <div class="overlay">
+                           <div class="portfolio-item-meta">
+                              <h5>Sports day</h5>
+                              <p>Annual</p>
+                           </div>
+                        </div>
+                        <div class="link-icon"><i class="icon-plus"></i></div>
+                     </a>
+
+                  </div>
+               </div> <!-- item end -->
+               <div class="columns portfolio-item">
+                  <div class="item-wrap">
+
+                     <a href="#modal-01" title="">
+                        <img alt="" src="assets/portfolio/coffee.jpg">
+                        <div class="overlay">
+                           <div class="portfolio-item-meta">
+                              <h5>Sports day</h5>
+                              <p>Annual</p>
+                           </div>
+                        </div>
+                        <div class="link-icon"><i class="icon-plus"></i></div>
+                     </a>
+
+                  </div>
+               </div> <!-- item end -->
+               <div class="columns portfolio-item">
+                  <div class="item-wrap">
+
+                     <a href="#modal-01" title="">
+                        <img alt="" src="assets/portfolio/coffee.jpg">
+                        <div class="overlay">
+                           <div class="portfolio-item-meta">
+                              <h5>Sports day</h5>
+                              <p>Annual</p>
+                           </div>
+                        </div>
+                        <div class="link-icon"><i class="icon-plus"></i></div>
+                     </a>
+
+                  </div>
+               </div> <!-- item end -->
+               <div class="columns portfolio-item">
+                  <div class="item-wrap">
+
+                     <a href="#modal-01" title="">
+                        <img alt="" src="assets/portfolio/coffee.jpg">
+                        <div class="overlay">
+                           <div class="portfolio-item-meta">
+                              <h5>Sports day</h5>
+                              <p>Annual</p>
+                           </div>
+                        </div>
+                        <div class="link-icon"><i class="icon-plus"></i></div>
+                     </a>
+
+                  </div>
+               </div> <!-- item end -->
+               <div class="columns portfolio-item">
+                  <div class="item-wrap">
+
+                     <a href="#modal-01" title="">
+                        <img alt="" src="assets/portfolio/coffee.jpg">
+                        <div class="overlay">
+                           <div class="portfolio-item-meta">
+                              <h5>Sports day</h5>
+                              <p>Annual</p>
+                           </div>
+                        </div>
+                        <div class="link-icon"><i class="icon-plus"></i></div>
+                     </a>
+
+                  </div>
+               </div> <!-- item end -->
+               <div class="columns portfolio-item">
+                  <div class="item-wrap">
+
+                     <a href="#modal-01" title="">
+                        <img alt="" src="assets/portfolio/coffee.jpg">
+                        <div class="overlay">
+                           <div class="portfolio-item-meta">
+                              <h5>Sports day</h5>
+                              <p>Annual</p>
+                           </div>
+                        </div>
+                        <div class="link-icon"><i class="icon-plus"></i></div>
+                     </a>
+
+                  </div>
+               </div> <!-- item end -->
+               <div class="columns portfolio-item">
+                  <div class="item-wrap">
+
+                     <a href="#modal-01" title="">
+                        <img alt="" src="assets/portfolio/coffee.jpg">
+                        <div class="overlay">
+                           <div class="portfolio-item-meta">
+                              <h5>Sports day</h5>
+                              <p>Annual</p>
+                           </div>
+                        </div>
+                        <div class="link-icon"><i class="icon-plus"></i></div>
+                     </a>
+
+                  </div>
+               </div> <!-- item end -->
+               <div class="columns portfolio-item">
+                  <div class="item-wrap">
+
+                     <a href="#modal-01" title="">
+                        <img alt="" src="assets/portfolio/coffee.jpg">
+                        <div class="overlay">
+                           <div class="portfolio-item-meta">
+                              <h5>Sports day</h5>
+                              <p>Annual</p>
+                           </div>
+                        </div>
+                        <div class="link-icon"><i class="icon-plus"></i></div>
+                     </a>
+
+                  </div>
+               </div> <!-- item end -->
+               <div class="columns portfolio-item">
+                  <div class="item-wrap">
+
+                     <a href="#modal-01" title="">
+                        <img alt="" src="assets/portfolio/coffee.jpg">
+                        <div class="overlay">
+                           <div class="portfolio-item-meta">
+                              <h5>Sports day</h5>
+                              <p>Annual</p>
+                           </div>
+                        </div>
+                        <div class="link-icon"><i class="icon-plus"></i></div>
+                     </a>
+
+                  </div>
+               </div> <!-- item end -->
+
+               <div class="columns portfolio-item">
+                  <div class="item-wrap">
+
+                     <a href="#modal-01" title="">
+                        <img alt="" src="assets/portfolio/coffee.jpg">
+                        <div class="overlay">
+                           <div class="portfolio-item-meta">
+                              <h5>Sports day</h5>
+                              <p>Annual</p>
+                           </div>
+                        </div>
+                        <div class="link-icon"><i class="icon-plus"></i></div>
+                     </a>
+
+                  </div>
+               </div> <!-- item end -->
+               <div class="columns portfolio-item">
+                  <div class="item-wrap">
+
+                     <a href="#modal-01" title="">
+                        <img alt="" src="assets/portfolio/coffee.jpg">
+                        <div class="overlay">
+                           <div class="portfolio-item-meta">
+                              <h5>Sports day</h5>
+                              <p>Annual</p>
+                           </div>
+                        </div>
+                        <div class="link-icon"><i class="icon-plus"></i></div>
+                     </a>
+
+                  </div>
+               </div> <!-- item end -->
+
+               <div class="columns portfolio-item">
+                  <div class="item-wrap">
+
+                     <a href="#modal-01" title="">
+                        <img alt="" src="assets/portfolio/coffee.jpg">
+                        <div class="overlay">
+                           <div class="portfolio-item-meta">
+                              <h5>Sports day</h5>
+                              <p>Annual</p>
+                           </div>
+                        </div>
+                        <div class="link-icon"><i class="icon-plus"></i></div>
+                     </a>
+
+                  </div>
+               </div> <!-- item end -->
+
+
+            </div> <!-- portfolio-wrapper end -->
+
+         </div> <!-- twelve columns end -->
+
+
+
+         <div id="modal-01" class="popup-modal mfp-hide">
+
+            <img class="scale-with-grid" src="assets/portfolio/modals/m-coffee.jpg" alt="" />
+
+            <div class="description-box">
+               <h4>Sports day</h4>
+               <p>Annual sports meet</p>
+            </div>
+
+            <div class="link-box">
+               <a class="popup-modal-dismiss">Close</a>
+            </div>
+
+         </div><!-- modal-01 End -->
+
+         <div id="modal-02" class="popup-modal mfp-hide">
+
+            <img class="scale-with-grid" src="assets/portfolio/modals/m-console.jpg" alt="" />
+
+            <div class="description-box">
+               <h4>Blah</h4>
+               
+               </div>
+
+            <div class="link-box">
+               <a class="popup-modal-dismiss">Close</a>
+            </div>
+
+         </div><!-- modal-02 End -->
+
+         <div id="modal-03" class="popup-modal mfp-hide">
+
+            <img class="scale-with-grid" src="assets/portfolio/modals/m-judah.jpg" alt="" />
+
+            <div class="description-box">
+               <h4>Blah</h4>
+             </div>
+
+            <div class="link-box">
+               <a class="popup-modal-dismiss">Close</a>
+            </div>
+
+         </div><!-- modal-03 End -->
+
+         <div id="modal-04" class="popup-modal mfp-hide">
+
+            <img class="scale-with-grid" src="assets/portfolio/modals/m-intothelight.jpg" alt="" />
+
+            <div class="description-box">
+               <h4>blah</h4>
+            </div>
+
+            <div class="link-box">
+               <a class="popup-modal-dismiss">Close</a>
+            </div>
+
+         </div><!-- modal-04 End -->
+
+
+
+      </div> <!-- row End -->
+
+   </section> <!-- Gallery Section End-->
+
+
+   <!-- Calender Section
+   ================================================== -->
+   <section id="calender">
+
+      
+      <div class="row">
+
+         
+         <div class="nine columns main-col blah">
+
+         <br />
+         <br />
+            <iframe src="https://www.google.com/calendar/embed?height=700&amp;wkst=1&amp;bgcolor=%23ffcccc&amp;src=pu9n208ul4t93ra8oshrlcplnk%40group.calendar.google.com&amp;color=%23B1440E&amp;ctz=Asia%2FCalcutta&amp;search_plus_one=form" style=" border-width:0 " width="1200" height="600" frameborder="0" scrolling="no"></iframe>
+         </div> <!-- main-col end -->
+
+      </div> <!-- End Education -->
+</section>
+
+
+   <!-- Contact Section
+   ================================================== -->
+   <section id="contact">
+
+         <div class="row section-head">
+
+            <div class="two columns header-col">
+
+               <h1><span>Get In Touch.</span></h1>
+
+            </div>
+
+            <div class="ten columns">
+
+                  <p class="lead">Please fill out the form below, we'll contact you soon :)
+                  </p>
+
+            </div>
+
+         </div>
+
+         <div class="row">
+
+            <div class="eight columns">
+
+               <!-- form -->
+               <form action="" method="post" id="contactForm" name="contactForm">
+          <fieldset>
+
+                  <div>
+               <label for="contactName">Name <span class="required">*</span></label>
+               <input type="text" value="" size="35" id="contactName" name="contactName">
+                  </div>
+
+                  <div>
+               <label for="contactEmail">Email <span class="required">*</span></label>
+               <input type="text" value="" size="35" id="contactEmail" name="contactEmail">
+                  </div>
+
+                  <div>
+               <label for="contactSubject">Subject</label>
+               <input type="text" value="" size="35" id="contactSubject" name="contactSubject">
+                  </div>
+
+                  <div>
+                     <label for="contactMessage">Message <span class="required">*</span></label>
+                     <textarea cols="50" rows="15" id="contactMessage" name="contactMessage"></textarea>
+                  </div>
+
+                  <div>
+                     <button class="submit">Submit</button>
+                     <span id="image-loader">
+                        <img alt="" src="assets/loader.gif">
+                     </span>
+                  </div>
+
+          </fieldset>
+           </form> <!-- Form End -->
+
+               <!-- contact-warning -->
+               <div id="message-warning"> Error boy</div>
+               <!-- contact-success -->
+           <div id="message-success">
+                  <i class="fa fa-check"></i>Your message was sent, thank you!<br>
+           </div>
+
+            </div>
+
+
+            <aside class="four columns footer-widgets">
+
+               <div class="widget widget_contact">
+
+             <h4>Address and Phone</h4>
+             <p class="address">
+               The Guindy Times,<br>
+               College of Engineering, Guindy <br>
+               Anna University,Chennai-25.<br>
+               <span>(123) 456-7890</span>
+             </p>
+
+           </div>
+            </aside>
+
+      </div>
+
+   </section> <!-- Contact Section End-->
+
+
+   <!-- footer
+   ================================================== -->
+   <footer>
+
+      <div class="row">
+
+         <div class="twelve columns">
+
+            <ul class="social-links">
+               <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+               <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+               <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+               <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+               <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+               <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+               <li><a href="#"><i class="fa fa-skype"></i></a></li>
+            </ul>
+
+            <ul class="copyright">
+               <li>&copy; Copyright 2014 The Guindy Times</li>
+            </ul>
+
+         </div>
+
+         <div id="go-top"><a class="smoothscroll" title="Back to Top" href="#home"><i class="icon-up-open"></i></a></div>
+
+      </div>
+
+   </footer> <!-- Footer End-->
+
+   <!-- Java Script
+   ================================================== -->
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+   <script>window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')</script>
+

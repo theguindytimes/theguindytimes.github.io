@@ -18,6 +18,10 @@ gem 'simple_form'
 gem 'therubyracer', :platform=>:ruby
 gem 'friendly_id', '~> 5.0.0'
 gem "less-rails"
+gem 'ckeditor'            #Added
+#gem 'letsrate'            #Added
+gem "acts-as-taggable-on" #Added
+gem "paperclip"           #Added
 gem "font-awesome-rails"
 gem 'requirejs-rails'
 group :development do

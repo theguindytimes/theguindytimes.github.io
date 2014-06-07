@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   resources :articles
 
   root :to => "home#index"
   devise_for :users, :controllers => {:registrations => "registrations"}
   resources :users
+  get 'tags/:tag', to: 'articles#index', as: :tag
 end

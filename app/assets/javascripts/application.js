@@ -18,4 +18,4 @@
 //= require ckeditor/override
 //= require ckeditor/init
 
-require(['init'], function() {});
+require(['init','bootstrap','jquery'], function() {});

@@ -1,0 +1,11 @@
+# Read about factories at https://github.com/thoughtbot/factory_girl
+
+FactoryGirl.define do
+  factory :rating do
+    comment nil
+    user nil
+    score 1
+    default "MyString"
+    "MyString"
+  end
+end

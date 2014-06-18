@@ -1,0 +1,31 @@
+class RatingsController < ApplicationController
+
+ before_filter :authenticate_user!
+
+    def create
+            @article = Article.find_by_id(params[:article_id])
+                @rating = Rating.new(params[:rating])
+                @rating.article_id = @article.id
+                @rating.user_id = current_user.id
+                if @rating.save
+                    respond_to do |format|
+                        format.html { redirect_to article_path(@article), :notice => "Your rating has been saved" }
+                        format.js
+                    end
+               
+            end
+        end
+
+        def update
+            @article = Article.find_by_id(params[:article_id])
+                @rating = current_user.ratings.find_by_article_id(@article.id)
+                if @rating.update_attributes(params[:rating])
+                    respond_to do |format|
+                        format.html { redirect_to article_path(@article), :notice => "Your rating has been updated" }
+                        format.js
+                    end
+                end
+            
+        end
+
+end

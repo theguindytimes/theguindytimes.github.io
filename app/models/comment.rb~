@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  
+  has_many :ratings
   belongs_to :article
   belongs_to :user
 end

@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
     before_action :set_article, only: [:show, :edit, :update, :destroy]
-  
+		
+    
 
     # GET /articles
     # GET /articles.json
@@ -11,14 +12,27 @@ class ArticlesController < ApplicationController
             @articles = Article.all
         end
     end
-    
-    def new
+    #.where(article_id: @article.id, user_id: @current_user.id)
+    #(article_id: @article.id, user_id: @current_user.id, score: 0)    
+
+    # GET /articles/new
+    def average_rating
+      ratings.sum(:score) / ratings.size  
+    end
+    def
+    new
         @article = Article.new
     end
     
     # GET /articles/1
     # GET /articles/1.json
     def show
+      
+      @article=Article.find(params[:id])
+      @rating = Rating.first 
+      unless @rating 
+       @rating = Rating.create
+      end
     end
     # GET /articles/1/edit
     def edit

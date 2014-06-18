@@ -146,6 +146,7 @@ GEM
     less-rails (2.5.0)
       actionpack (>= 3.1)
       less (~> 2.5.0)
+    letsrate (1.0.9)
     libv8 (3.16.14.3)
     listen (2.7.6)
       celluloid (>= 0.15.2)
@@ -326,6 +327,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   less-rails
+  letsrate
   paperclip
   pry-rails
   pry-rescue

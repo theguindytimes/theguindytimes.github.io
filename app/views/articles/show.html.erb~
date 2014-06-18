@@ -7,12 +7,13 @@
 <p>
   <%= @article.content.html_safe %>
 </p>
- 
+
 <p>
   <strong>Status:</strong>
   <%= @article.status %>
 </p>
-<%= rating_for @article %>
+
+
 Tags: <%= raw @article.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
 <p><%= link_to 'Edit', edit_article_path(@article) %> |
 <%= link_to 'Back', articles_path %></p>

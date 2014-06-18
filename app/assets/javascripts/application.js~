@@ -21,7 +21,12 @@
 
 require(['init','bootstrap','jquery'], function() {});
 
-
+$(function() {
+  $('.star_rating').click(function(){
+     var star = $(this);
+     var article_id $(this).attr('data-article-id');
+     var stars = $(this).attr('data-stars');
+     
 
 
 

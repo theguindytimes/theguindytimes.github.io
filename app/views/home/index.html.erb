@@ -125,403 +125,40 @@
             <h1>News trending</h1>
 
             <!-- gallery-wrapper -->
+            
+
             <div id="portfolio-wrapper" class="bgrid-quarters s-bgrid-thirds cf">
-            <div class="line1">
-            <div class="container">
+            <% i=1 %>
+            <% @tags.each do |tag| %>
+               <div class="line<%=i%>">
+                  <div class="container">
+                     <div class="new"><%= tag[:name] %></div>
+                     <div id="content-slider">
+                        <div id="slider">
+                           <div id="mask">
+                              <ul>
+                                 <% j=1 %>
+                                 <% tag[:articles].each do |a| %>
+                                    <li id="<%= @numbers[j] %>" class="<%= @numbers[j] %>animation">
+                                       <%= link_to image_tag('portfolio/retrodcam.jpg' , :alt => a.title),a %>
+                                       <div class="tooltip">
+                                          <h1><%= a.title %></h1>
+                                       </div>
+                                    </li>
+                                    <% j=j+1 %>
+                                 <% end %>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+            <% i=i+1 %>
+            <% end %>
             
-            <div class="new">Reviews</div>
-            <div id="content-slider">
-            <div id="slider">
-            <div id="mask">
-            <ul>
-            <li id="first" class="firstanimation">
-            <a href="#">
-            <img src="assets/portfolio/retrocam.jpg" alt="Cougar"/>
-            </a>
-            <div class="tooltip">
-            <h1>Cougar</h1>
             </div>
-            </li>
-
-            <li id="second" class="secondanimation">
-            <a href="#">
-            <img src="assets/portfolio/coffee.jpg" alt="Lions"/>
-            </a>
-            <div class="tooltip">
-            <h1>Lions</h1>
-            </div>
-            </li>
-            
-            <li id="third" class="thirdanimation">
-            <a href="#">
-            <img src="assets/portfolio/coffe.jpg" alt="Snowalker"/>
-            </a>
-            <div class="tooltip">
-            <h1>Snowalker</h1>
-            </div>
-            </li>
-            <li id="fourth" class="fourthanimation">
-            <a href="#">
-            <img src="assets/img_4.jpg" alt="Howling"/>
-            </a>
-            <div class="tooltip">
-            <h1>Howling</h1>
-            </div>
-            </li>
-                        
-            <li id="fifth" class="fifthanimation">
-            <a href="#">
-            <img src="assets/img_5.jpg" alt="Sunbathing"/>
-            </a>
-            <div class="tooltip">
-            <h1>Sunbathing</h1>
-            </div>
-            </li>
-         </ul>
-      </div>
-      </div>
-      </div>
-      </div>
-         <div class="line2">
-         <div class="container">
-            <div class="new">Sports</div>
-            <div id="content-slider">
-
-            <div id="slider">
-            <div id="mask">
-            <ul>
-            <li id="first" class="firstanimation">
-            <a href="#">
-            <img src="assets/sports/1.jpg" alt="Cougar"/>
-            </a>
-            <div class="tooltip">
-            <h1>Cougar</h1>
-            </div>
-            </li>
-
-            <li id="second" class="secondanimation">
-            <a href="#">
-            <img src="assets/sports/2.jpg" alt="Lions"/>
-            </a>
-            <div class="tooltip">
-            <h1>Lions</h1>
-            </div>
-            </li>
-            
-            <li id="third" class="thirdanimation">
-            <a href="#">
-            <img src="assets/sports/3.jpg" alt="Snowalker"/>
-            </a>
-            <div class="tooltip">
-            <h1>Snowalker</h1>
-            </div>
-            </li>
-            <li id="fourth" class="fourthanimation">
-            <a href="#">
-            <img src="assets/sports/4.jpg" alt="Howling"/>
-            </a>
-            <div class="tooltip">
-            <h1>Howling</h1>
-            </div>
-            </li>
-                        
-            <li id="fifth" class="fifthanimation">
-            <a href="#">
-            <img src="assets/sports/5.jpg" alt="Sunbathing"/>
-            </a>
-            <div class="tooltip">
-            <h1>Sunbathing</h1>
-            </div>
-            </li>
-         </ul>
-      </div>
-      </div>
-      </div>
-      </div>
-
-         <div class="line3">
-         <div class="container">
-            <div class="new1">Oppurtunities</div>
-            <div id="content-slider">
-            <div id="slider">
-            <div id="mask">
-            <ul>
-            <li id="first" class="firstanimation">
-            <a href="#">
-            <img src="assets/portfolio/retrocam.jpg" alt="Cougar"/>
-            </a>
-            <div class="tooltip">
-            <h1>Cougar</h1>
-            </div>
-            </li>
-
-            <li id="second" class="secondanimation">
-            <a href="#">
-            <img src="assets/portfolio/coffee.jpg" alt="Lions"/>
-            </a>
-            <div class="tooltip">
-            <h1>Lions</h1>
-            </div>
-            </li>
-            
-            <li id="third" class="thirdanimation">
-            <a href="#">
-            <img src="assets/portfolio/coffe.jpg" alt="Snowalker"/>
-            </a>
-            <div class="tooltip">
-            <h1>Snowalker</h1>
-            </div>
-            </li>
-            <li id="fourth" class="fourthanimation">
-            <a href="#">
-            <img src="assets/img_4.jpg" alt="Howling"/>
-            </a>
-            <div class="tooltip">
-            <h1>Howling</h1>
-            </div>
-            </li>
-                        
-            <li id="fifth" class="fifthanimation">
-            <a href="#">
-            <img src="assets/img_5.jpg" alt="Sunbathing"/>
-            </a>
-            <div class="tooltip">
-            <h1>Sunbathing</h1>
-            </div>
-            </li>
-         </ul>
-      </div>
-      </div>
-      </div>
-      </div>
+            <!-- portfolio-wrapper end -->
 
 
-         <div class="line4">
-         <div class="container">
-            <div class="new1">What's hot</div>
-            <div id="content-slider">
-            <div id="slider">
-            <div id="mask">
-            <ul>
-            <li id="first" class="firstanimation">
-            <a href="#">
-            <img src="assets/portfolio/retrocam.jpg" alt="Cougar"/>
-            </a>
-            <div class="tooltip">
-            <h1>Cougar</h1>
-            </div>
-            </li>
-
-            <li id="second" class="secondanimation">
-            <a href="#">
-            <img src="assets/portfolio/coffee.jpg" alt="Lions"/>
-            </a>
-            <div class="tooltip">
-            <h1>Lions</h1>
-            </div>
-            </li>
-            
-            <li id="third" class="thirdanimation">
-            <a href="#">
-            <img src="assets/portfolio/coffe.jpg" alt="Snowalker"/>
-            </a>
-            <div class="tooltip">
-            <h1>Snowalker</h1>
-            </div>
-            </li>
-            <li id="fourth" class="fourthanimation">
-            <a href="#">
-            <img src="assets/img_4.jpg" alt="Howling"/>
-            </a>
-            <div class="tooltip">
-            <h1>Howling</h1>
-            </div>
-            </li>
-                        
-            <li id="fifth" class="fifthanimation">
-            <a href="#">
-            <img src="assets/img_5.jpg" alt="Sunbathing"/>
-            </a>
-            <div class="tooltip">
-            <h1>Sunbathing</h1>
-            </div>
-            </li>
-         </ul>
-      </div>
-      </div>
-      </div>
-      </div>
-
-         <div class="line5">
-         <div class="container">
-            <div class="new">Events</div>
-            <div id="content-slider">
-            <div id="slider">
-            <div id="mask">
-            <ul>
-            <li id="first" class="firstanimation">
-            <a href="#">
-            <img src="assets/portfolio/retrocam.jpg" alt="Cougar"/>
-            </a>
-            <div class="tooltip">
-            <h1>Cougar</h1>
-            </div>
-            </li>
-
-            <li id="second" class="secondanimation">
-            <a href="#">
-            <img src="assets/portfolio/coffee.jpg" alt="Lions"/>
-            </a>
-            <div class="tooltip">
-            <h1>Lions</h1>
-            </div>
-            </li>
-            
-            <li id="third" class="thirdanimation">
-            <a href="#">
-            <img src="assets/portfolio/coffe.jpg" alt="Snowalker"/>
-            </a>
-            <div class="tooltip">
-            <h1>Snowalker</h1>
-            </div>
-            </li>
-            <li id="fourth" class="fourthanimation">
-            <a href="#">
-            <img src="assets/img_4.jpg" alt="Howling"/>
-            </a>
-            <div class="tooltip">
-            <h1>Howling</h1>
-            </div>
-            </li>
-                        
-            <li id="fifth" class="fifthanimation">
-            <a href="#">
-            <img src="assets/img_5.jpg" alt="Sunbathing"/>
-            </a>
-            <div class="tooltip">
-            <h1>Sunbathing</h1>
-            </div>
-            </li>            
-         </ul>
-      </div>
-      </div>
-      </div>
-      </div>
-
-         <div class="line6">
-         <div class="container">
-            <div class="new">My Space</div>
-            <div id="content-slider">
-            <div id="slider">
-            <div id="mask">
-            <ul>
-            <li id="first" class="firstanimation">
-            <a href="#">
-            <img src="assets/portfolio/retrocam.jpg" alt="Cougar"/>
-            </a>
-            <div class="tooltip">
-            <h1>Cougar</h1>
-            </div>
-            </li>
-
-            <li id="second" class="secondanimation">
-            <a href="#">
-            <img src="assets/portfolio/coffee.jpg" alt="Lions"/>
-            </a>
-            <div class="tooltip">
-            <h1>Lions</h1>
-            </div>
-            </li>
-            
-            <li id="third" class="thirdanimation">
-            <a href="#">
-            <img src="assets/portfolio/coffe.jpg" alt="Snowalker"/>
-            </a>
-            <div class="tooltip">
-            <h1>Snowalker</h1>
-            </div>
-            </li>
-            <li id="fourth" class="fourthanimation">
-            <a href="#">
-            <img src="assets/img_4.jpg" alt="Howling"/>
-            </a>
-            <div class="tooltip">
-            <h1>Howling</h1>
-            </div>
-            </li>
-                        
-            <li id="fifth" class="fifthanimation">
-            <a href="#">
-            <img src="assets/img_5.jpg" alt="Sunbathing"/>
-            </a>
-            <div class="tooltip">
-            <h1>Sunbathing</h1>
-            </div>
-            </li>
-         </ul>
-      </div>
-      </div>
-      </div>
-      </div>
-
-               <div class="line7">
-         <div class="container">
-            <div class="new1">News & Views</div>
-            <div id="content-slider">
-            <div id="slider">
-            <div id="mask">
-            <ul>
-            <li id="first" class="firstanimation">
-            <a href="#">
-            <img src="assets/portfolio/retrocam.jpg" alt="Cougar"/>
-            </a>
-            <div class="tooltip">
-            <h1>Cougar</h1>
-            </div>
-            </li>
-
-            <li id="second" class="secondanimation">
-            <a href="#">
-            <img src="assets/portfolio/coffee.jpg" alt="Lions"/>
-            </a>
-            <div class="tooltip">
-            <h1>Lions</h1>
-            </div>
-            </li>
-            
-            <li id="third" class="thirdanimation">
-            <a href="#">
-            <img src="assets/portfolio/coffe.jpg" alt="Snowalker"/>
-            </a>
-            <div class="tooltip">
-            <h1>Snowalker</h1>
-            </div>
-            </li>
-            <li id="fourth" class="fourthanimation">
-            <a href="#">
-            <img src="assets/img_4.jpg" alt="Howling"/>
-            </a>
-            <div class="tooltip">
-            <h1>Howling</h1>
-            </div>
-            </li>
-                        
-            <li id="fifth" class="fifthanimation">
-            <a href="#">
-            <img src="assets/img_5.jpg" alt="Sunbathing"/>
-            </a>
-            <div class="tooltip">
-            <h1>Sunbathing</h1>
-            </div>
-            </li>            
-         </ul>
-      </div>
-      </div>
-      </div>
-      </div>
-
-
-            </div> <!-- portfolio-wrapper end -->
 
          </div> <!-- twelve columns end -->
 
@@ -546,33 +183,16 @@
 
             <h1>Articles</h1>
 
-            <div class="hs"><ul>
-                    <% @articles.each do |a| %>
-                        <%= link_to a.title,a %>
-                    <% end %>
-               <!-- <li><a href="article-01.html">Ties with China priority of India's foreign policy: SM Krishna</a></li>
-               <li><a href="www.gmail.com">Ajit Singh urges FM to revert to old service tax</a></li>        
-               <li><a href="www.google.com">PM calls meeting to review infra projects</a></li><br />
-               <li><a href="www.google.com">Indigo flight makes precautionary landing</a></li>
-               <li><a href="www.google.com">CBI probe into Ranvir Sena chief killing: Kumar</a></li>
-               <li><a href="www.google.com">US naval strategy 'untimely', says China</a></li><br />
-               <li><a href="www.google.com">Air Force version of 'Akash' missile test fired</a></li>
-               <li><a href="www.google.com">When the clock stopped working in a game of ches</a></li>
-               <li><a href="www.google.com">Industry waste asphyxiated Noyyal & destroyed livelihoods</a></li><br />
-               <li><a href="www.google.com">Cong not to field a candidate against Dimple Yadav</a></li>
-               <li><a href="www.google.com">DMK, Left demand collegium to select ECs & CAG</a></li>
-               <li><a href="www.google.com">Plan panel's self-allocation: 35 lakh for 2 loos</a></li><br />
-               <li><a href="www.google.com">Panetta asks India to be more active in Afghanistan</a></li>
-               <li><a href="www.google.com">Haldia elections: Left defeats Trinamool 15-11</a></li>
-               <li><a href="www.google.com">Rare Transit of Venus unfolds in morning sky</a></li><br />
-               <li><a href="www.google.com">India pitches for SCO's membership, Afghan role</a></li>
-               <li><a href="www.google.com">'Indian-Americans are strong symbol of best of US'</a></li>
-               <li><a href="www.google.com">'MGNREGA-type programmes harming economy'</a></li><br />
-               <li><a href="www.google.com">PM should be investigated in coalgate: BJP</a></li>
-               <li><a href="www.google.com">Monsoon hits Kerala, may move along western coast</a></li>
-               <li><a href="www.google.com">No relief for Prasad in APIIC-Emaar case</a></li><br/>
-               <li><a href="www.google.com">Deshmukh, Shinde being probed in Adarsh case</a></li>
-               <li><a href="www.google.com">Deshmukh, Shinde being probed in Adarsh case</a></li> -->
+            <div class="hs">
+               <ul>
+                  <% if @articles.empty? %>
+                     <div class="empty"><h3> No articles yet </h3></div>
+                  <% else %>
+                     <% @articles.each do |a| %>
+                        <li class="pull-left"><%= link_to a.title,a %></li><li class="pull-right" title="Views"><%= a.views %></li><br>
+                        <%# raw a.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+                     <% end %>
+                  <% end %>
               </ul>
             </div> 
 

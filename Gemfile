@@ -22,6 +22,7 @@ gem 'ckeditor'            #Added
 #gem 'letsrate'            #Added
 gem "acts-as-taggable-on" #Added
 gem "paperclip"           #Added
+gem 'quiet_assets', group: :development
 gem "font-awesome-rails"
 gem 'requirejs-rails'
 group :development do

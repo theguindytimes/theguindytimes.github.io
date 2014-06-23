@@ -14,6 +14,12 @@ class ArticlesController < ApplicationController
     # GET /articles/1
     # GET /articles/1.json
     def show
+        article = Article.friendly.find(params[:id])
+        if article.views == nil
+            article.views = 0
+        end
+        article.views = article.views + 1
+        article.save
     end
 
     # GET /articles/new
@@ -30,7 +36,7 @@ class ArticlesController < ApplicationController
     def create
         @article = Article.new(article_params)
         @article.user = current_user
-
+        @article.views = 0
         respond_to do |format|
             if @article.save
                 format.html { redirect_to @article, notice: 'Article was successfully created.' }

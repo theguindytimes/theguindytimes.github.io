@@ -25,6 +25,13 @@ gem "paperclip"           #Added
 gem "font-awesome-rails"
 gem 'requirejs-rails'
 gem 'mailcatcher'
+gem 'omniauth-facebook'
+gem 'koala'
+gem 'omniauth-twitter'
+gem 'omniauth-linkedin'
+gem 'omniauth-soundcloud', '~> 1.0.0'
+gem 'omniauth-gplus', '~> 1.0'
+gem 'omniauth'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_20]

@@ -7,4 +7,7 @@ Rails.application.routes.draw do
   resources :users
   get 'tags/:tag', to: 'articles#index', as: :tag
   get 'admin-login', to: 'home#adminLogin'
+
+  get '/auth/:provider/callback' => 'authentications#create'
+  delete '/authentications"' => 'authentications#destroy'
 end

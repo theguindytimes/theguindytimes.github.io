@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations"}
   resources :users
   get 'tags/:tag', to: 'articles#index', as: :tag
+  get 'admin-login', to: 'home#adminLogin'
 end

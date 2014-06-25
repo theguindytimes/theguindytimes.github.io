@@ -12,8 +12,7 @@
             <li><%= image_tag('favicon.png') %></li>
             <li class="current"><a class="smoothscroll" href="#home">Home</a></li>
             <li><a class="smoothscroll" href="#about">About</a></li>
-           <li><a class="smoothscroll" href="#newstrend">News trending</a></li>
-            <li><a class="smoothscroll" href="#articles">Articles</a></li>
+           <li><a class="smoothscroll" href="#newstrend">News &amp; Articles</a></li>
             <li><a class="smoothscroll" href="#gallery">Gallery</a></li>
             <li><a class="smoothscroll" href="#calender">Calender</a></li>
             <li><a class="smoothscroll" href="#contact">Contact</a></li>
@@ -115,10 +114,87 @@
          <br />
          <br />
          <br />
-            <h1>News trending</h1>
+            <h1>News and Articles </h1>
+         
+            <!-- gallery-wrapper --><br>
+         
+         <h2> Sports </h2>
+         <a href="#Code1">India to Play Test, ODI Series in Australia Ahead of World Cup Cricket</a>
+          <div id="Code1" class="modalDialog">
+            <div>
 
-            <!-- gallery-wrapper -->
-            
+                  <a href="#close" title="Close" class="close">X</a>
+                  <div class="articlify-head">India to Play Test, ODI Series in Australia Ahead of World Cup Cricket</div>
+                  <%= image_tag("sports.png", :alt => "India-australia") %>
+                <div class="articlify-detail">  <p>
+                  Melbourne: Defending champions India will get an early feel of the Australian conditions ahead of next year's ODI World Cup after agreeing to play a Test series against the hosts and a triangular one-day series, also featuring England, between December 4 and February 1 here.</p>
+
+<p>Cricket Australia announced its schedule ahead of the World Cup which it would jointly host with New Zealand.
+
+The fixtures include four Test matches between India and Australia starting December 4 in Brisbane. The series' other games will be played in Adelaide (December 12 to 16), Melbourne (December 26 to 30) and Sydney (January 3 to 7).</p>
+
+<p>After a break, the tri-series will start on January 16, the finale of which will take place on February 1 in Perth.
+
+"The Fans in Brisbane will see the India Test team for the first time since 2003-04," Cricket Australia said in a statement.
+
+The World Cup will roll out from February 14 and conclude on March 29.
+</p>
+<p>"The next 12 months will have something for everyone. It contains some refinements from last season that benefits both players and fans. Never before have we had so much high quality cricket to offer around Australia, whether it's international or domestic, men's or women's, or played with a red or white ball," Cricket Australia Chief Executive Officer James Sutherland said.
+</p>
+<p>"The 2014-15 schedule looks very different to previous summers due in large part to the ICC Cricket World Cup 2015 that we are co-hosting with New Zealand for the first time in 23 years."
+
+"With a Test series against India, ODIs against the top teams in world cricket, the ICC Cricket World Cup and another strong domestic calendar, this year promises to be even bigger," Sutherland added.
+
+The complete Cricket Australia Schedule:
+</p>
+<p>T20 series:
+
+November 5: 1st T20 Australia v South Africa - Adelaide
+
+November 7: 2nd T20 Australia v South Africa - Melbourne
+
+November 9: 3rd T20 Australia v South Africa - Sydney
+
+ODI series:
+
+November 14: 1st ODI Australia v South Africa - Perth
+
+November 16: 2nd ODI Australia v South Africa - Perth
+
+November 19: 3rd ODI Australia v South Africa - Canberra
+
+November 21: 4th ODI Australia v South Africa - Melbourne
+
+November 23: 5th ODI Australia v South Africa - Sydney
+
+Test series:
+
+December 4-8: 1st Test Australia v India - Brisbane
+
+December 12-16: 2nd Test Australia v India - Adelaide
+
+December 26-30: 3rd Test Australia v India - Melbourne
+
+January 3-7: 4th Test Australia v India - Sydney
+
+ODI tri-series:
+
+January 16: Australia v India - Melbourne
+
+January 18: Australia v England - Sydney
+
+January 20: England v India - Brisbane
+
+January 23: Australia v England - Hobart
+
+January 26: Australia v India - Sydney
+
+January 30: England v India - Perth
+
+February 1: Final - Perth.
+                  </p></div></div>
+        </div>
+        </div>
 
             <div id="portfolio-wrapper" class="bgrid-quarters s-bgrid-thirds cf">
             <% i=1 %>
@@ -162,37 +238,6 @@
 
    </section> <!-- News trending Section End-->
    
-   
-<!-- Articles Section
-   ================================================== -->
-   <section id="articles">
-
-      <div class="row">
-
-         <div class="twelve columns collapsed">
-         <br />
-         <br />
-         <br />
-
-            <h1>Articles</h1>
-
-            <div class="hs">
-               <ul>
-                  <% if @articles.empty? %>
-                     <div class="empty"><h3> No articles yet </h3></div>
-                  <% else %>
-                     <% @articles.each do |a| %>
-                        <li class="pull-left"><%= link_to a.title,a %></li><li class="pull-right" title="Views"><%= a.views %></li><br>
-                        <%# raw a.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
-                     <% end %>
-                  <% end %>
-              </ul>
-            </div> 
-
-      </div> <!-- row End -->
-
-   </section> <!-- Articles Section End-->
-
 <!-- Gallery Section
    ================================================== -->
    <section id="gallery">

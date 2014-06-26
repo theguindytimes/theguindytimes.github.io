@@ -175,20 +175,35 @@
          <br />
 
             <h1>Articles</h1>
+         <!-- <h2> Sports </h2> -->
+
+
+         
 
             <div class="hs">
-               <ul>
+                  <ul>
                   <% if @articles.empty? %>
                      <div class="empty"><h3> No articles yet </h3></div>
                   <% else %>
+                     <% i=0 %>
                      <% @articles.each do |a| %>
-                        <li class="pull-left"><%= link_to a.title,a %></li><li class="pull-right" title="Views"><%= a.views %></li><br>
+                        <li class="pull-left"><a href="#Code<%=i%>"><%= a.title %></a></li>
+                        <li class="pull-right" title="Views"><%= a.views %></li><br>
+                         <div id="Code<%=i%>" class="modalDialog">
+                           <div>
+                              <a href="#close" title="Close" class="close">X</a>
+                              <div class="articlify-head"><%= a.title %></div>
+                              <%# image_tag("sports.png", :alt => "India-australia") %>
+                              <div class="articlify-detail">  <%=  simple_format(a.content) %></div>
+                           </div>
+                       </div>
                         <%# raw a.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+                        <% i= i+1 %>
                      <% end %>
                   <% end %>
-              </ul>
+                  </ul>
             </div> 
-
+         </div>
       </div> <!-- row End -->
 
    </section> <!-- Articles Section End-->

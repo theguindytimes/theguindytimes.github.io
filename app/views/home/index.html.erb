@@ -179,24 +179,33 @@
 
 
          
-
+            <script>
+            function load_article(id){
+               url='/articles/'+id;
+               $.get(url).done(function(data,status){
+                  // $('#postsfeed').html(data)
+                  $('#article_ajax .articlify-head').html(data.title);
+                  $('#article_ajax .articlify-detail').html(data.content);
+                  return true;  
+                  });
+            }
+            </script>
             <div class="hs">
                   <ul>
                   <% if @articles.empty? %>
                      <div class="empty"><h3> No articles yet </h3></div>
                   <% else %>
-                     <% i=0 %>
-                     <% @articles.each do |a| %>
-                        <li class="pull-left"><a href="#Code<%=i%>"><%= a.title %></a></li>
-                        <li class="pull-right" title="Views"><%= a.views %></li><br>
-                         <div id="Code<%=i%>" class="modalDialog">
+                        <div id="article_ajax" class="modalDialog">
                            <div>
                               <a href="#close" title="Close" class="close">X</a>
-                              <div class="articlify-head"><%= a.title %></div>
-                              <%# image_tag("sports.png", :alt => "India-australia") %>
-                              <div class="articlify-detail">  <%=  simple_format(a.content) %></div>
+                              <div class="articlify-head">Please wait</div>
+                              <div class="articlify-detail">Loading article</div>
                            </div>
                        </div>
+                     <% i=0 %>
+                     <% @articles.each do |a| %>
+                        <li><a  class="pull-left" onclick="load_article('<%= a.slug %>')" href='#article_ajax'><%= a.title %></a></li>
+                        <li class="pull-right" title="Views"><%= a.views %></li><br>
                         <%# raw a.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
                         <% i= i+1 %>
                      <% end %>

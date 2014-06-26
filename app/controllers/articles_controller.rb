@@ -20,6 +20,9 @@ class ArticlesController < ApplicationController
         end
         article.views = article.views + 1
         article.save
+        if request.xhr?
+            render :json => article
+        end
     end
 
     # GET /articles/new
@@ -80,6 +83,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-        params.require(:article).permit(:title, :content, :status,:tag_list)
+        params.require(:article).permit(:title, :content, :status,:tag_list,:contributor)
     end
 end

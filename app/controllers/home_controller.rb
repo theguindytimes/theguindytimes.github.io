@@ -29,8 +29,8 @@ class HomeController < ApplicationController
 			end
 			@tags << {name: t.name, articles: articles}
 		end
-		@images = Ckeditor::Picture.all.pluck('data_file_name')
-		# render :text => @images.to_yaml
+		@images = Ckeditor::Picture.all.pluck('id','data_file_name')
+		#render :text => @images.to_yaml
 	end
 
 end

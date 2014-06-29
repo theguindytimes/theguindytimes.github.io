@@ -25,6 +25,10 @@ display:none;
         pointer-events: auto;
     }
 
+    #article_ajax{
+        z-index:1500;
+    }
+
     .modalDialog > div {
         width: 60%;
         height: auto;

@@ -17,15 +17,20 @@ class HomeController < ApplicationController
         		article={}
 				article['title']=a.title
 				article['content']=a.content
-				article['img']=img_srcs
+				if img_srcs.length>0
+				article['img']=img_srcs[0]
+				else
+					article['img']='default_article.jpg'
+				end
         		# article.update(a) 
 				# a['img'] = img_srcs
 				# a.content[0,400]
-				articles << a
+				articles << article
 			end
 			@tags << {name: t.name, articles: articles}
 		end
-		# render :text => @tags.to_json 
+		@images = Ckeditor::Picture.all.pluck('data_file_name')
+		# render :text => @images.to_yaml
 	end
 
 end

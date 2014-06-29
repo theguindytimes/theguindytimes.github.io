@@ -83,3 +83,4 @@ pickle-email-*.html
 
 #Custom added
 /config/environments/development.rb
+/public/ckeditor_assets/*

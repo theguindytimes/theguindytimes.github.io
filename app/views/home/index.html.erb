@@ -133,9 +133,9 @@
                                  <% j=1 %>
                                  <% tag[:articles].each do |a| %>
                                     <li id="<%= @numbers[j] %>" class="<%= @numbers[j] %>animation">
-                                       <%= link_to image_tag('portfolio/retrodcam.jpg' , :alt => a.title),a %>
+				    <%= link_to image_tag(a['img'], :alt => a['title']),a %>
                                        <div class="tooltip">
-                                          <h1><%= a.title %></h1>
+					       <h1><%= a['title'] %></h1>
                                        </div>
                                     </li>
                                     <% j=j+1 %>

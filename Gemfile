@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.1.2'
 gem 'rails', '4.1.0'
 gem 'sqlite3'
 gem 'sass-rails', '~> 4.0.3'
@@ -24,6 +24,14 @@ gem "acts-as-taggable-on" #Added
 gem "paperclip"           #Added
 gem "font-awesome-rails"
 gem 'requirejs-rails'
+gem 'mailcatcher'
+gem 'omniauth-facebook'
+gem 'koala'
+gem 'omniauth-twitter'
+gem 'omniauth-linkedin'
+gem 'omniauth-soundcloud', '~> 1.0.0'
+gem 'omniauth-gplus', '~> 1.0'
+gem 'omniauth'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_20]

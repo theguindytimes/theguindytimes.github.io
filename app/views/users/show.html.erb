@@ -1,3 +1,4 @@
 <h3>User</h3>
+<%= link_to "#{image_tag (@user.avatar.url(:large)) , size:'200x200',class: 'img-thumbnail pull-right'}".html_safe , @user.avatar.url%>
 <p>Name: <%= @user.name if @user.name %></p>
 <p>Email: <%= @user.email if @user.email %></p>

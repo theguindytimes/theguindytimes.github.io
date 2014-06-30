@@ -1,7 +1,7 @@
 class Article < ActiveRecord::Base
   belongs_to :user
   has_many :comments
-  letsrate_rateable "contents"
+  letsrate_rateable 
  
   extend FriendlyId
     friendly_id :slug_candidates, use: :slugged

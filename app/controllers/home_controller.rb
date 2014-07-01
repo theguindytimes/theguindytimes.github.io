@@ -33,6 +33,7 @@ class HomeController < ApplicationController
 		end
 		# @images = Ckeditor::Picture.all.pluck('id','data_file_name')
 		# render :text => @images.to_yaml
+		@hotArticles = Article.order("views").limit(5)
 	end
 
 end

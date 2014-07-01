@@ -118,12 +118,12 @@ header .scrolldown a {
 header .scrolldown a:hover { color: #11ABB0; }
 
 .bulletin{
-  margin-left: -800px;
+  margin-left: -80px;
+  margin-top: -20px;
   color: #FFF;
   content: '\f006'; /* fa-star */
   font-family: 'FontAwesome';
   float: left;
-  margin-left: -1.5em;
   width: 300px;
 
   }
@@ -132,9 +132,28 @@ header .scrolldown a:hover { color: #11ABB0; }
   content: '\f006'; /* fa-star */
   font-family: 'FontAwesome';
   float: left;
-  margin-left: -1.5em;
   color: #0074D9;
 }
+
+
+.bulletin1{
+  margin-left: 800px;
+  margin-top: -250px;
+  color: #FFF;
+  content: '\f006'; /* fa-star */
+  font-family: 'FontAwesome';
+  float: left;
+  width: 300px;
+
+  }
+
+  .bulletin1 .icon-list li:before {
+  content: '\f006'; /* fa-star */
+  font-family: 'FontAwesome';
+  float: left;
+  color: #0074D9;
+}
+
 /* primary navigation
 --------------------------------------------------------------------- */
 #nav-wrap ul, #nav-wrap li, #nav-wrap a {

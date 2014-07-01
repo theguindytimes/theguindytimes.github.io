@@ -4,8 +4,8 @@
   <div class="form-inputs">
     <%= f.input :title %>
     <%= f.cktext_area :content %>
-    <%= f.input :status %>
     <%= f.input :contributor %>
+    <%= f.input :status, collection: ['Visible to Public','Draft/Preview'], prompt: "Select" %>
   </div>
 
   <div class="field">

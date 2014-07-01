@@ -12,7 +12,7 @@
             <li><%= image_tag('favicon.png') %></li>
             <li class="current"><a class="smoothscroll" href="#home">Home</a></li>
             <li><a class="smoothscroll" href="#about">About</a></li>
-           <li><a class="smoothscroll" href="#newstrend">News trending</a></li>
+           <li><a class="smoothscroll" href="#articletrend">Articles trending</a></li>
             <li><a class="smoothscroll" href="#articles">Articles</a></li>
             <li><a class="smoothscroll" href="#gallery">Gallery</a></li>
             <li><a class="smoothscroll" href="#calender">Calender</a></li>
@@ -124,7 +124,7 @@
    
 <!-- News trending Section 
 ================================================= ------>
-      <section id="newstrend">
+      <section id="articletrend">
 
       <div class="row">
 
@@ -132,7 +132,7 @@
          <br />
          <br />
          <br />
-            <h1>News trending</h1>
+            <h1>Articles trending</h1>
 
             <!-- gallery-wrapper -->
             
@@ -251,25 +251,47 @@
 	    <div id="portfolio-wrapper" class="bgrid-quarters s-bgrid-thirds cf">
 		    <% if @images.length <= 0 %>
 			    Add articles with images in them
-		    <% end%>
-		<% @images.each do |img| %>
+		    <% end %>
+          <% j=1 %>
+		<% @images.each do |i| %>
+         <% i['src'].each do |img| %>
                <div class="columns portfolio-item">
                   <div class="item-wrap">
 
-                     <a href="#modal-01" title="">
-			     <img alt="" src="/ckeditor_assets/pictures/<%=img[0].to_s+'/content_'+img[1]%>">
+                     <a href="#modal-0<%=j%>" title="">
+			               <img alt="" src="<%=img%>">
                         <div class="overlay">
                            <div class="portfolio-item-meta">
-                              <h5>Sports day</h5>
-                              <p>Annual</p>
+                              <h5><%= i['article'].title %></h5>
+                              <p><%= raw i['article'].tag_list.join(', ') %></p>
                            </div>
                         </div>
                         <div class="link-icon"><i class="icon-plus"></i></div>
                      </a>
 
                   </div>
-	  </div> <!-- item end -->
-  <% end %>
+	              </div> <!-- item end -->
+
+                 <div id="modal-0<%=j%>" class="popup-modal mfp-hide">
+
+                     <img class="scale-with-grid" src="<%=img%>" alt="" />
+
+                     <div class="description-box">
+                        <h4><%= link_to i['article'].title,i %></h4>
+                        <p><%= raw i['article'].tag_list.map{ |t| link_to t, tag_path(t) }.join(', ') %></p>
+                     </div>
+
+                     <div class="link-box">
+                        <a class="popup-modal-dismiss">Close</a>
+                     </div>
+
+                  </div><!-- modal-01 End -->
+         <% j=j+1 %>
+
+
+         <% end %>
+         
+      <% end %>
 
 
             </div> <!-- portfolio-wrapper end -->
@@ -278,65 +300,7 @@
 
 
 
-         <div id="modal-01" class="popup-modal mfp-hide">
-
-            <img class="scale-with-grid" src="assets/portfolio/modals/m-coffee.jpg" alt="" />
-
-            <div class="description-box">
-               <h4>Sports day</h4>
-               <p>Annual sports meet</p>
-            </div>
-
-            <div class="link-box">
-               <a class="popup-modal-dismiss">Close</a>
-            </div>
-
-         </div><!-- modal-01 End -->
-
-         <div id="modal-02" class="popup-modal mfp-hide">
-
-            <img class="scale-with-grid" src="assets/portfolio/modals/m-console.jpg" alt="" />
-
-            <div class="description-box">
-               <h4>Blah</h4>
-               
-               </div>
-
-            <div class="link-box">
-               <a class="popup-modal-dismiss">Close</a>
-            </div>
-
-         </div><!-- modal-02 End -->
-
-         <div id="modal-03" class="popup-modal mfp-hide">
-
-            <img class="scale-with-grid" src="assets/portfolio/modals/m-judah.jpg" alt="" />
-
-            <div class="description-box">
-               <h4>Blah</h4>
-             </div>
-
-            <div class="link-box">
-               <a class="popup-modal-dismiss">Close</a>
-            </div>
-
-         </div><!-- modal-03 End -->
-
-         <div id="modal-04" class="popup-modal mfp-hide">
-
-            <img class="scale-with-grid" src="assets/portfolio/modals/m-intothelight.jpg" alt="" />
-
-            <div class="description-box">
-               <h4>blah</h4>
-            </div>
-
-            <div class="link-box">
-               <a class="popup-modal-dismiss">Close</a>
-            </div>
-
-         </div><!-- modal-04 End -->
-
-
+         
 
       </div> <!-- row End -->
 

@@ -125,7 +125,7 @@ header .scrolldown a:hover { color: #11ABB0; }
   font-family: 'FontAwesome';
   float: left;
   width: 300px;
-
+  position: static;
   }
 
   .bulletin .icon-list li:before {
@@ -133,17 +133,19 @@ header .scrolldown a:hover { color: #11ABB0; }
   font-family: 'FontAwesome';
   float: left;
   color: #0074D9;
+  position: static;
 }
 
 
 .bulletin1{
-  margin-left: 800px;
-  margin-top: -240px;
+  margin-left: 1030px;
+  margin-top: -280px;
   color: #FFF;
   content: '\f006'; /* fa-star */
   font-family: 'FontAwesome';
   float: left;
   width: 300px;
+  position: static;
 
   }
 
@@ -152,6 +154,7 @@ header .scrolldown a:hover { color: #11ABB0; }
   font-family: 'FontAwesome';
   float: left;
   color: #0074D9;
+  position: static;
 }
 
 /* primary navigation

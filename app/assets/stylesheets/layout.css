@@ -118,14 +118,15 @@ header .scrolldown a {
 header .scrolldown a:hover { color: #11ABB0; }
 
 .bulletin{
-  margin-left: -80px;
-  margin-top: -20px;
+  /*margin-left: -80px;*/
+  /*margin-top: -20px;*/
+  padding-bottom: 20px;
   color: #FFF;
   content: '\f006'; /* fa-star */
   font-family: 'FontAwesome';
   float: left;
   width: 300px;
-  position: static;
+  /*position: static;*/
   }
 
   .bulletin .icon-list li:before {

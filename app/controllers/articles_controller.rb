@@ -20,9 +20,16 @@ class ArticlesController < ApplicationController
         end
         article.views = article.views + 1
         article.save
+        doc = Nokogiri::HTML( article.content )
+        img_srcs = doc.css('img').map{ |i| i['src'] }
+        article.content[img_srcs[0]]=""
+        img_tags = article.content.scan(/img.*src=""/)
+        article.content[img_tags[0]] = "" if img_tags.length > 0
+        a = {'article' => article , 'tags' => article.tag_list, 'img' => img_srcs[0] }
         if request.xhr?
-            render :json => article
+            render :json => a
         end
+        # render :text => a.to_json
     end
 
     # GET /articles/new

@@ -42,8 +42,8 @@ body {
   clear:both;
 }
 #wrapper {
-  margin:0px auto;
-  width:960px;
+  margin:10px auto;
+  width:90%;
 }
 #branding {
   height:150px;
@@ -188,7 +188,7 @@ ul.topNav  {
   margin-top:346px;
 }
 #contant {
-  width:960px;
+  width:100%;
 }
 #contant h2{
   font-family:Georgia, "Times New Roman", Times, serif;
@@ -206,7 +206,7 @@ ul.topNav  {
   padding-top:5px;
 }
 .contant_1_left {
-    width:710px;
+    width:90%;
   float:left;
 }
 .contant_1_left img{
@@ -218,6 +218,8 @@ ul.topNav  {
   color:#3a3a3a;
   font-weight:normal;
   line-height:20px;
+  text-align:justify;
+  text-justify:inter-word;
 }
 .contant_1_left p a {
   color:#650000;

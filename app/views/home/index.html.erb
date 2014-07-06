@@ -198,54 +198,16 @@
 
             <h1>Articles</h1>
          <!-- <h2> Sports </h2> -->
-      <div class="articler">
-      <a href="#openModal">GT article</a>
-
-      <div id="openModal" class="modalDialog">
-         <a href="#close" title="Close" class="close">X</a>
-         <div id="wrapper">
-         <div id="contant">
-         <div class="contant_1">
-         <div class="contant_1_left">
-
-         <div class="headify">         
-         <%= image_tag("favicon.png", :alt => "url icon") %>
-            The Guindy Times</div>
-         
-         <h2>Ties with China priority of India's foreign policy: SM Krishna
-            <span>June 1, 2014 </span>
-         </h2>
-         <h3>Politics</h3>
-         <br class="clear bottomClear" />
-         <%= image_tag("gt.jpg", :alt => "articles image") %>
-            <p>BEIJING: India today told China that it sees improving bilateral ties as a priority of its foreign policy and expressed desire to expand strategic cooperation, setting aside concerns here over future direction of the relations in the backdrop of the big US push into the Asia-Pacific region.<br /><br />
-
-               Conveying a strong message about India's intention to firm up ties with China, visiting External Affairs Minister S M Krishna told Chinese Vice Premier Li Keqiang that it is important for both the countries to build trust and understanding to maintain strong and healthy relationship.</p>
-            <p class="quoteBar">"I conveyed to him that our relations with China are a priority in India's foreign policy and we believe that India-China relations will be one of the most important bilateral relationships in the 21st century," Krishna told the Indian media here after a 45-minute meeting with Li, who is widely tipped to take over as Prime Minister next year after the leadership change in the ruling CPC.</p>
-            <p>"I indicated that India desires to expand the strategic and cooperative partnership that exists between our countries. It is important for us to continue building better understanding and trust between us since that will help to maintain a strong and healthy relationship between India and China," he said.</p>
-            
-            <p>His assertion about India's desire to build friendship with China comes after US announcement about a major push into the Asia-Pacific, specially the South China Sea, where China is grappling with maritime disputes with a host of countries.</p>
-            <p>Chinese analysts feel that the US is wooing India in a bid to counter China's growing influence in Asia-Pacific.</p>
-            <p>US Defence Secretary Leon Panetta, who announced Washington's plans to deploy 60 per cent of US naval assets in the Asia-Pacific in the next few years raising strong concerns in Beijing, is currently in India seeking to strength US-India military ties</p>
-         </div>
-         <br class="clear" />
-         </div>
-         </div>
-         <div id="footerContainer">
-      <p>
-      <span>Copyright 2014 The Guindy Times. All Rights Reserved</span>
-      </p>
-      </div>
-      </div>          
-      </div>
-      </div>   
             <script>
             function load_article(id){
                url='/articles/'+id;
                $.get(url).done(function(data,status){
                   // $('#postsfeed').html(data)
-                  $('#article_ajax .articlify-head').html(data.title);
-                  $('#article_ajax .articlify-detail').html(data.content);
+                  title = data.article.title + '<span>' + data.article.created_at + '</span>'
+                  $('#article_ajax .title h2').html(title);
+                  $('#article_ajax .article_img').attr('src',data.img);
+                  $('#article_ajax h3').html(data.tags.join(','));
+                  $('#article_ajax .content').html(data.article.content);
                   return true;  
                   });
             }
@@ -256,12 +218,36 @@
                      <div class="empty"><h3> No articles yet </h3></div>
                   <% else %>
                         <div id="article_ajax" class="modalDialog">
-                           <div>
-                              <a href="#close" title="Close" class="close">X</a>
-                              <div class="articlify-head">Please wait</div>
-                              <div class="articlify-detail">Loading article</div>
+                           <div id="wrapper">
+                           <a href="#close" title="Close" class="close">X</a>
+                           <div id="contant">
+                           <div class="contant_1">
+                           <div class="contant_1_left">
+
+                           <div class="headify">         
+                           <%= image_tag("favicon.png", :alt => "url icon") %>
+                              The Guindy Times</div>
+                           <div class="title">
+                           <h2>
+                              <span>Time </span>
+                           </h2>
                            </div>
-                       </div>
+                           <h3>tags</h3>
+                           <br class="clear bottomClear" />
+                           <%= image_tag("gt.jpg", :alt => "" , :class => 'article_img') %>
+                           <div class="content">
+                           </div>
+                           </div>
+                           <br class="clear" />
+                           </div>
+                           </div>
+                           <div id="footerContainer">
+                              <p>
+                              <span>Copyright 2014 The Guindy Times. All Rights Reserved</span>
+                              </p>
+                           </div>
+                        </div>          
+                        </div>
                      <% i=0 %>
                      <% @articles.each do |a| %>
                         <li><a  class="pull-left" onclick="load_article('<%= a.slug %>')" href='#article_ajax'><%= a.title %></a></li>

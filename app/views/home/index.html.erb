@@ -409,14 +409,14 @@ function load_article(id){
                     <%= f.input :email ,class: 'form-control'%>
                     <%= f.input :subject %>
                     <%= f.input :body %>
-                    <%= recaptcha_tags %>
                 </div>
 
                 <div class="form-actions">
+                    <%= recaptcha_tags %>
                     <%= f.button :submit ,:class => "submit"%>
                 </div>
-            <% end %>
             </div>
+            <% end %>
 
 
             <aside class="four columns footer-widgets">

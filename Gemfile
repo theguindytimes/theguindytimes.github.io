@@ -28,6 +28,7 @@ gem 'mailcatcher'
 gem 'omniauth-facebook'
 gem 'koala'
 gem 'omniauth-twitter'
+gem "recaptcha", :require => "recaptcha/rails"
 gem 'omniauth-linkedin'
 gem 'omniauth-soundcloud', '~> 1.0.0'
 gem 'omniauth-gplus', '~> 1.0'

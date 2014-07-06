@@ -3,6 +3,7 @@ class HomeController < ApplicationController
 	before_action :old_article_fix
 
 	def index
+        @message=Message.new
 		@articles = Article.where(status: "Visible to Public")
 		@article = Article.new
 		tags = Article.where(status: "Visible to Public").tag_counts.order('taggings_count DESC')

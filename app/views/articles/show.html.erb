@@ -5,7 +5,7 @@
 </h1>
 
 <p>
-  <%= @article.content.html_safe %>
+  <%= simple_format(@article.content) %>
 </p>
 
 <p>

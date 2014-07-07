@@ -1,0 +1,60 @@
+                <!-- form -->
+                <!--<form action="/messages" method="post" id="contactForm" name="contactForm" data-remote="true">
+          <fieldset>
+
+                  <div>
+               <label for="contactName">Name <span class="required">*</span></label>
+               <input type="text" value="" size="35" id="contactName" name="message[name]">
+                  </div>
+
+                  <div>
+               <label for="contactEmail">Email <span class="required">*</span></label>
+               <input type="text" value="" size="35" id="contactEmail" name="message[email]">
+                  </div>
+
+                  <div>
+               <label for="contactSubject">Subject</label>
+               <input type="text" value="" size="35" id="contactSubject" name="message[subject]">
+                  </div>
+
+                  <div>
+                     <label for="contactMessage">Message <span class="required">*</span></label>
+                     <textarea cols="50" rows="15" id="contactMessage" name="message[body]"></textarea>
+                  </div>
+
+                  <div>
+                      <input type="submit" name="" id="" value="Submit" />
+                     <button class="submit">Submit</button>
+
+                        <span id="image-loader">
+                           <img alt="" src="assets/loader.gif">
+                        -</span>
+                  </div>
+
+          </fieldset>
+           </form> <!-- Form End -->
+
+                <!-- contact-warning -->
+                <div id="message-warning"> Error boy</div>
+                <!-- contact-success -->
+                <div id="message-success">
+                    <i class="fa fa-check"></i>Your message was sent, thank you!<br>
+                </div>
+                -->
+
+                <%= simple_form_for(@message,:remote => true ,:validate => true) do |f| %>
+                    <%= f.error_notification %>
+
+                <div class="form-inputs">
+                    <%= f.input :name %>
+                    <%= f.input :email ,class: 'form-control'%>
+                    <%= f.input :subject %>
+                    <%= f.input :body %>
+                    <%= recaptcha_tags %>
+                </div>
+
+                <div class="form-actions">
+                    <%= f.button :submit ,:class => "submit"%>
+                </div>
+            <% end %>
+            

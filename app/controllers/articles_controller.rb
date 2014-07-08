@@ -23,7 +23,11 @@ class ArticlesController < ApplicationController
         if request.xhr?
             render :json => article
         end
-    end
+        @article = Article.friendly.find(params[:id])
+        @comments = @article.comments.all
+        @comment=@article.comments.build
+
+        end
 
     # GET /articles/new
     def new

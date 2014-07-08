@@ -12,6 +12,19 @@
   <strong>Status:</strong>
   <%= @article.status %>
 </p>
+
+<h3>Comments</h3>
+<% @comments.each do |comment| %>
+<div>
+<strong><%= comment.user_name %></strong>
+<br   />
+<p><%= comment.body %></p>
+<p><%= link_to 'delete', comment_path(comment),method: :delete, data: {confirm: 'Are you sure?' } %></p>
+</div>
+<%end%>
+<%= render 'comments/form' %>
+
+
 Tags: <%= raw @article.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
 <p><%= link_to 'Edit', edit_article_path(@article) %> |
 <%= link_to 'Back', articles_path %></p>

@@ -23,6 +23,8 @@ class ArticlesController < ApplicationController
         @article = Article.friendly.find(params[:id])
         @comments = @article.comments.all
         if request.xhr?
+            @xhr = true
+        end
             require 'nokogiri'
             doc = Nokogiri::HTML( article.content )
             img_srcs = doc.css('img').map{ |i| i['src'] }
@@ -33,8 +35,10 @@ class ArticlesController < ApplicationController
             else
                 img_srcs=['']
             end
-            a = {'article' => article , 'tags' => article.tag_list, 'img' => img_srcs[0],'comments' => @comments }
-            render :json => a
+            @a = {'article' => article , 'tags' => article.tag_list, 'img' => img_srcs[0],'comments' => @comments }
+            # render :json => a
+        if @xhr
+            render :layout => false
         end
     end
 

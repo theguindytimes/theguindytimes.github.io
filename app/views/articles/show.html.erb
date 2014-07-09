@@ -1,29 +1,53 @@
+<% if !@xhr %>
 <p id="notice"><%= notice %></p>
+<% end %>
 
-<h1>
-  <%= @article.title %>
-</h1>
+<div id="wrapper">
+  <a href="#close" title="Close" class="close">X</a>
+  <div id="contant">
+  <div class="contant_1">
+  <div class="contant_1_left">
 
-<p>
-  <%= simple_format(@article.content) %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @article.status %>
-</p>
-
-<h3>Comments</h3>
-<% @article.comments.each do |comment| %>
-<div>
-<strong><%= comment.user_name %></strong>
-<br>
-<p><%= comment.body %></p>
-<p><%= link_to 'x', [comment.article, comment], method: :delete, title: "Detele Comment", data: { confirm: 'Are you sure?' } %></p>
+  <div class="headify">         
+  <%= image_tag("favicon.png", :alt => "url icon") %>
+     The Guindy Times</div>
+  <div class="title">
+  <h2>
+  	<%= @a['article'].title %>
+     <span><%= @a['article'].created_at %> </span>
+  </h2>
+  </div>
+  <h3><%= raw @article.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></h3>
+  <br class="clear bottomClear" />
+  <%= image_tag(@a['img'], :alt => "" , :class => 'article_img') %>
+  <div class="content">
+  	<%= simple_format(@a['article'].content) %>
+  </div>
+  </div>
+  <br class="clear" />
+  </div>
+  </div>
+  <div id="footerContainer">
+     <p>
+     <span>Copyright 2014 The Guindy Times. All Rights Reserved</span>
+     </p>
+  </div>
+  <div class="comments">
+	  <h3>Comments</h3>
+	<% @article.comments.each do |comment| %>
+		<div>
+		<strong><%= comment.user_name %></strong>
+		<br>
+		<p class="pull-left"><%= comment.body %></p>
+		<p><%= link_to 'x', [comment.article, comment], method: :delete, class: 'pull-right', title: "Detele Comment", data: { confirm: 'Are you sure?' } %></p>
+		</div>
+	<% end %>
+	<%= render 'comments/form' %>
+  </div>
 </div>
-<%end%>
-<%= render 'comments/form' %>
 
-Tags: <%= raw @article.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+
+<% if !@xhr %>
 <p><%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %></p>
+<%= link_to 'Back', articles_path %></p> 
+<% end %>

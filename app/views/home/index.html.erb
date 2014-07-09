@@ -204,15 +204,9 @@
             function load_article(id){
                url='/articles/'+id;
                $.get(url).done(function(data,status){
-                  // $('#postsfeed').html(data)
-                  title = data.article.title + '<span>' + data.article.created_at + '</span>'
-                  $('#article_ajax .title h2').html(title);
-                  $('#article_ajax .article_img').attr('src',data.img);
-                  $('#article_ajax h3').html(data.tags.join(','));
-                  $('#article_ajax .content').html(data.article.content);
-                  alert(data.comments[0].body);
+                  $('#article_ajax').html(data);
                   return true;  
-                  });
+                });
             }
             </script>
             <div class="hs">

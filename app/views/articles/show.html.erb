@@ -17,12 +17,12 @@
 <% @comments.each do |comment| %>
 <div>
 <strong><%= comment.user_name %></strong>
-<br   />
+<br>
 <p><%= comment.body %></p>
 <p><%= link_to 'delete', comment_path(comment),method: :delete, data: {confirm: 'Are you sure?' } %></p>
 </div>
 <%end%>
-<%= if user_signed_in %>
+<% if current_user %>
 <%= render 'comments/form' %>
 <%end%>
 

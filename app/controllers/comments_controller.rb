@@ -25,7 +25,7 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = Comment.new(comment_params)
-
+    @comment.status = "Approved" #for now
     respond_to do |format|
       if @comment.save
         format.html { redirect_to :back, notice: 'Comment was successfully created.' }

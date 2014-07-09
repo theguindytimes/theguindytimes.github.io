@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   resources :messages
-
   mount Ckeditor::Engine => '/ckeditor'
-  resources :articles
+  resources :articles do 
+    resources :comments
+  end
 
   root :to => "home#index"
   devise_for :users, :controllers => {:registrations => "registrations"}

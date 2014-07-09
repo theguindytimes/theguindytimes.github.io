@@ -1,0 +1,15 @@
+<%= simple_form_for([@article, @article.comments.build]) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.label :body %><br    />
+    <%= f.text_area :body %>
+    </div>
+    <%= f.hidden_field :article_id %>
+    <%= f.hidden_field :user_name %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

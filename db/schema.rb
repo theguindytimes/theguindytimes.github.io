@@ -50,7 +50,9 @@ ActiveRecord::Schema.define(version: 20140706154505) do
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type"
 
   create_table "comments", force: true do |t|
-    t.text     "content"
+    t.string   "user_name"
+    t.text     "body"
+    t.string   "status"
     t.integer  "article_id"
     t.integer  "user_id"
     t.datetime "created_at"
@@ -60,15 +62,6 @@ ActiveRecord::Schema.define(version: 20140706154505) do
   add_index "comments", ["article_id"], name: "index_comments_on_article_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
-  create_table "feedbacks", force: true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "subject"
-    t.text     "message"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "messages", force: true do |t|
     t.string   "name"
     t.string   "email"
@@ -77,19 +70,6 @@ ActiveRecord::Schema.define(version: 20140706154505) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "ratings", force: true do |t|
-    t.integer  "article_id"
-    t.integer  "user_id"
-    t.integer  "score"
-    t.string   "default"
-    t.string   "0"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "ratings", ["article_id"], name: "index_ratings_on_article_id"
-  add_index "ratings", ["user_id"], name: "index_ratings_on_user_id"
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"

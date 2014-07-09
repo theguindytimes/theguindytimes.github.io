@@ -30,7 +30,9 @@ class ArticlesController < ApplicationController
             a = {'article' => article , 'tags' => article.tag_list, 'img' => img_srcs[0] }
             render :json => a
         end
-    end
+        @article = Article.friendly.find(params[:id])
+        @comments = @article.comments.all
+        end
 
     # GET /articles/new
     def new

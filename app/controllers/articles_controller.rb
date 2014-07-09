@@ -20,19 +20,23 @@ class ArticlesController < ApplicationController
         end
         article.views = article.views + 1
         article.save
+        @article = Article.friendly.find(params[:id])
+        @comments = @article.comments.all
         if request.xhr?
             require 'nokogiri'
             doc = Nokogiri::HTML( article.content )
             img_srcs = doc.css('img').map{ |i| i['src'] }
-            article.content[img_srcs[0]]=""
-            img_tags = article.content.scan(/img.*style=".*"/)
-            article.content[img_tags[0]] = "" if img_tags.length > 0
-            a = {'article' => article , 'tags' => article.tag_list, 'img' => img_srcs[0] }
+            if img_srcs.length > 0
+                article.content[img_srcs[0]]=""
+                img_tags = article.content.scan(/img.*style=".*"/)
+                article.content[img_tags[0]] = "" if img_tags.length > 0
+            else
+                img_srcs=['']
+            end
+            a = {'article' => article , 'tags' => article.tag_list, 'img' => img_srcs[0],'comments' => @comments }
             render :json => a
         end
-        @article = Article.friendly.find(params[:id])
-        @comments = @article.comments.all
-        end
+    end
 
     # GET /articles/new
     def new

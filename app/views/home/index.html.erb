@@ -210,6 +210,7 @@
                   $('#article_ajax .article_img').attr('src',data.img);
                   $('#article_ajax h3').html(data.tags.join(','));
                   $('#article_ajax .content').html(data.article.content);
+                  alert(data.comments[0].body);
                   return true;  
                   });
             }
@@ -247,6 +248,8 @@
                               <p>
                               <span>Copyright 2014 The Guindy Times. All Rights Reserved</span>
                               </p>
+                           </div>
+                           <div class="comments">
                            </div>
                         </div>          
                         </div>

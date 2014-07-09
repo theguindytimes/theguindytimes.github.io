@@ -6,7 +6,9 @@
     <%= f.text_area :body %>
     </div>
     <%= f.hidden_field :article_id %>
-    <%= f.hidden_field :user_name %>
+    <% if !current_user %>
+      <%= f.input :user_name %>
+    <% end %>
   </div>
 
   <div class="form-actions">

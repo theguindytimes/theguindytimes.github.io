@@ -4,7 +4,10 @@ class HomeController < ApplicationController
 
 	def index
         @message=Message.new
-		@articles = Article.where(status: "Visible to Public")
+		@articles = Article.where(status: "Visible to Public").paginate(:page => params[:page], :per_page => 2)
+		if params[:page]
+			render :partial => 'home/articles'
+		end
 		@article = Article.new
 		tags = Article.where(status: "Visible to Public").tag_counts.order('taggings_count DESC')
 		require 'nokogiri'

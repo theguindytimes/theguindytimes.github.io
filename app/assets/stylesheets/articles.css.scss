@@ -83,3 +83,15 @@ color: rgba(38, 38, 44, 1);
     font-size: 50px;
     padding-bottom: 30px;
 }
+
+.pagination{
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.pagination li{
+    display: inline-block;
+}
+.pagination span{
+    display: inline-block;
+}

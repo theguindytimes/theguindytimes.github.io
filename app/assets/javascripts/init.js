@@ -8,6 +8,16 @@ define('init', ['jquery','waypoint','fitText'],function ($) {
 
  jQuery(document).ready(function($) {
 
+
+  page_change = $('#articles').on('click','.pagination a',function(){
+    url=this;
+    $.get(url).done(function(data,status){
+      // alert(data);
+      $('#articles .hs').html(data);
+    });
+    return false;
+  });
+
 /*----------------------------------------------------*/
 /* FitText Settings
 ------------------------------------------------------ */

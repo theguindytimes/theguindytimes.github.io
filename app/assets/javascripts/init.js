@@ -1,4 +1,4 @@
-define('init', ['jquery','waypoint','fitText'],function ($) {
+define('init', ['jquery','waypoint','fitText','pjax'],function ($) {
 
 /*-----------------------------------------------------------------------------------
 /*
@@ -8,14 +8,52 @@ define('init', ['jquery','waypoint','fitText'],function ($) {
 
  jQuery(document).ready(function($) {
 
+  $(document).on('pjax:success', function() {
+    alert(data);
+  })
+  
+  $(document).on('click', 'a[data-pjax]', function(event) {
+    if ($.support.pjax) {
+      var container = $(this).attr('data-pjax');
+      alert(container);
+      $.pjax.click(event, {container: container});
+      $(document).scrollTo('#articles');
+    }
+    else{
+      url=this;
+      $.get(url).done(function(data,status){
+        // alert(data);
+        $('#articles .hs').html(data);
+      });
+    }
+  });
 
-  page_change = $('#articles').on('click','.pagination a',function(){
-    url=this;
-    $.get(url).done(function(data,status){
-      // alert(data);
-      $('#articles .hs').html(data);
-    });
-    return false;
+  // $('#articletrend').on('click','.new a',function(){
+  //   alert(this);
+  //   url=this;
+  //   $.get(url).done(function(data,status){
+  //     // alert(data);
+  //     $('#articles .hs').html(data);
+  //   });
+  //   return false;
+  // });
+  
+  $.pjax.defaults.scrollTo = false;
+
+  page_change = $('#articles').on('click', '.pagination a', function(event) {
+    if ($.support.pjax) {
+      var container = $('#articles .hs');
+      // alert(container);
+      $.pjax.click(event, {container: container});
+      $(document).scrollTo('#articles');
+    }
+    else{
+      url=this;
+      $.get(url).done(function(data,status){
+        // alert(data);
+        $('#articles .hs').html(data);
+      });
+    }
   });
 
 /*----------------------------------------------------*/

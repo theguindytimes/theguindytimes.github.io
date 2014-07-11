@@ -4,9 +4,14 @@ class HomeController < ApplicationController
 
 	def index
         @message=Message.new
-		@articles = Article.where(status: "Visible to Public").paginate(:page => params[:page], :per_page => 2)
-		if params[:page]
+        if params[:tag]
+        	@articles = Article.where(status: "Visible to Public").tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 2)
+		else
+			@articles = Article.where(status: "Visible to Public").paginate(:page => params[:page], :per_page => 2)
+		end
+		if request.headers['X-PJAX'] and params[:page]
 			render :partial => 'home/articles'
+			return
 		end
 		@article = Article.new
 		tags = Article.where(status: "Visible to Public").tag_counts.order('taggings_count DESC')
@@ -34,7 +39,7 @@ class HomeController < ApplicationController
 				# a.content[0,400]
 				articles << article
 			end
-			@tags << {name: t.name, articles: articles}
+			@tags << {tag: t, articles: articles}
 		end
 		# @images = Ckeditor::Picture.all.pluck('id','data_file_name')
 		@hotArticles = Article.where(status: "Visible to Public").order("views").limit(5)

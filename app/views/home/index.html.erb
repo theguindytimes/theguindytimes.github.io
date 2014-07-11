@@ -148,7 +148,7 @@
                 <% @tags.each do |tag| %>
                     <div class="line<%=i%>">
                     <div class="container">
-                        <div class="new"><%= tag[:name] %></div>
+                        <div class="new"><%= link_to tag[:tag].name,tag_path(tag[:tag].name) , :'data-pjax' => '#articles .hs' %></div>
                         <div id="content-slider">
                             <div id="slider">
                                 <div id="mask">
@@ -156,7 +156,7 @@
                                         <% j=1 %>
                                         <% tag[:articles].each do |a| %>
                                             <li id="<%= @numbers[j] %>" class="<%= @numbers[j] %>animation">
-                                        <%= link_to image_tag(a['img'], :alt => a['title']),a %>
+                                        <%= link_to image_tag(a['img'], :alt => a['title']),a %> <!-- Needs fix -->
                                         <div class="tooltip">
                                             <h1><%= a['title'] %></h1>
                                         </div>
@@ -209,7 +209,7 @@
                   });
               }
             </script>
-            <div class="hs">
+                <div class="hs">
                   <%= render 'home/articles' %>
                 </div> 
             </div>

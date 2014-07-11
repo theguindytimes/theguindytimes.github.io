@@ -5,7 +5,13 @@ class ArticlesController < ApplicationController
     # GET /articles.json
     def index
         if params[:tag]
-            @articles = Article.tagged_with(params[:tag])
+            @articles = Article.where(status: "Visible to Public").tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 2)
+            print @articles.to_json
+            if request.headers['X-PJAX']
+                render :partial => 'home/articles'
+            else
+                redirect_to :controller => 'home', :action => 'index', :tag => params[:tag]
+            end
         else
             @articles = Article.all
         end

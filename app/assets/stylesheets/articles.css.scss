@@ -96,3 +96,20 @@ color: rgba(38, 38, 44, 1);
 .pagination span{
     display: inline-block;
 }
+
+.tt-dropdown-menu{
+    position:relative !important;
+    top:-25px !important;
+    background:rgb(211, 217, 217);
+    width: 100%;
+}
+
+.tt-dropdown-menu p{
+    padding:5px;
+    margin: 5px;
+    border-bottom: 1px solid black;
+}
+
+.tt-is-under-cursor{
+    background:rgb(200, 225, 200);
+}

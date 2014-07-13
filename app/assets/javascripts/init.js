@@ -1,4 +1,4 @@
-define('init', ['jquery','waypoint','fitText','pjax'],function ($) {
+define('init', ['jquery','waypoint','fitText','pjax','typeahead'],function ($) {
 
 /*-----------------------------------------------------------------------------------
 /*
@@ -9,13 +9,30 @@ define('init', ['jquery','waypoint','fitText','pjax'],function ($) {
  jQuery(document).ready(function($) {
 
   $(document).on('pjax:success', function() {
-    alert(data);
-  })
+    // alert(data);
+  });
+
+  $('#article_search').typeahead({
+    name: "article",
+    remote: "/autocomplete?query=%QUERY"
+  });
+
+  $("#search_article").submit(function(e)
+  {
+    var postData = $(this).serializeArray();
+    var url = $(this).attr("action")+'/?name='+$('#article_search').val();
+    $.get(url).done(function(data,status){
+        // alert(data);
+        $('#articles .hs').html(data);
+      });
+    e.preventDefault(); //STOP default action
+    // e.unbind(); //unbind. to stop multiple form submit.
+  });
   
   $(document).on('click', 'a[data-pjax]', function(event) {
     if ($.support.pjax) {
       var container = $(this).attr('data-pjax');
-      alert(container);
+      // alert(container);
       $.pjax.click(event, {container: container});
       $(document).scrollTo('#articles');
     }

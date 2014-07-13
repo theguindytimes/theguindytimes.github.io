@@ -5,16 +5,29 @@ class ArticlesController < ApplicationController
     # GET /articles.json
     def index
         if params[:tag]
-            @articles = Article.where(status: "Visible to Public").tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 2)
-            print @articles.to_json
-            if request.headers['X-PJAX']
+            if params[:name].present?
+                @articles = Article.search(params[:name], title: params[:name]).where(status: "Visible to Public").tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 2)
+            else
+                @articles = Article.where(status: "Visible to Public").tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 2)
+            end
+            print params.to_json
+            if request.headers['X-PJAX'] or request.xhr?
                 render :partial => 'home/articles'
             else
                 redirect_to :controller => 'home', :action => 'index', :tag => params[:tag]
             end
         else
-            @articles = Article.all
+            if params[:name].present?
+                @articles = Article.where(status: "Visible to Public").tagged_with(params[:tag]).search(params[:name], title: params[:name])#.paginate(:page => params[:page], :per_page => 2)
+                redirect_to :controller => 'home', :action => 'index', :name => params[:name]
+            else
+                @articles = Article.all
+            end
         end
+    end
+
+    def autocomplete
+        render json: Article.search(params[:query], autocomplete: true, limit: 10).map(&:title)
     end
 
     # GET /articles/1

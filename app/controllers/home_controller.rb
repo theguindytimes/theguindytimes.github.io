@@ -6,10 +6,12 @@ class HomeController < ApplicationController
         @message=Message.new
         if params[:tag]
         	@articles = Article.where(status: "Visible to Public").tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 2)
+		elsif params[:name]
+            @articles = Article.where(status: "Visible to Public").tagged_with(params[:tag]).search(params[:name], title: params[:name])#.paginate(:page => params[:page], :per_page => 2)
 		else
 			@articles = Article.where(status: "Visible to Public").paginate(:page => params[:page], :per_page => 2)
 		end
-		if request.headers['X-PJAX'] and params[:page]
+		if request.headers['X-PJAX'] or request.xhr?
 			render :partial => 'home/articles'
 			return
 		end

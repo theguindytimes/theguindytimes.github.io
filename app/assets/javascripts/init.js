@@ -28,6 +28,17 @@ define('init', ['jquery','waypoint','fitText','pjax','typeahead'],function ($) {
     e.preventDefault(); //STOP default action
     // e.unbind(); //unbind. to stop multiple form submit.
   });
+
+  $('#calendar').on('click', '.events a', function(event) {
+    var parse=String(this).split('/');
+    var id=parse[parse.length-1];
+    url=this;
+      $.get(url).done(function(data,status){
+        $('.event-description').html('');
+        $('#event-'+id).html(data);
+      });
+      return false;
+  });
   
   $(document).on('click', 'a[data-pjax]', function(event) {
     if ($.support.pjax) {

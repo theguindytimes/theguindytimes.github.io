@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140706154505) do
+ActiveRecord::Schema.define(version: 20140713191015) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20140706154505) do
     t.string   "slug"
     t.integer  "views"
     t.string   "contributor"
+    t.string   "post_type"
   end
 
   add_index "articles", ["user_id"], name: "index_articles_on_user_id"
@@ -61,6 +62,21 @@ ActiveRecord::Schema.define(version: 20140706154505) do
 
   add_index "comments", ["article_id"], name: "index_comments_on_article_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "events", force: true do |t|
+    t.string   "title"
+    t.datetime "from"
+    t.datetime "to"
+    t.time     "timings"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "files", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "messages", force: true do |t|
     t.string   "name"

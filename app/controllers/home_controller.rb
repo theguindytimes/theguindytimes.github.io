@@ -15,6 +15,7 @@ class HomeController < ApplicationController
 			render :partial => 'home/articles'
 			return
 		end
+		@events = Event.all
 		@article = Article.new
 		tags = Article.where(status: "Visible to Public").tag_counts.order('taggings_count DESC')
 		require 'nokogiri'

@@ -15,7 +15,7 @@
             <li><a class="smoothscroll" href="#articletrend">Articles trending</a></li>
             <li><a class="smoothscroll" href="#articles">Articles</a></li>
             <li><a class="smoothscroll" href="#gallery">Gallery</a></li>
-            <li><a class="smoothscroll" href="#calender">Calender</a></li>
+            <li><a class="smoothscroll" href="#calendar">Calendar</a></li>
             <li><a class="smoothscroll" href="#contact">Contact</a></li>
             <% if user_signed_in? %>
                 <% if current_user.admin? %>
@@ -290,20 +290,28 @@
     </section> <!-- Gallery Section End-->
 
 
-    <!-- Calender Section
+    <!-- Calendar Section
    ================================================== -->
-    <section id="calender">
+    <section id="calendar">
 
 
         <div class="row">
+            <h1>Calendar</h1>
 
+                <div class="events">
+                    <% @events.each do |e| %>
+                        <div class="event-item">
+                            <%= link_to e.title, e, class: 'pull-left' %>
+                            <p class='pull-right'><%= e.from.strftime('%d-%b-%y') %> to <%= e.to.strftime('%d-%b-%y') if e.from!=e.to %></p>
+                            <br>
+                            <div id="event-<%=e.id%>" class="event-description"></div>
+                        </div>
+                    <% end %>
+                </div>
 
-            <div class="nine columns main-col blah">
-
+                <!-- <br />
                 <br />
-                <br />
-                <iframe src="https://www.google.com/calendar/embed?height=700&amp;wkst=1&amp;bgcolor=%23ffcccc&amp;src=pu9n208ul4t93ra8oshrlcplnk%40group.calendar.google.com&amp;color=%23B1440E&amp;ctz=Asia%2FCalcutta&amp;search_plus_one=form" style=" border-width:0 " width="1200" height="600" frameborder="0" scrolling="no"></iframe>
-            </div> <!-- main-col end -->
+                <iframe src="https://www.google.com/calendar/embed?height=700&amp;wkst=1&amp;bgcolor=%23ffcccc&amp;src=pu9n208ul4t93ra8oshrlcplnk%40group.calendar.google.com&amp;color=%23B1440E&amp;ctz=Asia%2FCalcutta&amp;search_plus_one=form" style=" border-width:0 " width="1200" height="600" frameborder="0" scrolling="no"></iframe> -->
 
         </div> <!-- End Education -->
     </section>

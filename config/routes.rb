@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :events
+
   resources :messages
   mount Ckeditor::Engine => '/ckeditor'
   resources :articles do 

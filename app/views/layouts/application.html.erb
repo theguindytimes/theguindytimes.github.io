@@ -65,8 +65,13 @@
       <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
     </ul>
   </div>
+  <div class="row">
+    <%= render 'layouts/messages' %>
 <% end %>
 <%= yield %>
+<% if !(params[:controller]=='home' and params[:action]=='index') %>
+  </div>
+<% end %>
 </body>
 
 </html>

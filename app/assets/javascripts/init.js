@@ -44,8 +44,9 @@ define('init', ['jquery','waypoint','fitText','pjax','typeahead'],function ($) {
     if ($.support.pjax) {
       var container = $(this).attr('data-pjax');
       // alert(container);
+      // $(document).scrollTo('#articles');
+      $('header #nav').find("a[href='#articles']").click();
       $.pjax.click(event, {container: container});
-      $(document).scrollTo('#articles');
     }
     else{
       url=this;

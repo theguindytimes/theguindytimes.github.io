@@ -20,6 +20,7 @@
             <% if user_signed_in? %>
                 <% if current_user.admin? %>
                 <li><%= link_to 'Admin Dashboard', admin_path %></li>
+                <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
         <% end %>
         <% end %>
 

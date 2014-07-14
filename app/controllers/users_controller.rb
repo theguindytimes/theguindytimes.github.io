@@ -17,17 +17,27 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
     authorize @user
-    if @user.update_attributes(secure_params)
-      redirect_to users_path, :notice => "User updated."
+    if @user != current_user and current_user.role=='admin'
+      if @user.role=='admin'
+        @user.update_attributes({:role => 'user'})
+      else
+        @user.update_attributes({:role => 'admin'})
+      end
+      redirect_to users_path, :alert => "User updated"
     else
       redirect_to users_path, :alert => "Unable to update user."
     end
+    # if @user.update_attributes(secure_params)
+      # redirect_to users_path, :notice => "User updated."
+    # else
+      # redirect_to users_path, :alert => "Unable to update user."
+    # end
   end
 
   def destroy
-    user = User.find(params[:id])
+    user = User.firendly.find(params[:id])
     authorize user
     unless user == current_user
       user.destroy

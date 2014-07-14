@@ -5,9 +5,12 @@
   <%= link_to user.email, user %>
 </td>
 <td>
-  <% form_for(user) do |f| %>
-    <% f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %>
-    <% f.submit 'Change Role', :class => 'button-xs' %>
+  <%= user.role.capitalize %>
+</td>
+<td>
+  <%= form_for(user) do |f| %>
+    <%# f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}, { class: 'pull-left' }) %>
+    <%= f.submit 'Change Role', :class => 'btn-mini pull-right' %>
   <% end %>
 </td>
 <td>

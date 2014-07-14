@@ -12,7 +12,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'bootstrap-sass'
 gem 'devise'
-gem 'figaro', :github=>"laserlemon/figaro"
+gem 'figaro'
 gem 'pundit'
 gem 'simple_form'
 gem 'therubyracer', :platform=>:ruby

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140714142606) do
+ActiveRecord::Schema.define(version: 20140714174954) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -70,6 +70,10 @@ ActiveRecord::Schema.define(version: 20140714142606) do
     t.date     "edition"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "downloadable_file_name"
+    t.string   "downloadable_content_type"
+    t.integer  "downloadable_file_size"
+    t.datetime "downloadable_updated_at"
   end
 
   create_table "events", force: true do |t|

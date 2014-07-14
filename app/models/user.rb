@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
-  enum role: [:user, :vip, :admin]
+  enum role: [:user, :admin]
   after_initialize :set_default_role, :if => :new_record?
 
   searchkick word_start: [:name],autocomplete: [:name]
@@ -12,7 +12,11 @@ class User < ActiveRecord::Base
   has_many :comments
 
   def set_default_role
-    self.role ||= :admin
+    if user.count == 1
+      self.role ||= :admin
+    else
+      self.role ||= :user
+    end
   end
 
   extend FriendlyId

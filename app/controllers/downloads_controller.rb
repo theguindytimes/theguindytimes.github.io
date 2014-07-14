@@ -69,6 +69,6 @@ class DownloadsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def download_params
-      params.require(:download).permit(:title, :category, :description, :edition)
+      params.require(:download).permit(:title, :category, :description, :edition, :downloadable)
     end
 end

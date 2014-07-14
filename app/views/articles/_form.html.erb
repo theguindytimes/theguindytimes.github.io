@@ -4,15 +4,19 @@
   <div class="form-inputs">
     <%= f.input :title %>
     <%= f.cktext_area :content %>
+<% if @type=='article' %>
     <%= f.input :contributor %>
+<% end %>
     <%= f.input :status, collection: ['Visible to Public','Draft/Preview'], prompt: "Select" %>
   </div>
-
+<% if @type=='article' %>
   <div class="field">
         <%= f.label :tag_list, "Tags (separated by commas) [Sports, Reviews, Events, Opportunities]" %><br />
         <%= f.text_field :tag_list %>
     </div>
+<% end %>
   <div class="form-actions">
+    <%= f.input :post_type, :input_html => { :value => @type, type: 'hidden' }, label: false %>
     <%= f.button :submit %>
   </div>
 <% end %>

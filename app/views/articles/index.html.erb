@@ -1,5 +1,5 @@
 <div class="row">
-<h1>Listing articles</h1>
+<h1>Listing articles and news</h1>
 <table class="table table-responsive table-hover">
   <thead>
     <tr>
@@ -7,6 +7,7 @@
       <th>Status</th>
       <th>Views</th>
       <th>Contributor</th>
+      <th>Type</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,6 +19,7 @@
         <td><%= article.status %></td>
         <td><%= article.views %></td>
         <td><%= article.contributor %></td>
+        <td><%= article.post_type %></td>
         <td><%= link_to 'Show', article %></td>
         <td><%= link_to 'Edit', edit_article_path(article) %></td>
         <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -27,5 +29,6 @@
 </table>
 
 <br>
-<%= link_to 'New Article', new_article_path %>
+<%= link_to 'New Article', new_article_path %> / 
+<%= link_to 'New News', news_new_path %>
 </div>

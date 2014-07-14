@@ -858,3 +858,8 @@ font-weight: normal;
 .hs{
    font-size: 20px;
 }
+
+
+#recaptcha_response_field{
+   min-width: initial;
+}

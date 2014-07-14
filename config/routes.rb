@@ -20,5 +20,7 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback' => 'authentications#create'
   delete '/authentications"' => 'authentications#destroy'
   get 'autocomplete' => 'articles#autocomplete'
+  get 'news/new' => 'articles#new_news'
+  get 'news' => 'articles#index_news'
 
 end

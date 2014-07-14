@@ -19,9 +19,9 @@
             <li><a class="smoothscroll" href="#contact">Contact</a></li>
             <% if user_signed_in? %>
                 <% if current_user.admin? %>
-                <li><%= link_to 'Admin Dashboard', admin_path %></li>
+                    <li><%= link_to 'Admin Dashboard', admin_path %></li>
+                <% end %>
                 <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
-        <% end %>
         <% end %>
 
         </ul> <!-- end #nav -->
@@ -64,11 +64,16 @@
             <div class="bulletin col-md-6 col-xs-12 pull-right">
                 <h2>Hot news</h2>
                 <ul class="icon-list">
-                    <li>End semester schedule</li>
-                    <li>Revaluation results</li>
-                    <li>Arrear results</li>
-                    <li>Revaluation application</li>
-                    <li>fee pay online</li>
+                    <% @hotNews.each do |a| %>
+                            <li><a onclick="load_article('<%= a.slug %>')" href='#article_ajax'><%= a.title[0,100] %></a></li>
+                    <% end %>
+                        <% if @hotNews.length == 0 %>
+                        <li>End semester schedule</li>
+                        <li>Revaluation results</li>
+                        <li>Arrear results</li>
+                        <li>Revaluation application</li>
+                        <li>fee pay online</li>
+                    <% end %>
                 </ul>  
             </div>
         </div>

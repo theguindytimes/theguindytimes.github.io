@@ -19,6 +19,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def admin?
+    self.role==:admin
+  end
+
   extend FriendlyId
     friendly_id :slug_candidates, use: :slugged
 

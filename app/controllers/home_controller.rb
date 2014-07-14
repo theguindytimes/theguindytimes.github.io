@@ -5,14 +5,14 @@ class HomeController < ApplicationController
 	def index
         @message=Message.new
         if params[:tag]
-        	@articles = Article.where(status: "Visible to Public").tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 2)
+        	@articles = Article.where(status: "Visible to Public", post_type: 'article').tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 2)
         	@tag_flag = params[:tag]
 		elsif params[:name]
         	@tag_flag = false
-            @articles = Article.where(status: "Visible to Public").tagged_with(params[:tag]).search(params[:name], title: params[:name])#.paginate(:page => params[:page], :per_page => 2)
+            @articles = Article.where(status: "Visible to Public", post_type: 'article').tagged_with(params[:tag]).search(params[:name], title: params[:name])#.paginate(:page => params[:page], :per_page => 2)
 		else
         	@tag_flag = false
-			@articles = Article.where(status: "Visible to Public").paginate(:page => params[:page], :per_page => 2)
+			@articles = Article.where(status: "Visible to Public", post_type: 'article').paginate(:page => params[:page], :per_page => 2)
 		end
 		if request.headers['X-PJAX'] or request.xhr?
 			render :partial => 'home/articles'
@@ -20,7 +20,7 @@ class HomeController < ApplicationController
 		end
 		@events = Event.all
 		@article = Article.new
-		tags = Article.where(status: "Visible to Public").tag_counts.order('taggings_count DESC')
+		tags = Article.where(status: "Visible to Public", post_type: 'article').tag_counts.order('taggings_count DESC')
 		require 'nokogiri'
 		# tags = ActsAsTaggableOn::Tag.order('taggings_count').all
 		@tags = []
@@ -28,7 +28,7 @@ class HomeController < ApplicationController
 		@numbers = {1 => 'first', 2 => 'second', 3 => 'third', 4 => 'fourth', 5 => 'fifth', 6 => 'sixth', 7 => 'seventh', 8 => 'eighth'} #Any better way of doing this ?
 		tags.limit(7).each do |t|
 			articles = []
-			Article.tagged_with(t).order("views").where(status: "Visible to Public").limit(4).each do |a|
+			Article.tagged_with(t).order("views").where(status: "Visible to Public", post_type: 'article').limit(4).each do |a|
 				doc = Nokogiri::HTML( a.content )
         		img_srcs = doc.css('img').map{ |i| i['src'] }
         		article={}
@@ -48,7 +48,8 @@ class HomeController < ApplicationController
 			@tags << {tag: t, articles: articles}
 		end
 		# @images = Ckeditor::Picture.all.pluck('id','data_file_name')
-		@hotArticles = Article.where(status: "Visible to Public").order("views").limit(5)
+		@hotArticles = Article.where(status: "Visible to Public", post_type: 'article').order("views").limit(5)
+		@hotNews = Article.where(status: "Visible to Public", post_type: 'news').order("views").limit(5)
 		# render :text => @articles.to_yaml
 	end
 

@@ -50,6 +50,22 @@
 </head>
 
 <body>
+<% if !(params[:controller]=='home' and params[:action]=='index') %>
+  <div class="row">
+    <ol class="breadcrumb pull-left">
+        <li><%= link_to "Home Page",root_path %></li>
+    <% if (params[:controller]=='home' and params[:action]=='admin') %>
+        <li class="active">/ Admin Dashboard</li>
+    <% else %>
+        <li><%= link_to "/ Admin dashboard",admin_path %></li>
+        <li class="active">/ <%= params[:controller].capitalize+' '+params[:action].capitalize %></li>
+    <% end %>
+    </ol>
+    <ul class="pull-right">
+      <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+    </ul>
+  </div>
+<% end %>
 <%= yield %>
 </body>
 

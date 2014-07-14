@@ -1,6 +1,7 @@
+<div class="row">
 <h1>Listing events</h1>
 
-<table>
+<table class="table table-responsive table-hover">
   <thead>
     <tr>
       <th>Title</th>
@@ -16,9 +17,9 @@
     <% @events.each do |event| %>
       <tr>
         <td><%= event.title %></td>
-        <td><%= event.from %></td>
-        <td><%= event.to %></td>
-        <td><%= event.timings %></td>
+        <td><%= event.from.strftime('%d-%b-%y') %></td>
+        <td><%= event.to.strftime('%d-%b-%y') %></td>
+        <td><%= event.timings.strftime('%H:%m') %></td>
         <td><%= event.description %></td>
         <td><%= link_to 'Show', event %></td>
         <td><%= link_to 'Edit', edit_event_path(event) %></td>
@@ -31,3 +32,4 @@
 <br>
 
 <%= link_to 'New Event', new_event_path %>
+</div>

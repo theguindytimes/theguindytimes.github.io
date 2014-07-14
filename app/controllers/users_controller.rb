@@ -37,9 +37,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def admin
-  end
-
   private
 
   def secure_params

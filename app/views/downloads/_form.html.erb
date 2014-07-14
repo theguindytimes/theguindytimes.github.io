@@ -1,0 +1,14 @@
+<%= simple_form_for(@download) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :category %>
+    <%= f.input :description %>
+    <%= f.input :edition %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

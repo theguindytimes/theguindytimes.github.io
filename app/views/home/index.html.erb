@@ -19,7 +19,7 @@
             <li><a class="smoothscroll" href="#contact">Contact</a></li>
             <% if user_signed_in? %>
                 <% if current_user.admin? %>
-                <li><%= link_to 'Users', users_path %></li>
+                <li><%= link_to 'Admin Dashboard', admin_path %></li>
         <% end %>
         <% end %>
 
@@ -47,7 +47,7 @@
                 <h2>Hot Articles</h2>
                 <ul class="icon-list" >
                     <% @hotArticles.each do |a| %>
-                        <li><%= link_to a.title[0,100],a %></li>
+                        <li><a onclick="load_article('<%= a.slug %>')" href='#article_ajax'><%= a.title[0,100] %></a></li>
                 <% end %>
                     <% if @hotArticles.length == 0 %>
                         <li>No Spicy articles today. Come back tomorrow !!</li>

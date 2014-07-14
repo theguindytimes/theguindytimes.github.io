@@ -49,6 +49,9 @@ class HomeController < ApplicationController
 		# render :text => @articles.to_yaml
 	end
 
+	def admin
+	end
+
 	private
 
 	def old_article_fix

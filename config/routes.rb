@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :downloads
+
   resources :events
 
   resources :messages
@@ -12,7 +14,7 @@ Rails.application.routes.draw do
   resources :users
     resources :authentications
   get 'tags/:tag', to: 'articles#index', as: :tag
-  get 'admin', to: 'users#admin'
+  get 'admin', to: 'home#admin'
   get 'admin-login', to: 'home#adminLogin'
 
   get '/auth/:provider/callback' => 'authentications#create'

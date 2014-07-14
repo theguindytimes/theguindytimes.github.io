@@ -1,0 +1,33 @@
+<div class="row">
+<h1>Listing downloads</h1>
+
+<table class="table table-responsive table-hover">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Category</th>
+      <th>Description</th>
+      <th>Edition</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @downloads.each do |download| %>
+      <tr>
+        <td><%= download.title %></td>
+        <td><%= download.category %></td>
+        <td><%= download.description %></td>
+        <td><%= download.edition %></td>
+        <td><%= link_to 'Show', download %></td>
+        <td><%= link_to 'Edit', edit_download_path(download) %></td>
+        <td><%= link_to 'Destroy', download, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Download', new_download_path %>
+</div>

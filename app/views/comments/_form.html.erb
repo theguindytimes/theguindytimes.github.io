@@ -6,12 +6,11 @@
     <%= f.text_area :body %>
     </div>
     <%= f.hidden_field :article_id %>
-    <% if !current_user %>
-      <%= f.input :user_name %>
-    <% end %>
+    <%= f.input :user_name if !current_user%>
+    <%= f.button :submit %>
+    
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
   </div>
 <% end %>

@@ -1,0 +1,19 @@
+<h3>Comments</h3>
+<div class="comment-info"></div>
+<% @comments.each do |comment| %>
+	<div class="comment">
+		<div class="row">
+		<br>
+		<p class="pull-left" style="margin-bottom:0px"><%= comment.body %></p>
+		<p class="pull-right" style="margin-bottom:0px">
+    <%= link_to "approve ",comments_approve_path(comment), class: 'comment-approve' if current_user and current_user.admin? and comment.status!='Approved' %>
+    <%= link_to "unapprove ",comments_disapprove_path(comment), class: 'comment-disapprove' if current_user and current_user.admin? and comment.status=='Approved' %>
+    <%= link_to 'x', [comment.article, comment], class: 'delete-btn' ,method: :delete, title: "Detele Comment", data: { confirm: 'Are you sure?' } %></p>
+    <br>
+    <strong>-<%= comment.user_name %></strong>
+		</div>
+		</div>
+<% end %>
+<div class="row">
+	<%= render 'comments/form' %>
+  </div>

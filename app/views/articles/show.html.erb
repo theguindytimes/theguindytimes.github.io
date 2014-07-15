@@ -14,7 +14,7 @@
   <div class="title">
   <h2>
   	<%= @a['article'].title %>
-     <span><%= @a['article'].created_at %> </span>
+     <span>Contributed by <%= @a['article'].contributor %> at <%= @a['article'].created_at.strftime('%d %b %Y') %> </span>
   </h2>
   </div>
   <h3><%= raw @article.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></h3>
@@ -35,8 +35,11 @@
   <div class="comments">
 	  
   <%= render 'articles/comments' %>
-  
+  <!-- <a href="https://www.facebook.com/sharer/sharer.php?u=<%= article_url(@a['article']) %>" class="btn">Share on Facebook</a> -->
+  <%= social_share_button_tag(@a['article'].title, :url => article_url(@a['article'])) %>
+  <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/"></div>
   </div>
+
 </div>
 
 

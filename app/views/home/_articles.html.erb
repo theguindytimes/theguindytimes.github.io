@@ -6,11 +6,15 @@
 <div class="row">
   <div class="pull-left">
     <% if @tag_flag %>
+      <div class="row">
       <small>Articles tagged with @tag_flag are being shown. To go back to all articles  
-      <% link_to "click here", root_path, :'data-pjax' => '#articles .hs' %>
+      <%= link_to "click here", root_path, :'data-pjax' => '#articles .hs' %>
       </small>
+      </div>
     <% end %>
   </div>
+  </div>
+  <div class="row">
   <div class="pull-left">
     <%= form_tag articles_path, class: "form-horizontal", method: :get, id: 'search_article' do |f| %>
         <div class="form-group">
@@ -23,7 +27,7 @@
     <% end %>
   </div>
 </div>
-
+<div class="row">
 <ul>
 <% if @articles.empty? %>
    <div class="empty"> No articles yet </div>
@@ -73,3 +77,4 @@
     </div>
   <% end %>
 </ul>
+</div>

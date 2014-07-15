@@ -12,23 +12,14 @@ class User < ActiveRecord::Base
   has_many :comments
 
   def set_default_role
-<<<<<<< HEAD
-    # if user.count == 1
-      self.role ||= :admin
-    # else
-      # self.role ||= :user
-    # end
-=======
     print User.count
     if User.count == 0
       self.role = 'admin'
     else
       self.role = 'user'
     end
-    print '*'*100
->>>>>>> 2e1576cc9fd46d81b2427ee8cf008d126ce82e07
   end
-
+  
   def admin?
     self.role=='admin'
   end

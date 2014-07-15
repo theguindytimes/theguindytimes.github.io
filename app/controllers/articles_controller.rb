@@ -40,7 +40,11 @@ class ArticlesController < ApplicationController
         article.views = article.views + 1
         article.save
         @article = Article.friendly.find(params[:id])
-        @comments = @article.comments.all
+        if current_user and current_user.admin?
+            @comments = @article.comments.all
+        else
+            @comments = @article.comments.where(:status => 'Approved')
+        end
         if request.xhr?
             @xhr = true
         end

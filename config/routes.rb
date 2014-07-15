@@ -22,5 +22,7 @@ Rails.application.routes.draw do
   get 'autocomplete' => 'articles#autocomplete'
   get 'news/new' => 'articles#new_news'
   get 'news' => 'articles#index_news'
+  get 'comments-approve/:id' => 'comments#approve', as: :comments_approve
+  get 'comments-disapprove/:id' => 'comments#disapprove', as: :comments_disapprove
 
 end

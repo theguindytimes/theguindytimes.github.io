@@ -18,7 +18,7 @@
             <li><a class="smoothscroll" href="#calendar">Calendar</a></li>
             <li><a class="smoothscroll" href="#contact">Contact</a></li>
             <% if user_signed_in? %>
-                <% if current_user.admin? %>
+                <% if current_user and current_user.admin? %>
                     <li><%= link_to 'Admin Dashboard', admin_path %></li>
                 <% end %>
                 <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
@@ -34,7 +34,7 @@
             <h3>The official students' magazine of Anna University,Chennai.</h3>
             <hr />
             <ul class="social">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="http://www.facebook.com/TheGuindyTimes"><i class="fa fa-facebook"></i></a></li>
                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                 <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                 <!--          <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
@@ -150,31 +150,42 @@
 
 
             <div id="portfolio-wrapper" class="bgrid-quarters s-bgrid-thirds cf">
+                <% if current_user and current_user.admin? %>
+                    <div class="row">
+                        <small><%= link_to "Post new article",new_article_path, class: 'pull-right' %></small>
+                    </div>
+                <% end %>
                 <% i=1 %>
-                <% @tags.each do |tag| %>
-                    <div class="line<%=i%>">
-                    <div class="container">
-                        <div class="new"><%= link_to tag[:tag].name,tag_path(tag[:tag].name) , :'data-pjax' => '#articles .hs' %></div>
-                        <div id="content-slider">
-                            <div id="slider">
-                                <div id="mask">
-                                    <ul>
-                                        <% j=1 %>
-                                        <% tag[:articles].each do |a| %>
-                                            <li id="<%= @numbers[j] %>" class="<%= @numbers[j] %>animation">
-                                        <%= link_to image_tag(a['img'], :alt => a['title']),a %> <!-- Needs fix -->
-                                        <div class="tooltip">
-                                            <h1><%= a['title'] %></h1>
-                                        </div>
-                                        </li>
-                                        <% j=j+1 %>
-                                    <% end %>
-                                    </ul>
+                <% if @articles.empty? %>
+                    <div class="empty"> No articles yet </div>
+                <% else %>
+                    <div class="row">
+                    <% @tags.each do |tag| %>
+                        <div class="line<%=i%>">
+                        <div class="container">
+                            <div class="new"><%= link_to tag[:tag].name,tag_path(tag[:tag].name) , :'data-pjax' => '#articles .hs' %></div>
+                            <div id="content-slider">
+                                <div id="slider">
+                                    <div id="mask">
+                                        <ul>
+                                            <% j=1 %>
+                                            <% tag[:articles].each do |a| %>
+                                                <li id="<%= @numbers[j] %>" class="<%= @numbers[j] %>animation">
+                                            <%= link_to image_tag(a['img'], :alt => a['title']),a %> <!-- Needs fix -->
+                                            <div class="tooltip">
+                                                <h1><%= a['title'] %></h1>
+                                            </div>
+                                            </li>
+                                            <% j=j+1 %>
+                                        <% end %>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <% i=i+1 %>
+                    <% end %>
                     </div>
-                    <% i=i+1 %>
                 <% end %>
 
                 </div>
@@ -235,12 +246,17 @@
                 <br />
 
                 <h1>Gallery</h1>
-
+                <% if current_user and current_user.admin? %>
+                    <div class="row">
+                        <small><%= link_to "Post new article",new_article_path, class: 'pull-right' %></small>
+                    </div>
+                <% end %>
                 <!-- gallery-wrapper -->
                 <div id="portfolio-wrapper" class="bgrid-quarters s-bgrid-thirds cf">
                     <% if @images.length <= 0 %>
                         Add articles with images in them
-                <% end %>
+                    <div class="row">
+                    <% else %>
                     <% j=1 %>
                     <% @images.each do |i| %>
                         <% i['src'].each do |img| %>
@@ -262,24 +278,20 @@
                     </div> <!-- item end -->
 
                     <div id="modal-0<%=j%>" class="popup-modal mfp-hide">
-
                         <img class="scale-with-grid" src="<%=img%>" alt="" />
-
                         <div class="description-box">
                             <h4><%= link_to i['article'].title,i %></h4>
                             <p><%= raw i['article'].tag_list.map{ |t| link_to t, tag_path(t) }.join(', ') %></p>
                         </div>
-
                         <div class="link-box">
                             <a class="popup-modal-dismiss">Close</a>
                         </div>
-
                     </div><!-- modal-01 End -->
                     <% j=j+1 %>
-
-
                 <% end %>
 
+                <% end %>
+                </div>
                 <% end %>
 
 
@@ -303,14 +315,24 @@
 
         <div class="row">
             <h1>Calendar</h1>
-
+                <% if current_user and current_user.admin? %>
+                    <div class="row">
+                        <small><%= link_to "Post new event",new_event_path, class: 'pull-right' %></small>
+                    </div>
+                <% end %>
                 <div class="events">
-                    <% @events.each do |e| %>
-                        <div class="event-item">
-                            <%= link_to e.title, e, class: 'pull-left' %>
-                            <p class='pull-right'><%= e.from.strftime('%d %b %y') %><%= 'to '+e.to.strftime('%d %b %y')+' at '+e.timings.strftime('%H : %m')+' hrs' if e.from!=e.to %></p>
-                            <br>
-                            <div id="event-<%=e.id%>" class="event-description"></div>
+                    <% if @events.count==0 %>
+                        No events at the moment. Please come back later
+                    <% else %>
+                        <div class="row">
+                        <% @events.each do |e| %>
+                            <div class="event-item">
+                                <%= link_to e.title, e, class: 'pull-left' %>
+                                <p class='pull-right'><%= e.from.strftime('%d %b %y') %><%= 'to '+e.to.strftime('%d %b %y')+' at '+e.timings.strftime('%H : %m')+' hrs' if e.from!=e.to %></p>
+                                <br>
+                                <div id="event-<%=e.id%>" class="event-description"></div>
+                            </div>
+                        <% end %>
                         </div>
                     <% end %>
                 </div>

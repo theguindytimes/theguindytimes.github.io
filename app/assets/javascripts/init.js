@@ -29,6 +29,31 @@ define('init', ['jquery','waypoint','fitText','pjax','typeahead'],function ($) {
     // e.unbind(); //unbind. to stop multiple form submit.
   });
 
+  $('#article_ajax').on('click', '.comment-approve', function(event) {
+    // alert(this);
+    var url=this;
+    $.get(url).done(function(data,status){
+        // alert(data);
+        $('#article_ajax .comment-info').html(data);
+    });
+    return false;
+  });
+
+  $('#article_ajax').on('click', '.comment-disapprove', function(event) {
+    // alert(this);
+    var url=this;
+    $.get(url).done(function(data,status){
+        // alert(data);
+        $('#article_ajax .comment-info').html(data);
+    });
+    return false;
+  });
+
+  // $('#article_ajax').on('click', '.comment-approve', function(event) {
+  //   alert(this);
+  //   return false;
+  // });
+
   $('#calendar').on('click', '.events a', function(event) {
     var parse=String(this).split('/');
     var id=parse[parse.length-1];

@@ -19,11 +19,11 @@ class UsersController < ApplicationController
   def update
     @user = User.friendly.find(params[:id])
     authorize @user
-    if @user != current_user and current_user.role=='admin'
-      if @user.role=='admin'
-        @user.update_attributes({:role => 'user'})
+    if @user != current_user and current_user.admin?
+      if @user.admin?
+        @user.update_attributes({:role => 0})
       else
-        @user.update_attributes({:role => 'admin'})
+        @user.update_attributes({:role => 1})
       end
       redirect_to users_path, :alert => "User updated"
     else
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    user = User.firendly.find(params[:id])
+    user = User.friendly.find(params[:id])
     authorize user
     unless user == current_user
       user.destroy

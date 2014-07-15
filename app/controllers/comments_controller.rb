@@ -21,11 +21,39 @@ class CommentsController < ApplicationController
   def edit
   end
 
+  def approve
+    comment = Comment.find(params[:id])
+    print 'approve'*100
+    comment.status = 'Approved'
+    if comment.save
+      render :text => 'Approved. Changes will be visible next time the article is loaded'
+    else
+      render :text => 'Error occured. Please refresh and try again'
+    end
+  end
+
+  def disapprove
+    comment = Comment.find(params[:id])
+    comment.status = 'Pending'
+    if comment.save
+      render :text => 'Disapproved. Changes will be visible next time the article is loaded'
+    else
+      render :text => 'Error occured. Please refresh and try again'
+    end
+  end
+
   # POST /comments
   # POST /comments.json
   def create
     @comment = Comment.new(comment_params)
-    @comment.status = "Approved" #for now
+    if current_user
+      @comment.user_name = current_user.name
+      if current_user.admin?
+        @comment.status = "Approved"
+      else
+        @comment.status = "Pending"
+      end
+    end
     respond_to do |format|
       if @comment.save
         format.html { redirect_to :back, notice: 'Comment was successfully created.' }

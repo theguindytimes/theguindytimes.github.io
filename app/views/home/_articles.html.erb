@@ -1,3 +1,8 @@
+<% if current_user and current_user.admin? %>
+  <div class="row pull-right">
+    <small><%= link_to "Post new article",new_article_path, class: 'pull-right' %></small>
+  </div>
+<% end %>
 <div class="row">
   <div class="pull-left">
     <% if @tag_flag %>
@@ -6,7 +11,7 @@
       </small>
     <% end %>
   </div>
-  <div class="pull-right">
+  <div class="pull-left">
     <%= form_tag articles_path, class: "form-horizontal", method: :get, id: 'search_article' do |f| %>
         <div class="form-group">
           <%= text_field_tag :name, params[:name], class: "form-control", id: "article_search", placeholder: 'Search for articles', autocomplete: 'off' %>
@@ -21,8 +26,9 @@
 
 <ul>
 <% if @articles.empty? %>
-   <div class="empty"><h3> No articles yet </h3></div>
+   <div class="empty"> No articles yet </div>
 <% else %>
+  <div class="row">
       <div id="article_ajax" class="modalDialog">
          <div id="wrapper">
          <a href="#close" title="Close" class="close">X</a>
@@ -64,5 +70,6 @@
       <% i= i+1 %>
     <% end %>
     <%= will_paginate @articles, renderer: BootstrapPagination::Rails %>
+    </div>
   <% end %>
 </ul>

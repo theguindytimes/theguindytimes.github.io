@@ -20,5 +20,8 @@
   <%= @download.edition %>
 </p>
 
+<%= link_to "Download file", @download.downloadable.url if @download.downloadable.file? %>
+<br>
+
 <%= link_to 'Edit', edit_download_path(@download) %> |
 <%= link_to 'Back', downloads_path %>

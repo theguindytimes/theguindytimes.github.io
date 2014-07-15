@@ -20,7 +20,7 @@
         <td><%= download.category %></td>
         <td><%= download.description %></td>
         <td><%= download.edition %></td>
-        <td><%= link_to "Download file", download.downloadable.url %></td>
+        <td><%= link_to "Download file", download.downloadable.url if download.downloadable.file? %></td>
         <td><%= link_to 'Show', download %></td>
         <td><%= link_to 'Edit', edit_download_path(download) %></td>
         <td><%= link_to 'Destroy', download, method: :delete, data: { confirm: 'Are you sure?' } %></td>

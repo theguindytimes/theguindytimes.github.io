@@ -570,3 +570,37 @@ input.footerSubmit {
   font-size: 60px;
   color: #3a3a3a;
 }
+
+.artify{
+  color: rgb(185, 26, 26);
+  font-size: 30px;
+}
+
+.bubble img {
+    float:left;
+    width:70px;
+    height:70px;
+    border:3px solid #ffffff;
+    border-radius:10px
+                  }
+.bubble-content {
+   position:relative;
+   float:left;
+   margin-left:12px;
+   width: 100%;
+   padding:0px 20px;
+   border-radius:10px;
+   background-color:#FFFFFF;
+   box-shadow:1px 1px 5px rgba(0,0,0,.2);
+   }
+.bubble {
+     margin-top:20px;
+     }
+.point {
+   border-top:10px solid transparent;
+   border-bottom:10px solid transparent;
+          border-right: 12px solid #FFF;
+   position:absolute;
+   left:-10px;
+   top:12px;
+   } 

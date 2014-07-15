@@ -1,0 +1,4 @@
+sudo apt-get install npm
+whereis nodejs
+ln -s [the path of nodejs] /usr/bin/node 
+ln -s /usr/bin/nodejs /usr/bin/node 

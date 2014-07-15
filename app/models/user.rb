@@ -12,15 +12,17 @@ class User < ActiveRecord::Base
   has_many :comments
 
   def set_default_role
-    if user.count == 1
-      self.role ||= :admin
+    print User.count
+    if User.count == 0
+      self.role = 'admin'
     else
-      self.role ||= :user
+      self.role = 'user'
     end
+    print '*'*100
   end
 
   def admin?
-    self.role==:admin
+    self.role=='admin'
   end
 
   extend FriendlyId

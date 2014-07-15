@@ -18,9 +18,8 @@ class User < ActiveRecord::Base
     else
       self.role = 'user'
     end
-    print '*'*100
   end
-
+  
   def admin?
     self.role=='admin'
   end

@@ -323,6 +323,9 @@ GEM
       eventmachine (~> 1.0.0)
       thin (~> 1.5.0)
     slop (3.5.0)
+    social-share-button (0.1.6)
+      coffee-rails
+      sass-rails
     spring (1.1.3)
     sprockets (2.11.0)
       hike (~> 1.2)
@@ -426,6 +429,7 @@ DEPENDENCIES
   searchkick
   selenium-webdriver
   simple_form
+  social-share-button
   spring
   sqlite3
   therubyracer

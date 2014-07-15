@@ -35,6 +35,7 @@ gem 'omniauth-gplus', '~> 1.0'
 gem 'omniauth'
 gem 'will_paginate-bootstrap'
 gem "searchkick"
+gem 'social-share-button'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_20]

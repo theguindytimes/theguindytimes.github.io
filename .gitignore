@@ -86,3 +86,5 @@ pickle-email-*.html
 /config/environments/development.rb
 /config/secrets.yml
 /public/ckeditor_assets/*
+/public/*
+/public/assets/*

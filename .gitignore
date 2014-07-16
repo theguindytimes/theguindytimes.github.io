@@ -88,3 +88,4 @@ pickle-email-*.html
 /public/ckeditor_assets/*
 /public/*
 /public/assets/*
+/public/images/*

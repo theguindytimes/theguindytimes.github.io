@@ -68,9 +68,6 @@ class MessagesController < ApplicationController
 
     private
 
-    def check_user
-        redirect_to root_path if !(current_user and current_user.admin?)
-    end
     ## Use callbacks to share common setup or constraints between actions.
     #def set_message
     #@message = Message.find(params[:id])

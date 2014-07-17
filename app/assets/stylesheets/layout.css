@@ -173,7 +173,7 @@ header .scrolldown a:hover { color: #11ABB0; }
    width: 100%;
    text-transform: uppercase;
    letter-spacing: 2.5px;
-   margin: 0 auto;
+   margin-left: 0px ;
    z-index: 100;
    position: fixed;
    left: 0;
@@ -1043,3 +1043,50 @@ footer .social-links li:first-child { margin-left: 0; }
  	border-radius: 100%;
 }
 #go-top a:hover { background-color: #0F9095; }
+
+
+nav ul ul{
+  margin-left: 100px;
+  display: none;
+}
+
+  nav  ul li:hover > ul {
+    display: block;
+  }
+  nav ul:after {
+    content: ""; clear: both; display: block;
+  }
+
+  nav ul li {
+  float: left;
+}
+    nav ul li:hover a {
+      color: #fff;
+    }
+  
+  nav ul li a {
+    display: block;
+    padding: 25px 40px;
+    color: transparent;
+    text-decoration: none;
+  }
+
+  nav ul ul {
+  background: transparent;
+   border-radius: 30px; padding: 0;
+  position: absolute; top: 100%;
+}
+  nav ul ul li {
+    float: none; 
+    border-radius: 20px;
+    border-top: 1px solid #6b727c;
+    border-bottom: 1px solid #575f6a;
+    position: relative;
+  }
+    nav ul ul li a {
+      padding: 15px 40px;
+      color: #fff;
+    } 
+      nav ul ul li a:hover {
+        background: #4b545f;
+      }

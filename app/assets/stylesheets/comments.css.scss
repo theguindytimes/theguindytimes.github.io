@@ -6,8 +6,6 @@
 	margin:2px;
 	padding-left:10px;
 	padding-right:10px;
-	opacity: 0.5;
-	border-bottom:1px solid gray; 
 	transition:1s all;
 }
 
@@ -27,6 +25,11 @@
 	color:red !important;
 }
 
-.comment:hover{
+.comment .bubble-content{
+	opacity: 0.5;
+	transition:0.7s all;
+}
+
+.comment .bubble-content:hover{
 	opacity: 1;
 }

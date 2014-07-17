@@ -80,7 +80,22 @@ define('init', ['jquery','waypoint','fitText','pjax','typeahead'],function ($) {
       });
       return false;
   });
-  
+
+  $(document).on('click', '#comment-form input', function(event) {
+    form = $(this).closest("form");
+    var url = form.attr('action');
+    var data = form.serialize();
+    $.ajax({
+      type: "POST",
+      url: url,
+      data: data,
+      success: function(data){
+        $('#article_ajax .comments').html(data);
+      }
+      });
+    return false;
+  });
+
   $(document).on('click', 'a[data-pjax]', function(event) {
     if ($.support.pjax) {
       var container = $(this).attr('data-pjax');

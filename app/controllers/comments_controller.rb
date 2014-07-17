@@ -23,7 +23,6 @@ class CommentsController < ApplicationController
 
   def approve
     comment = Comment.find(params[:id])
-    print 'approve'*100
     comment.status = 'Approved'
     if comment.save
       render :text => 'Approved. Changes will be visible next time the article is loaded'
@@ -54,8 +53,20 @@ class CommentsController < ApplicationController
         @comment.status = "Pending"
       end
     end
+    status = @comment.save
+    if request.xhr?
+        @article = Article.friendly.find(params[:article_id])
+        if current_user and current_user.admin?
+          print 'here?'
+          @comments = @article.comments.all
+        else
+          @comments = @article.comments.where(:status => 'Approved')
+        end
+      render :partial => 'articles/comments'
+      return
+    end
     respond_to do |format|
-      if @comment.save
+      if status
         format.html { redirect_to :back, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else

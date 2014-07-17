@@ -1,5 +1,6 @@
 class DownloadsController < ApplicationController
   before_action :set_download, only: [:show, :edit, :update, :destroy]
+  before_action :check_user,  only: [:show, :index, :new, :new_news, :edit]
 
   # GET /downloads
   # GET /downloads.json
@@ -62,6 +63,7 @@ class DownloadsController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_download
       @download = Download.find(params[:id])

@@ -12,7 +12,7 @@
             <li><%= image_tag('favicon.png') %></li>
             <li class="current"><a class="smoothscroll" href="#home">Home</a></li>
             <li><a class="smoothscroll" href="#about">About</a></li>
-            <li><a class="smoothscroll" href="#articletrend">Articles trending</a></li>
+            <li><a class="smoothscroll" href="#articletrend">Categories</a></li>
             <li><a class="smoothscroll" href="#articles">Articles</a></li>
             <li><a class="smoothscroll" href="#gallery">Gallery</a></li>
             <li><a class="smoothscroll" href="#calendar">Calendar</a></li>
@@ -22,7 +22,9 @@
                     <li><%= link_to 'Admin Dashboard', admin_path %></li>
                 <% end %>
                 <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
-        <% end %>
+            <% else %>
+                <li><%= link_to 'Sign in', new_user_session_path %></li>
+            <% end %>
 
         </ul> <!-- end #nav -->
 
@@ -144,7 +146,7 @@
             <br />
             <br />
             <br />
-            <h1>Articles trending</h1>
+            <h1>Categories</h1>
 
             <!-- gallery-wrapper -->
 
@@ -327,13 +329,11 @@
                         <div class="row">
                         <% @events.each do |e| %>
                             <div class="event-item">
-                                <% if e.to >= Date.today %>
                                 <%= link_to e.title, e, class: 'pull-left' %>
                                 <p class='pull-right'><%= e.from.strftime('%d %b %y') %><%= 'to '+e.to.strftime('%d %b %y')+' at '+e.timings.strftime('%H : %m')+' hrs' if e.from!=e.to %></p>
                                 <br>
                                 <div id="event-<%=e.id%>" class="event-description"></div>
                             </div>
-                        <% end %>
                         <% end %>
                         </div>
                     <% end %>

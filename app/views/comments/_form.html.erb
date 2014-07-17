@@ -1,4 +1,4 @@
-<%= simple_form_for([@article, @article.comments.build]) do |f| %>
+<%= simple_form_for([@article, @article.comments.build],html: {  id: :'comment-form' })  do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -7,7 +7,7 @@
     </div>
     <%= f.hidden_field :article_id %>
     <%= f.input :user_name if !current_user%>
-    <%= f.button :submit %>
+    <%= f.button :submit, id: 'comment-submit' %>
     
   </div>
 

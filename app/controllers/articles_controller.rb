@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
     before_action :set_article, only: [:show, :edit, :update, :destroy]
+    before_action :check_user,  only: [:show, :index, :new, :new_news, :edit]
 
     # GET /articles
     # GET /articles.json
@@ -123,6 +124,8 @@ class ArticlesController < ApplicationController
     end
 
     private
+
+    
     # Use callbacks to share common setup or constraints between actions.
     def set_article
         @article = Article.friendly.find(params[:id])

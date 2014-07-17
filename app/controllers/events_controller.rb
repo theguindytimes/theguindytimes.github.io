@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-
+  before_action :check_user,  only: [:show, :index, :new, :new_news, :edit]
+  
   # GET /events
   # GET /events.json
   def index
@@ -65,6 +66,7 @@ class EventsController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_event
       @event = Event.find(params[:id])

@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
 
-	before_action :old_article_fix
+	# before_action :old_article_fix
 
 	def index
         @message=Message.new
@@ -54,6 +54,7 @@ class HomeController < ApplicationController
 	end
 
 	def admin
+		redirect_to root_path if !(current_user and current_user.admin?)
 	end
 
 	private

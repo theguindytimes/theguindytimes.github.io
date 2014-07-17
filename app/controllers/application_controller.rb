@@ -27,6 +27,10 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def check_user
+        redirect_to root_path if !(current_user and current_user.admin?)
+  end
+
   def user_not_authorized
     flash[:alert] = "Access denied."
     redirect_to (request.referrer || root_path)

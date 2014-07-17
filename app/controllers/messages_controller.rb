@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
     before_action :set_message, only: [:show, :edit, :update, :destroy]
+    before_action :check_user,  only: [:show, :index, :new, :new_news, :edit]
 
     # GET /messages
     # GET /messages.json
@@ -65,7 +66,11 @@ class MessagesController < ApplicationController
     #end
     #end
 
-    #private
+    private
+
+    def check_user
+        redirect_to root_path if !(current_user and current_user.admin?)
+    end
     ## Use callbacks to share common setup or constraints between actions.
     #def set_message
     #@message = Message.find(params[:id])

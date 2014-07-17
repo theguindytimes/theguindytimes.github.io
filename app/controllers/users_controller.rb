@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
   after_action :verify_authorized, except: [:show,:admin]
+  before_action :check_user,  only: [:show, :index, :new, :new_news, :edit]
 
   def index
     @users = User.all
@@ -49,6 +50,9 @@ class UsersController < ApplicationController
 
   private
 
+  def check_user
+    redirect_to root_path if !(current_user and current_user.admin?)
+  end
   def secure_params
     params.require(:user).permit(:role)
   end

@@ -23,5 +23,7 @@
 
 <% end %>
 <div class="row">
-	<%= render 'comments/form' %>
+	<% if current_user %>
+		<%= render 'comments/form' %>
+	<% end %>
   </div>

@@ -5,7 +5,10 @@
     <%= f.input :title %>
     <%= f.cktext_area :content %>
 <% if @type=='article' %>
-    <%= f.input :contributor %>
+  <div class="field">
+        <%= f.label :author_list, "Name of the Author" %><br />
+        <%= f.text_field :author_list %>
+    </div>
 <% end %>
     <%= f.input :status, collection: ['Visible to Public','Draft/Preview'], prompt: "Select" %>
   </div>

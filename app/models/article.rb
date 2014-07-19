@@ -14,5 +14,6 @@ class Article < ActiveRecord::Base
     ]
   end
   acts_as_taggable 
+  acts_as_taggable_on :author
 
 end

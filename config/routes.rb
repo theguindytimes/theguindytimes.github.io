@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :users
     resources :authentications
   get 'tags/:tag', to: 'articles#index', as: :tag
+  get 'authors/:name', to: 'articles#index', as: :name
   get 'admin', to: 'home#admin'
   get 'admin-login', to: 'home#adminLogin'
 

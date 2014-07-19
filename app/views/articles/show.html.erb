@@ -14,7 +14,7 @@
   <div class="title">
   <h2>
   	<%= @a['article'].title %>
-     <span>Contributed by <%= @a['article'].contributor %> at <%= @a['article'].created_at.strftime('%d %b %Y') %> </span>
+     <span>Contributed by <%= raw @a['article'].author_list.map { |t| link_to t, tag_path(t) }.join(', ') %> at <%= @a['article'].created_at.strftime('%d %b %Y') %> </span>
   </h2>
   </div>
   <h3><%= raw @article.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></h3>

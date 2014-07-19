@@ -5,7 +5,7 @@ class Article < ActiveRecord::Base
   extend FriendlyId
     friendly_id :slug_candidates, use: :slugged
 
-  searchkick word_start: [:title],autocomplete: [:title]
+  searchkick word_start: [:title,:author],autocomplete: [:title,:author]
 
   def slug_candidates
     [

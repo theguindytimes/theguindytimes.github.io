@@ -7,7 +7,7 @@
   <div class="pull-left">
     <% if @tag_flag %>
       <div class="row">
-      <small>Articles tagged with @tag_flag are being shown. To go back to all articles  
+      <small>Articles <% if !@tag_user %>tagged with <% else %>authored by <% end %><%= params[:tag] %> are being shown. To go back to all articles  
       <%= link_to "click here", root_path, :'data-pjax' => '#articles .hs' %>
       </small>
       </div>

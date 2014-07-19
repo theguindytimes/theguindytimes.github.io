@@ -36,6 +36,7 @@ gem 'omniauth'
 gem 'will_paginate-bootstrap'
 gem "searchkick"
 gem 'social-share-button'
+gem 'open_uri_redirections'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_20]

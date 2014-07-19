@@ -11,7 +11,6 @@ class ArticlesController < ApplicationController
             else
                 @articles = Article.where(status: "Visible to Public").tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 2)
             end
-            print params.to_json
             if request.headers['X-PJAX'] or request.xhr?
                 author = ActsAsTaggableOn::Tagging.where(:context => :author,:'tags.name' => params[:tag]).joins(:tag).select('DISTINCT tags.name').map{ |x| x.name}
                 @tag_flag = params[:tag]

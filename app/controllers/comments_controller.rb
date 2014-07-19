@@ -58,7 +58,6 @@ class CommentsController < ApplicationController
     if request.xhr?
         @article = Article.friendly.find(params[:article_id])
         if current_user and current_user.admin?
-          print 'here?'
           @comments = @article.comments.all
         else
           @comments = @article.comments.where(:status => 'Approved')

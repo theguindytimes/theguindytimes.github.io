@@ -1,23 +1,21 @@
 class User < ActiveRecord::Base
-    # Include default devise modules. Others available are:
-    # :confirmable, :lockable, :timeoutable and :omniauthable
-    devise :database_authenticatable, :registerable, :confirmable,
-        :recoverable, :rememberable, :trackable, :validatable
-    enum role: [:user, :admin]
-    after_initialize :set_default_role, :if => :new_record?
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable, :confirmable,
+         :recoverable, :rememberable, :trackable, :validatable
+  enum role: [:user, :admin]
+  after_initialize :set_default_role, :if => :new_record?
 
-    searchkick word_start: [:name],autocomplete: [:name]
+  searchkick word_start: [:name],autocomplete: [:name]
 
-    has_many :articles
-    has_many :comments
+  has_many :articles
+  has_many :comments
 
-    def set_default_role
-        print User.count
-        if User.count == 0
-            self.role = 'admin'
-        else
-            self.role = 'user'
-        end
+  def set_default_role
+    if User.count == 0
+      self.role = 'admin'
+    else
+      self.role = 'user'
     end
 
     def admin?

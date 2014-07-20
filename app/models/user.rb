@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
     else
       self.role = 'user'
     end
+  end
 
     def admin?
         self.role=='admin'

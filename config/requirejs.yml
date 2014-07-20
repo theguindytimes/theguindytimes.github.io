@@ -1,0 +1,13 @@
+shim:
+  'ckeditor':
+    deps: ['jquery','ckeditor/override']
+    exports: ''
+  'ckeditor/override':
+    deps: ['jquery','ckeditor/init']
+    exports: ''
+  'ckeditor/init':
+    deps: ['jquery']
+    exports: ''
+  'jquery-ui':
+    deps: ['jquery']
+    exports: '$'

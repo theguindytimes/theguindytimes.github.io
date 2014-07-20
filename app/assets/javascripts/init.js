@@ -1,4 +1,4 @@
-define('init', ['jquery','waypoint','fitText','pjax','typeahead'],function ($) {
+// define('init', ['jquery','waypoint','fitText','pjax','typeahead'],function ($) {
 
 /*-----------------------------------------------------------------------------------
 /*
@@ -345,7 +345,7 @@ define('init', ['jquery','waypoint','fitText','pjax','typeahead'],function ($) {
 });
 
 
-});
+// });
 
 
 

@@ -1,7 +1,7 @@
 // jquery.pjax.js
 // copyright chris wanstrath
 // https://github.com/defunkt/jquery-pjax
-define('pjax', ['jquery'],function ($) {
+// define('pjax', ['jquery'],function ($) {
 
 (function($){
 
@@ -860,4 +860,4 @@ $.support.pjax ? enable() : disable()
 
 })(jQuery);
 
-});
+// });

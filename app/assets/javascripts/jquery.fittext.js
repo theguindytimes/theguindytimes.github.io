@@ -1,4 +1,4 @@
-define('fitText', ['jquery'],function ($) {
+// define('fitText', ['jquery'],function ($) {
 /*global jQuery */
 /*!
 * FitText.js 1.1
@@ -42,4 +42,4 @@ define('fitText', ['jquery'],function ($) {
   };
 
 })( jQuery );
-});
+// });

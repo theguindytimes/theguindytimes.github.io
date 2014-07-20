@@ -11,11 +11,17 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
-//= require turbolinks
-//= require bootstrap
-//= require_tree .
-//= require ckeditor/override
 //= require ckeditor/init
+//= require jquery.pjax
+//= require jquery_ujs
+//= require modulejs-0.3.0.min
+//= require magnific-popup
+//= require jquery.fittext
+//= require jquery.flexslider
+//= require waypoints
+//= require typeahead.min
+//= require bootstrap
+//= require turbolinks
+//= require_tree .
 
-require(['init','bootstrap','jquery'], function() {});
+// require(['init','bootstrap','jquery','ckeditor'], function() {});

@@ -23,7 +23,7 @@ gem 'ckeditor'            #Added
 gem "acts-as-taggable-on" #Added
 gem "paperclip"           #Added
 gem "font-awesome-rails"
-gem 'requirejs-rails'
+# gem 'requirejs-rails'
 gem 'mailcatcher'
 gem 'omniauth-facebook'
 gem 'koala'

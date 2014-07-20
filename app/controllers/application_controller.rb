@@ -28,7 +28,9 @@ class ApplicationController < ActionController::Base
   private
 
   def check_user
-        redirect_to root_path if !(current_user and current_user.admin?)
+    if !(request.xhr? or request.headers['X-PJAX'])
+      redirect_to root_path if !(current_user and current_user.admin?)
+    end
   end
 
   def user_not_authorized

@@ -12,13 +12,11 @@
             <li><%= image_tag('favicon.png') %></li>
             <li class="current"><a class="smoothscroll" href="#home">Home</a></li>
             <li><a class="smoothscroll" href="#about">About</a></li>
-            <li><a class="smoothscroll" href="#articletrend">Categories</a></li>
-            <li><a class="smoothscroll" href="#articletrend">Articles trending</a>
-                <ul>
-                    <li><a href="#">Sports</a></li>
-                    <li><a href="#">Economics</a></li>
-                    <li><a href="#">Entertainment</a></li>
-                    <li><a href="#">Technology</a></li>
+            <li><a class="smoothscroll" href="#articletrend">Categories</a>
+                <ul class="dropdown-nav">
+                    <% @tags.each do |tag| %>
+                        <li><%= link_to tag[:tag].name,tag_path(tag[:tag].name) , :'data-pjax' => '#articles .hs' %></li>
+                    <% end %>
                 </ul>
             </li>
             <li><a class="smoothscroll" href="#articles">Articles</a></li>

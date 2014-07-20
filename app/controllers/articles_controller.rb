@@ -13,6 +13,9 @@ class ArticlesController < ApplicationController
             end
             print params.to_json
             if request.headers['X-PJAX'] or request.xhr?
+                author = ActsAsTaggableOn::Tagging.where(:context => :author,:'tags.name' => params[:tag]).joins(:tag).select('DISTINCT tags.name').map{ |x| x.name}
+                @tag_flag = params[:tag]
+                @tag_user = author.length>0
                 render :partial => 'home/articles'
             else
                 redirect_to :controller => 'home', :action => 'index', :tag => params[:tag]

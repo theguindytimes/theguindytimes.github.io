@@ -189,7 +189,7 @@ ul#nav {
    width: auto;
 
    /* center align the menu */
-   text-align: center;
+   text-align: center !important;
 }
 ul#nav li {
    position: relative;
@@ -1057,9 +1057,9 @@ nav ul ul{
     content: ""; clear: both; display: block;
   }
 
-  nav ul li {
+  /*nav ul li {
   float: left;
-}
+}*/
     nav ul li:hover a {
       color: #fff;
     }

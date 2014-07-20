@@ -73,6 +73,18 @@ define('init', ['jquery','waypoint','fitText','pjax','typeahead'],function ($) {
     return false;
   });
 
+  $('#article_ajax').on('click', 'h2 span a', function(event) {
+    // alert(this);
+    var url=this;
+    $.get(url).done(function(data,status){
+        // alert(data);
+        $('#articles .hs').html(data);
+    });
+    window.location.href = "#close";
+    window.location.href = "#articles";
+    return false;
+  });
+
   $('#article_ajax').on('click', '.comment-disapprove', function(event) {
     // alert(this);
     var url=this;

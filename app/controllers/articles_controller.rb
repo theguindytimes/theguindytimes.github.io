@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
     before_action :set_article, only: [:show, :edit, :update, :destroy]
-    before_action :check_user,  only: [:show, :index, :new, :new_news, :edit]
+    before_action :check_user,  only: [:index, :new, :new_news, :edit]
 
     # GET /articles
     # GET /articles.json
@@ -66,6 +66,10 @@ class ArticlesController < ApplicationController
             # render :json => a
         if @xhr
             render :layout => false
+        else
+            if !(current_user and current_user.admin?)
+                redirect_to :controller => 'home', :action => 'index', :article => article.slug
+            end
         end
     end
 

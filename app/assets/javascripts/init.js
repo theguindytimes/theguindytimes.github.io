@@ -5,6 +5,24 @@ define('init', ['jquery','waypoint','fitText','pjax','typeahead'],function ($) {
 /* Init JS
 /*
 -----------------------------------------------------------------------------------*/
+ function getUrlVar(key){
+  var result = new RegExp(key + "=([^&]*)", "i").exec(window.location.search);
+  return result && unescape(result[1]) || "";
+  }
+
+  a = getUrlVar('article');
+
+  if (a != ''){
+    var id = a;
+    var url='/articles/'+id;
+    $.get(url).done(function(data,status){
+      $('#article_ajax').html(data);
+      return true;  
+    });
+    window.location.href = "#article_ajax";
+  }
+
+
 
  jQuery(document).ready(function($) {
 

@@ -37,6 +37,7 @@ gem 'will_paginate-bootstrap'
 gem "searchkick"
 gem 'social-share-button'
 gem 'open_uri_redirections'
+gem 'nokogiri'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_20]
@@ -67,4 +68,7 @@ group :test do
   gem 'faker'
   gem 'launchy'
   gem 'selenium-webdriver'
+end
+group :production do
+  gem 'pg'
 end

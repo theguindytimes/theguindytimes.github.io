@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20140719095925) do
     t.string   "post_type"
   end
 
+  add_index "articles", ["slug"], name: "index_articles_on_slug"
   add_index "articles", ["user_id"], name: "index_articles_on_user_id"
 
   create_table "authentications", force: true do |t|

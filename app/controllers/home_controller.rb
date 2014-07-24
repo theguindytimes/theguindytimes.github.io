@@ -35,6 +35,7 @@ class HomeController < ApplicationController
         		img_srcs = doc.css('img').map{ |i| i['src'] }
         		article={}
 				article['title']=a.title
+				article['slug']=a.slug
 				article['content']=a.content[0,400]
 				if img_srcs.length>0
 					article['img']=img_srcs[0]

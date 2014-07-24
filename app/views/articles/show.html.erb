@@ -17,7 +17,7 @@
      <span>Contributed by <%= raw @a['article'].author_list.map { |t| link_to t, tag_path(t) }.join(', ') %> at <%= @a['article'].created_at.strftime('%d %b %Y') %> </span>
   </h2>
   </div>
-  <h3><%= raw @article.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></h3>
+  <h3><%= raw @article.tag_list.map { |t| link_to t, tag_path(t) ,:'data-pjax' => '#articles .hs'}.join(', ') %></h3>
   <br class="clear bottomClear" />
   <%= image_tag(@a['img'], :alt => "" , :class => 'article_img') %>
   <div class="content">
@@ -35,8 +35,8 @@
   <div class="comments">
 	  
   <%= render 'articles/comments' %>
-  <!-- <a href="https://www.facebook.com/sharer/sharer.php?u=<%= article_url(@a['article']) %>" class="btn">Share on Facebook</a> -->
-  <%= social_share_button_tag(@a['article'].title, :url => article_url(@a['article'])) %>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=<%= article_url(@a['article']) %>" class="btn-social"><i class="fa fa-facebook"></i> | Share on Facebook</a>
+  <%# social_share_button_tag(@a['article'].title, :url => article_url(@a['article'])) %>
   <!-- <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/"></div> -->
   </div>
 

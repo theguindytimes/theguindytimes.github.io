@@ -2,8 +2,7 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.label :body %><br    />
-    <%= f.text_area :body %>
+    <%= f.text_area :body ,:placeholder => "What do you think about this article?"%>
     </div>
     <%= f.hidden_field :article_id %>
     <%= f.input :user_name if !current_user%>

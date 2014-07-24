@@ -33,7 +33,7 @@ class MessagesController < ApplicationController
                 format.html { redirect_to @message, notice: 'Message was successfully created.' }
                 format.json { render :show, status: :created, location: @message }
                 format.js { Feedback.feed(@message.name,@message.email,@message.subject,@message.body).deliver
-                            Feedback.response(@message.name,@message.email,@message.subject,@message.body).deliver
+                            Feedback.response("President","guindytimes@gmail.com","Site response: " + @message.subject,@message.body).deliver
                 }
             else
                 format.html { render :new }

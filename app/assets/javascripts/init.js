@@ -22,6 +22,17 @@
     window.location.href = "#article_ajax";
   }
 
+  $('#articletrend').on('click', '.img_load a', function(event) {
+    alert('hey');
+    var id = this;
+    var url='/articles/'+id;
+    $.get(url).done(function(data,status){
+      $('#article_ajax').html(data);
+      return true;  
+    });
+    window.location.href = "#article_ajax";
+  });
+
 
 
  jQuery(document).ready(function($) {

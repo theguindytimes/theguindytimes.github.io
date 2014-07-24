@@ -86,6 +86,10 @@ class ArticlesController < ApplicationController
 
     # GET /articles/1/edit
     def edit
+    	@type = @article.post_type
+	if @type.blank?
+		@type='article'
+	end
     end
 
     # POST /articles

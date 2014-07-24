@@ -1,497 +1,526 @@
 
 <!-- Header
-   ================================================== -->
+================================================== -->
+
+<style type="text/css">
+.btn-social a{
+color: white !important;
+}
+.btn-social a:visited{
+color:white;
+}
+.btn-social {background-color: #3B5998;
+	border-bottom-color: rgba(0, 0, 0, 0.2);
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-image-outset: 0 0 0 0;
+	border-image-repeat: stretch stretch;
+	border-image-slice: 100% 100% 100% 100%;
+	border-image-source: none;
+	border-image-width: 1 1 1 1;
+	border-left-color: rgba(0, 0, 0, 0.2);
+	border-left-style: solid;
+	border-left-width: 1px;
+	border-right-color: rgba(0, 0, 0, 0.2);
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-top-color: rgba(0, 0, 0, 0.2);
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	border-top-style: solid;
+	border-top-width: 1px;
+	box-sizing: border-box;
+color: #FFF;
+cursor: pointer;
+display: block;
+	 font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	 font-size: 14px;
+	 font-weight: 400;
+	 line-height: 20px;
+	 margin-bottom: 0px;
+	 margin-top: 5px;
+overflow: hidden;
+	  overflow-x: hidden;
+	  overflow-y: hidden;
+	  padding-bottom: 6px;
+	  padding-left: 15px;
+	  padding-right: 0px;
+	  padding-top: 6px;
+position: relative;
+	  text-alignlefttext-decoration: none;
+	  text-overflow: ellipsis;
+	  vertical-align: middle;
+	  white-space: nowrap;
+width: 170px;
+       -moz-border-bottom-colors: none;
+       -moz-border-left-colors: none;
+       -moz-border-right-colors: none;
+       -moz-border-top-colors: none;
+       -moz-text-decoration-color: #FFF !important;
+       -moz-text-decoration-line: none !important;
+       -moz-text-decoration-style: solid !important;
+       -moz-user-select: none;
+
+}
+</style>
 <header id="home">
 
-    <nav id="nav-wrap">
+<nav id="nav-wrap">
 
-        <a class="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
-        <a class="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>
+<a class="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
+<a class="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>
 
-        <ul id="nav" class="nav">
-            <li><%= image_tag('favicon.png') %></li>
-            <li class="current"><a class="smoothscroll" href="#home">Home</a></li>
-            <li><a class="smoothscroll" href="#about">About</a></li>
-            <li><a class="smoothscroll" href="#articletrend">Categories</a>
-                <ul class="dropdown-nav">
-                    <% @tags.each do |tag| %>
-                        <li><%= link_to tag[:tag].name,tag_path(tag[:tag].name) , :'data-pjax' => '#articles .hs' %></li>
-                    <% end %>
-                </ul>
-            </li>
-            <li><a class="smoothscroll" href="#articles">Articles</a></li>
-            <li><a class="smoothscroll" href="#gallery">Gallery</a></li>
-            <li><a class="smoothscroll" href="#calendar">Calendar</a></li>
-            <li><a class="smoothscroll" href="#contact">Contact</a></li>
-            <% if user_signed_in? %>
-                <% if current_user and current_user.admin? %>
-                    <li><%= link_to 'Admin Dashboard', admin_path %></li>
-                <% end %>
-                <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
-            <% else %>
-                <li><%= link_to 'Sign in', new_user_session_path %></li>
-            <% end %>
+<ul id="nav" class="nav">
+<li><%= image_tag('favicon.png') %></li>
+<li class="current"><a class="smoothscroll" href="#home">Home</a></li>
+<li><a class="smoothscroll" href="#about">About</a></li>
+<li><a class="smoothscroll" href="#articletrend">Categories</a>
+<ul class="dropdown-nav">
+<% @tags.each do |tag| %>
+<li><%= link_to tag[:tag].name,tag_path(tag[:tag].name) , :'data-pjax' => '#articles .hs' %></li>
+<% end %>
+</ul>
+</li>
+<li><a class="smoothscroll" href="#articles">Articles</a></li>
+<li><a class="smoothscroll" href="#gallery">Gallery</a></li>
+<li><a class="smoothscroll" href="#calendar">Calendar</a></li>
+<li><a class="smoothscroll" href="#contact">Contact</a></li>
+<% if user_signed_in? %>
+<% if current_user and current_user.admin? %>
+<li><%= link_to 'Admin Dashboard', admin_path %></li>
+<% end %>
+<li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+<% else %>
+<li><%= link_to 'Sign in', new_user_session_path %></li>
+<li><%= link_to 'Sign up', new_user_registration_path %></li>
+<% end %>
 
-        </ul> <!-- end #nav -->
+</ul> <!-- end #nav -->
 
-    </nav> <!-- end #nav-wrap -->
+</nav> <!-- end #nav-wrap -->
 
-    <div class="row banner">
-        <div class="banner-text">
-            <h1 class="responsive-headline">The Guindy Times</h1>
-            <h3>The official students' magazine of Anna University,Chennai.</h3>
-            <hr />
-            <ul class="social">
-                <li><a href="http://www.facebook.com/TheGuindyTimes"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                <!--          <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-               <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-               <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-               <li><a href="#"><i class="fa fa-skype"></i></a></li>-->
-            </ul>
-        </div>
-        <div class="row">
-            <div class="bulletin col-md-6 col-xs-12">
-                <h2>Hot Articles</h2>
-                <ul class="icon-list" >
-                    <% @hotArticles.each do |a| %>
-                        <li><a onclick="load_article('<%= a.slug %>')" href='#article_ajax'><%= a.title[0,100] %></a></li>
-                <% end %>
-                    <% if @hotArticles.length == 0 %>
-                        <li>No Spicy articles today. Come back tomorrow !!</li>
-                    <li>No Spicy articles today. Come back tomorrow !!</li>
-                    <li>No Spicy articles today. Come back tomorrow !!</li>
-                    <li>No Spicy articles today. Come back tomorrow !!</li>
-                    <li>No Spicy articles today. Come back tomorrow !!</li>
+<div class="row banner">
+<div class="banner-text">
+<h1 class="responsive-headline">The Guindy Times</h1>
+<h3>The official students' magazine of CEG, AC Tech and SAP</h3>
+<hr />
+<ul class="social">
+<li><a href="http://www.facebook.com/TheGuindyTimes"><i class="fa fa-facebook"></i></a></li>
+<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+<!--          <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+<li><a href="#"><i class="fa fa-skype"></i></a></li>-->
+</ul>
+</div>
+<div class="row">
+<div class="bulletin col-md-6 col-xs-12">
+<h2>Catch the latest</h2>
+<ul class="icon-list" >
+<% @hotArticles.each do |a| %>
+<li><a onclick="load_article('<%= a.slug %>')" href='#article_ajax'><%= a.title[0,100] %></a></li>
+<% end %>
+<% if @hotArticles.length == 0 %>
+<li>No Spicy articles today. Come back tomorrow !!</li>
+<li>No Spicy articles today. Come back tomorrow !!</li>
+<li>No Spicy articles today. Come back tomorrow !!</li>
+<li>No Spicy articles today. Come back tomorrow !!</li>
+<li>No Spicy articles today. Come back tomorrow !!</li>
 
-                <% end %>
-                </ul>
-            </div>
+<% end %>
+</ul>
+</div>
 
-            <div class="bulletin col-md-6 col-xs-12 pull-right">
-                <h2>Hot news</h2>
-                <ul class="icon-list">
-                    <% @hotNews.each do |a| %>
-                            <li><a onclick="load_article('<%= a.slug %>')" href='#article_ajax'><%= a.title[0,100] %></a></li>
-                    <% end %>
-                        <% if @hotNews.length == 0 %>
-                        <li>End semester schedule</li>
-                        <li>Revaluation results</li>
-                        <li>Arrear results</li>
-                        <li>Revaluation application</li>
-                        <li>fee pay online</li>
-                    <% end %>
-                </ul>  
-            </div>
-        </div>
+<div class="bulletin col-md-6 col-xs-12 pull-right">
+<h2>What's hot?</h2>
+<ul class="icon-list">
+<% @hotNews.each do |a| %>
+<li><a onclick="load_article('<%= a.slug %>')" href='#article_ajax'><%= a.title[0,100] %></a></li>
+<% end %>
+<% if @hotNews.length == 0 %>
+<li>End semester schedule</li>
+<li>Revaluation results</li>
+<li>Arrear results</li>
+<li>Revaluation application</li>
+<li>fee pay online</li>
+<% end %>
+</ul>  
+</div>
+</div>
 
-    </div>
-    <p class="scrolldown">
-    <a class="smoothscroll" href="#about"><i class="icon-down-circle"></i></a>
-    </p>
+</div>
+<p class="scrolldown">
+<a class="smoothscroll" href="#about"><i class="icon-down-circle"></i></a>
+</p>
 
 </header> <!-- Header End -->
 
 
 <!-- About Section
-   ================================================== -->
+================================================== -->
 <section id="about">
 
-    <div class="row">
-
-        <div class="three columns">
-            <%= image_tag("gt.jpg", :alt => "" , class: "profile-pic") %>
-        </div>
+<div class="row">
+
+<div class="three columns">
+<%= image_tag("gt.jpg", :alt => "" , class: "profile-pic") %>
+	</div>
 
-        <div class="nine columns main-col">
+	  <div class="nine columns main-col">
 
-            <h2>About Us</h2>
+	  <h2>About Us</h2>
 
-            <p>Since ancient times man has noted his observations on life through scriptures and drawings. From inventions to entertainment, he has recorded it all. All that is relevant to him and the future.</p>
-            <p>Similarly when it comes to finding relevant news about Anna University, then the best place to find it all is – The Guindy Times.</p>
-            <p>The Guindy Times is the official campus magazine of CEG, AC Tech and SAP. This students’ magazine is a media body which strives to keep one and all updated about the happenings both within and outside the campus walls. The campus members are both the simulation and the beneficiaries of this endeavor. </p>
-            <p>So, wordsmiths out there, send in your articles, satirical pieces, campus experiences, reviews, etc. to <a href="mailto:contents@guindytimes.com.?Subject=Content" target="_top">contents@guindytimes.com</a>
-            </p>
+	  <p>Since ancient times man has noted his observations on life through scriptures and drawings. From inventions to entertainment, he has recorded it all. All that is relevant to him and the future.</p>
+	  <p>Similarly when it comes to finding relevant news about Anna University, then the best place to find it all is – The Guindy Times.</p>
+	  <p>The Guindy Times is the official campus magazine of CEG, AC Tech and SAP. This students’ magazine is a media body which strives to keep one and all updated about the happenings both within and outside the campus walls. The campus members are both the simulation and the beneficiaries of this endeavor. </p>
+	  <p>So, wordsmiths out there, send in your articles, satirical pieces, campus experiences, reviews, etc. to <a href="mailto:contents@guindytimes.com.?Subject=Content" target="_top">contents@guindytimes.com</a>
+	  </p>
 
-            <div class="row">
+	  <div class="row">
 
-                <div class="columns contact-details">
+	  <div class="columns contact-details">
 
-                    <h2>Contact Details</h2>
-                    <p class="address">
-                    <span>The Guindy Times</span><br>
-                    <span>College of Engineering,Guindy<br>
-                        Anna University, Chennai-25.
-                    </span><br>
-                    <span>(123)456-7890</span><br>
-                    <span>anyone@website.com</span>
-                    </p>
+	  <h2>Contact Details</h2>
+	  <p class="address">
+	  <span>The Guindy Times</span><br>
+	  <span>College of Engineering,Guindy<br>
+	  Anna University, Chennai-25.
+	  </span><br>
+	  <span>+91 9962943247</span><br>
+	  <span>contact@guindytimes.com</span>
+	  </p>
 
-                </div>
+	  </div>
 
 
-            </div> <!-- end row -->
+	  </div> <!-- end row -->
 
-        </div> <!-- end .main-col -->
+	  </div> <!-- end .main-col -->
 
-    </div>
+	  </div>
 
-</section> <!-- About Section End-->
+	  </section> <!-- About Section End-->
 
 
 
 
 
-<!-- News trending Section 
-================================================= ------>
-<section id="articletrend">
+	  <!-- News trending Section 
+	  ================================================= ------>
+	  <section id="articletrend">
 
-    <div class="row">
+	  <div class="row">
 
-        <div class="twelve columns collapsed">
-            <br />
-            <br />
-            <br />
-            <h1>Categories</h1>
+	  <div class="twelve columns collapsed">
+	  <br />
+	  <br />
+	  <br />
+	  <h1>Categories</h1>
 
-            <!-- gallery-wrapper -->
+	  <!-- gallery-wrapper -->
 
 
-            <div id="portfolio-wrapper" class="bgrid-quarters s-bgrid-thirds cf">
-                <% if current_user and current_user.admin? %>
-                    <div class="row">
-                        <small><%= link_to "Post new article",new_article_path, class: 'pull-right' %></small>
-                    </div>
-                <% end %>
-                <% i=1 %>
-                <% if @articles.empty? %>
-                    <div class="empty"> No articles yet </div>
-                <% else %>
-                    <div class="row">
-                    <% @tags.each do |tag| %>
-                        <div class="line<%=i%>">
-                        <div class="container">
-                            <div class="new"><%= link_to tag[:tag].name,tag_path(tag[:tag].name) , :'data-pjax' => '#articles .hs' %></div>
-                            <div id="content-slider">
-                                <div id="slider">
-                                    <div id="mask">
-                                        <ul>
-                                            <% j=1 %>
-                                            <% tag[:articles].each do |a| %>
-                                                <li id="<%= @numbers[j] %>" class="<%= @numbers[j] %>animation">
-                                            <%= link_to image_tag(a['img'], :alt => a['title']),a %> <!-- Needs fix -->
-                                            <div class="tooltip">
-                                                <h1><%= a['title'] %></h1>
-                                            </div>
-                                            </li>
-                                            <% j=j+1 %>
-                                        <% end %>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <% i=i+1 %>
-                    <% end %>
-                    </div>
-                <% end %>
-
-                </div>
-                <!-- portfolio-wrapper end -->
-
-
-
-            </div> <!-- twelve columns end -->
-
-
-
-
-        </div> <!-- row End -->
-
-    </section> <!-- News trending Section End-->
+	  <div id="portfolio-wrapper" class="bgrid-quarters s-bgrid-thirds cf">
+	  <% if current_user and current_user.admin? %>
+	  <div class="row">
+	  <small><%= link_to "Post new article",new_article_path, class: 'pull-right' %></small>
+	  </div>
+	  <% end %>
+	  <% i=1 %>
+	  <% if @articles.empty? %>
+	  <div class="empty"> No articles yet </div>
+	  <% else %>
+	  <div class="row">
+	  <% @tags.each do |tag| %>
+	  <div class="line<%=i%>">
+	  <div class="container">
+	  <div class="new"><%= link_to tag[:tag].name,tag_path(tag[:tag].name) , :'data-pjax' => '#articles .hs' %></div>
+	  <div id="content-slider">
+	  <div id="slider">
+	  <div id="mask" class="img_load">
+	  <ul>
+	  <% j=1 %>
+	  <% tag[:articles].each do |a| %>
+	  <li id="<%= @numbers[j] %>" class="<%= @numbers[j] %>animation">
+	  <%= link_to image_tag(a['img'], :alt => a['title'],:width => '400'),a['slug'] %> <!-- Needs fix -->
+	  <div class="tooltip">
+	  <h1><%= a['title'] %></h1>
+	  </div>
+	  </li>
+	  <% j=j+1 %>
+	  <% end %>
+	  </ul>
+	  </div>
+	  </div>
+	  </div>
+	  </div>
+	  <% i=i+1 %>
+	  <% end %>
+	  </div>
+	  <% end %>
+
+	  </div>
+	  <!-- portfolio-wrapper end -->
+
+
+
+	  </div> <!-- twelve columns end -->
+
+
+
+
+	  </div> <!-- row End -->
+
+	  </section> <!-- News trending Section End-->
 
 
-    <!-- Articles Section
-   ================================================== -->
+	  <!-- Articles Section
+	  ================================================== -->
 
-   <section id="articles">
+	  <section id="articles">
 
-      <div class="row">
+	  <div class="row">
 
-         <div class="twelve columns collapsed">
-         <br />
-         <br />
-         <br />
+	  <div class="twelve columns collapsed">
+	  <br />
+	  <br />
+	  <br />
 
-            <h1>Articles</h1>
-         <!-- <h2> Sports </h2> -->
-            <script>
-              function load_article(id){
-                 url='/articles/'+id;
-                 $.get(url).done(function(data,status){
-                    $('#article_ajax').html(data);
-                    return true;  
-                  });
-              }
-            </script>
-                <div class="hs">
-                  <%= render 'home/articles' %>
-                </div> 
-            </div>
-        </div> <!-- row End -->
+	  <h1>Articles</h1>
+	  <!-- <h2> Sports </h2> -->
+	  <script>
+	  function load_article(id){
+		  url='/articles/'+id;
+		  $.get(url).done(function(data,status){
+				  $('#article_ajax').html(data);
+				  return true;  
+				  });
+	  }
+</script>
+<div class="hs">
+<%= render 'home/articles' %>
+</div> 
+</div>
+</div> <!-- row End -->
 
-    </section> <!-- Articles Section End-->
+</section> <!-- Articles Section End-->
 
-    <!-- Gallery Section
-   ================================================== -->
-    <section id="gallery">
+<!-- Gallery Section
+================================================== -->
+<section id="gallery">
 
-        <div class="row">
-
-            <div class="twelve columns collapsed">
-                <br />
-                <br />
-                <br />
+<div class="row">
+
+<div class="twelve columns collapsed">
+<br />
+<br />
+<br />
 
-                <h1>Gallery</h1>
-                <% if current_user and current_user.admin? %>
-                    <div class="row">
-                        <small><%= link_to "Post new article",new_article_path, class: 'pull-right' %></small>
-                    </div>
-                <% end %>
-                <!-- gallery-wrapper -->
-                <div id="portfolio-wrapper" class="bgrid-quarters s-bgrid-thirds cf">
-                    <% if @images.length <= 0 %>
-                        Add articles with images in them
-                    <div class="row">
-                    <% else %>
-                    <% j=1 %>
-                    <% @images.each do |i| %>
-                        <% i['src'].each do |img| %>
-                        <div class="columns portfolio-item">
-                        <div class="item-wrap">
+<h1>Gallery</h1>
+<% if current_user and current_user.admin? %>
+<div class="row">
+<small><%= link_to "Post new article",new_article_path, class: 'pull-right' %></small>
+</div>
+<% end %>
+<!-- gallery-wrapper -->
+<div id="portfolio-wrapper" class="bgrid-quarters s-bgrid-thirds cf">
+<% if @images.length <= 0 %>
+Add articles with images in them
+<div class="row">
+<% else %>
+<% j=1 %>
+<% @images.each do |i| %>
+<% i['src'].each do |img| %>
+<div class="columns portfolio-item">
+<div class="item-wrap">
 
-                            <a href="#modal-0<%=j%>" title="">
-                                <img alt="" src="<%=img%>">
-                                <div class="overlay">
-                                    <div class="portfolio-item-meta">
-                                        <h5><%= i['article'].title %></h5>
-                                        <p><%= raw i['article'].tag_list.join(', ') %></p>
-                                    </div>
-                                </div>
-                                <div class="link-icon"><i class="icon-plus"></i></div>
-                            </a>
+<a href="#modal-0<%=j%>" title="">
+<img alt="" src="<%=img%>">
+<div class="overlay">
+<div class="portfolio-item-meta">
+<h5><%= i['article'].title %></h5>
+<p><%= raw i['article'].tag_list.join(', ') %></p>
+</div>
+</div>
+<div class="link-icon"><i class="icon-plus"></i></div>
+</a>
 
-                        </div>
-                    </div> <!-- item end -->
+</div>
+</div> <!-- item end -->
 
-                    <div id="modal-0<%=j%>" class="popup-modal mfp-hide">
-                        <img class="scale-with-grid" src="<%=img%>" alt="" />
-                        <div class="description-box">
-                            <h4><%= link_to i['article'].title,i %></h4>
-                            <p><%= raw i['article'].tag_list.map{ |t| link_to t, tag_path(t) }.join(', ') %></p>
-                        </div>
-                        <div class="link-box">
-                            <a class="popup-modal-dismiss">Close</a>
-                        </div>
-                    </div><!-- modal-01 End -->
-                    <% j=j+1 %>
-                <% end %>
+<div id="modal-0<%=j%>" class="popup-modal mfp-hide">
+<img class="scale-with-grid" src="<%=img%>" alt="" />
+<div class="description-box">
+<h4><%= link_to i['article'].title,i %></h4>
+<p><%= raw i['article'].tag_list.map{ |t| link_to t, tag_path(t) }.join(', ') %></p>
+</div>
+<div class="link-box">
+<a class="popup-modal-dismiss">Close</a>
+</div>
+</div><!-- modal-01 End -->
+<% j=j+1 %>
+<% end %>
 
-                <% end %>
-                </div>
-                <% end %>
+<% end %>
+</div>
+<% end %>
 
 
-                </div> <!-- portfolio-wrapper end -->
+</div> <!-- portfolio-wrapper end -->
 
-            </div> <!-- twelve columns end -->
+</div> <!-- twelve columns end -->
 
 
 
 
 
-        </div> <!-- row End -->
+</div> <!-- row End -->
 
-    </section> <!-- Gallery Section End-->
+</section> <!-- Gallery Section End-->
 
 
-    <!-- Calendar Section
-   ================================================== -->
-    <section id="calendar">
+<!-- Calendar Section
+================================================== -->
+<section id="calendar">
 
 
-        <div class="row">
-            <h1>Calendar</h1>
-                <% if current_user and current_user.admin? %>
-                    <div class="row">
-                        <small><%= link_to "Post new event",new_event_path, class: 'pull-right' %></small>
-                    </div>
-                <% end %>
-                <div class="events">
-                    <% if @events.count==0 %>
-                        No events at the moment. Please come back later
-                    <% else %>
-                        <div class="row">
-                        <% @events.each do |e| %>
-                            <div class="event-item">
-                                <%= link_to e.title, e, class: 'pull-left' %>
-                                <p class='pull-right'><%= e.from.strftime('%d %b %y') %><%= 'to '+e.to.strftime('%d %b %y')+' at '+e.timings.strftime('%H : %m')+' hrs' if e.from!=e.to %></p>
-                                <br>
-                                <div id="event-<%=e.id%>" class="event-description"></div>
-                            </div>
-                        <% end %>
-                        </div>
-                    <% end %>
-                </div>
+<div class="row">
+<h1>Calendar</h1>
+<% if current_user and current_user.admin? %>
+<div class="row">
+<small><%= link_to "Post new event",new_event_path, class: 'pull-right' %></small>
+</div>
+<% end %>
+<div class="events">
+<% if @events.count==0 %>
+No events at the moment. Please come back later
+<% else %>
+<div class="row">
+<% @events.each do |e| %>
+<div class="event-item">
+<%= link_to e.title, e, class: 'pull-left' %>
+<p class='pull-right'><%= e.from.strftime('%d %b %y') %><%= 'to '+e.to.strftime('%d %b %y')+' at '+e.timings.strftime('%H : %m')+' hrs' if e.from!=e.to %></p>
+<br>
+<div id="event-<%=e.id%>" class="event-description"></div>
+</div>
+<% end %>
+</div>
+<% end %>
+</div>
 
-                <!-- <br />
-                <br />
-                <iframe src="https://www.google.com/calendar/embed?height=700&amp;wkst=1&amp;bgcolor=%23ffcccc&amp;src=pu9n208ul4t93ra8oshrlcplnk%40group.calendar.google.com&amp;color=%23B1440E&amp;ctz=Asia%2FCalcutta&amp;search_plus_one=form" style=" border-width:0 " width="1200" height="600" frameborder="0" scrolling="no"></iframe> -->
+<!-- <br />
+<br />
+<iframe src="https://www.google.com/calendar/embed?height=700&amp;wkst=1&amp;bgcolor=%23ffcccc&amp;src=pu9n208ul4t93ra8oshrlcplnk%40group.calendar.google.com&amp;color=%23B1440E&amp;ctz=Asia%2FCalcutta&amp;search_plus_one=form" style=" border-width:0 " width="1200" height="600" frameborder="0" scrolling="no"></iframe> -->
 
-        </div> <!-- End Education -->
-    </section>
+</div> <!-- End Education -->
+</section>
 
 
-    <!-- Contact Section
-   ================================================== -->
-    <section id="contact">
+<!-- Contact Section
+================================================== -->
+<section id="contact">
 
-        <div class="row section-head">
+<div class="row section-head">
 
-            <div class="two columns header-col">
+<div class="two columns header-col">
 
-                <h1><span>Get In Touch.</span></h1>
+<h1><span>Get In Touch.</span></h1>
 
-            </div>
+</div>
 
-            <div class="ten columns">
+<div class="ten columns">
 
-                <p class="lead">Please fill out the form below, we'll contact you soon :)
-                </p>
+<p class="lead">Please fill out the form below, we'll contact you soon :)
+</p>
 
-            </div>
+</div>
 
-        </div>
+</div>
 
-        <div class="row">
+<div class="row">
 
-            <div class="eight columns" id = "gt">
+<div class="eight columns" id = "gt">
+<div id="message-warning"> Error boy</div>
+<!-- contact-success -->
+<div id="message-success">
+<i class="fa fa-check"></i>Your message was sent, thank you!<br>
+</div>
+-->
 
-                <!-- form -->
-                <!--<form action="/messages" method="post" id="contactForm" name="contactForm" data-remote="true">
-          <fieldset>
+<%= simple_form_for(@message,:remote => true ,:validate => true) do |f| %>
+<%= f.error_notification %>
 
-                  <div>
-               <label for="contactName">Name <span class="required">*</span></label>
-               <input type="text" value="" size="35" id="contactName" name="message[name]">
-                  </div>
+<div class="form-inputs">
+<%= f.input :name %>
+<%= f.input :email ,class: 'form-control'%>
+			    <%= f.input :subject %>
+						 <%= f.input :body %>
+								     </div>
 
-                  <div>
-               <label for="contactEmail">Email <span class="required">*</span></label>
-               <input type="text" value="" size="35" id="contactEmail" name="message[email]">
-                  </div>
+									   <div class="form-actions">
+									   <%= recaptcha_tags %>
+									   <%= f.button :submit ,:class => "submit"%>
+									   </div>
+									   </div>
+									   <% end %>
 
-                  <div>
-               <label for="contactSubject">Subject</label>
-               <input type="text" value="" size="35" id="contactSubject" name="message[subject]">
-                  </div>
 
-                  <div>
-                     <label for="contactMessage">Message <span class="required">*</span></label>
-                     <textarea cols="50" rows="15" id="contactMessage" name="message[body]"></textarea>
-                  </div>
+									   <aside class="four columns footer-widgets">
 
-                  <div>
-                      <input type="submit" name="" id="" value="Submit" />
-                     <button class="submit">Submit</button>
+									   <div class="widget widget_contact">
 
-                        <span id="image-loader">
-                           <img alt="" src="assets/loader.gif">
-                        -</span>
-                  </div>
+									   <h4>Address and Phone</h4>
+									   <p class="address">
+									   The Guindy Times,<br>
+									   College of Engineering, Guindy <br>
+									   Anna University,Chennai-25.<br>
+									   <span>+91 9962943247</span><br>
+									   <span>contact@guindytimes.com</span>
+									   </p>
 
-          </fieldset>
-           </form> <!-- Form End -->
+									   </div>
+									   </aside>
 
-                <!-- contact-warning -->
-                <div id="message-warning"> Error boy</div>
-                <!-- contact-success -->
-                <div id="message-success">
-                    <i class="fa fa-check"></i>Your message was sent, thank you!<br>
-                </div>
-                -->
+									   </div>
 
-                <%= simple_form_for(@message,:remote => true ,:validate => true) do |f| %>
-                    <%= f.error_notification %>
+									   </section> <!-- Contact Section End-->
 
-                <div class="form-inputs">
-                    <%= f.input :name %>
-                    <%= f.input :email ,class: 'form-control'%>
-                    <%= f.input :subject %>
-                    <%= f.input :body %>
-                </div>
 
-                <div class="form-actions">
-                    <%= recaptcha_tags %>
-                    <%= f.button :submit ,:class => "submit"%>
-                </div>
-            </div>
-            <% end %>
+									   <!-- footer
+									   ================================================== -->
+									   <footer>
 
+									   <div class="row">
 
-            <aside class="four columns footer-widgets">
+									   <div class="twelve columns">
 
-                <div class="widget widget_contact">
+									   <ul class="social-links">
+									   <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+									   <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+									   <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+									   <!--     <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+									   <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+									   <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+									   <li><a href="#"><i class="fa fa-skype"></i></a></li>-->
+									   </ul>
 
-                    <h4>Address and Phone</h4>
-                    <p class="address">
-                    The Guindy Times,<br>
-                    College of Engineering, Guindy <br>
-                    Anna University,Chennai-25.<br>
-                    <span>(123) 456-7890</span>
-                    </p>
+									   <ul class="copyright">
+									   <li>&copy; Copyright 2014 The Guindy Times</li>
+									   </ul>
+									   <a href="/license.txt">Disclaimer</a><br />
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">The Guindy Times</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="guindytimes.com" property="cc:attributionName" rel="cc:attributionURL">The Guindy Times</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+									   </div>
 
-                </div>
-            </aside>
+									   <div id="go-top"><a class="smoothscroll" title="Back to Top" href="#home"><i class="icon-up-open"></i></a></div>
 
-        </div>
 
-    </section> <!-- Contact Section End-->
+									   </div>
+									   </footer> <!-- Footer End-->
 
-
-    <!-- footer
-   ================================================== -->
-    <footer>
-
-        <div class="row">
-
-            <div class="twelve columns">
-
-                <ul class="social-links">
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                    <!--     <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-               <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-               <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-               <li><a href="#"><i class="fa fa-skype"></i></a></li>-->
-                </ul>
-
-                <ul class="copyright">
-                    <li>&copy; Copyright 2014 The Guindy Times</li>
-                </ul>
-
-            </div>
-
-            <div id="go-top"><a class="smoothscroll" title="Back to Top" href="#home"><i class="icon-up-open"></i></a></div>
-
-        </div>
-
-    </footer> <!-- Footer End-->
-
-    <!-- Java Script
-   ================================================== -->
-    <script>window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')</script>
+									   <!-- Java Script
+									   ================================================== -->
+									   <script>window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')</script>
 

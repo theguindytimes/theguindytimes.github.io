@@ -72,12 +72,16 @@ Rails.application.configure do
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-    config.action_mailer.delivery_method = :smtp
-    config.action_mailer.smtp_settings = {:address => "localhost", :port => 1025}
-  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: "guindytimes.com" }
+     config.action_mailer.delivery_method = :smtp 
+     config.action_mailer.smtp_settings = { 
+      address: "localhost", 
+      port: 25, 
+      domain: "guindytimes.com",
+      enable_starttls_auto: false 
+     } 
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
 
   # Disable automatic flushing of the log to improve performance.
@@ -88,4 +92,13 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  ENV['FACEBOOK_KEY'] = "1446095362314014";
+  ENV['FACEBOOK_SECRET'] = "155085b907f3a3a27a678ca4cc5ec460";
+  ENV['GPLUS_KEY'] = "721921933806.apps.googleusercontent.com";
+  ENV['GPLUS_SECRET'] = "IFOxWWP801h81furq1kLfL29";
+  ENV['TWITTER_KEY'] = "6bRPnD0A0LGRpFgMPrzkSvOVP";
+  ENV['TWITTER_SECRET'] = "ZfGBuU8QCiWhJve9sF2HzxF6rwCx1A9C1bjwD5IwbFP2ixmk2L";
+  ENV['LINKEDIN_KEY'] = "77mn4bp66x5h2h";
+  ENV['LINKEDIN_SECRET'] = "7O3WNYh2NxJileBL";
 end

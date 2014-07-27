@@ -1,3 +1,22 @@
+.article_list_image {
+    position:relative;
+    left: -20%;
+    margin: auto; 
+    min-height: 120px;
+    width: 120px;
+}
+
+.short_description p{
+  margin-bottom: 0px;
+  font-family: arial;
+  font-size: 16;
+}
+
+.short_description p span{
+  font-family: arial;
+  font-size: 16;
+}
+
 .btn-social a{
 color: white !important;
 }

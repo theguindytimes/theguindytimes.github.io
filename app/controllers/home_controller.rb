@@ -6,7 +6,7 @@ class HomeController < ApplicationController
         @message=Message.new
         if params[:tag]
             author = ActsAsTaggableOn::Tagging.where(:context => :author,:'tags.name' => params[:tag]).joins(:tag).select('DISTINCT tags.name').map{ |x| x.name}
-        	@articles = Article.where(status: "Visible to Public", post_type: 'article').tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 2)
+        	@articles = Article.where(status: "Visible to Public", post_type: 'article').tagged_with(params[:tag]).order('views DESC').paginate(:page => params[:page], :per_page => 5)
         	@tag_flag = params[:tag]
         	@tag_user = author.length>0
 		elsif params[:name]
@@ -14,7 +14,7 @@ class HomeController < ApplicationController
             @articles = Article.where(status: "Visible to Public", post_type: 'article').tagged_with(params[:tag]).search(params[:name], title: params[:name])#.paginate(:page => params[:page], :per_page => 2)
 		else
         	@tag_flag = false
-			@articles = Article.where(status: "Visible to Public", post_type: 'article').paginate(:page => params[:page], :per_page => 2)
+			@articles = Article.where(status: "Visible to Public", post_type: 'article').order('views DESC').paginate(:page => params[:page], :per_page => 5)
 		end
 		if request.headers['X-PJAX'] or request.xhr?
 			render :partial => 'home/articles'

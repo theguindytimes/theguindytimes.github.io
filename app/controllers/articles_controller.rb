@@ -55,9 +55,10 @@ class ArticlesController < ApplicationController
             doc = Nokogiri::HTML( article.content )
             img_srcs = doc.css('img').map{ |i| i['src'] }
             if img_srcs.length > 0
-                article.content[img_srcs[0]]=""
-                img_tags = article.content.scan(/img.*style=".*"/)
-                article.content[img_tags[0]] = "" if img_tags.length > 0
+                #article.content[img_srcs[0]]=""
+                #img_tags = article.content.scan(/<img.*style=".*">/)
+                # print article.content
+                #article.content[img_tags[0]] = "" if img_tags.length > 0
             else
                 img_srcs=['']
             end
@@ -65,10 +66,10 @@ class ArticlesController < ApplicationController
             # render :json => a
         if @xhr
             render :layout => false
-        else
-            if !(current_user and current_user.admin?)
-                redirect_to :controller => 'home', :action => 'index', :article => article.slug
-            end
+        # else
+        #     if !(current_user and current_user.admin?)
+        #         redirect_to :controller => 'home', :action => 'index', :article => article.slug
+        #     end
         end
     end
 

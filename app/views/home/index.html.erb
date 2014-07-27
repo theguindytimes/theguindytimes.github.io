@@ -2,69 +2,7 @@
 <!-- Header
 ================================================== -->
 
-<style type="text/css">
-.btn-social a{
-color: white !important;
-}
-.btn-social a:visited{
-color:white;
-}
-.btn-social {background-color: #3B5998;
-	border-bottom-color: rgba(0, 0, 0, 0.2);
-	border-bottom-left-radius: 4px;
-	border-bottom-right-radius: 4px;
-	border-bottom-style: solid;
-	border-bottom-width: 1px;
-	border-image-outset: 0 0 0 0;
-	border-image-repeat: stretch stretch;
-	border-image-slice: 100% 100% 100% 100%;
-	border-image-source: none;
-	border-image-width: 1 1 1 1;
-	border-left-color: rgba(0, 0, 0, 0.2);
-	border-left-style: solid;
-	border-left-width: 1px;
-	border-right-color: rgba(0, 0, 0, 0.2);
-	border-right-style: solid;
-	border-right-width: 1px;
-	border-top-color: rgba(0, 0, 0, 0.2);
-	border-top-left-radius: 4px;
-	border-top-right-radius: 4px;
-	border-top-style: solid;
-	border-top-width: 1px;
-	box-sizing: border-box;
-color: #FFF;
-cursor: pointer;
-display: block;
-	 font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-	 font-size: 14px;
-	 font-weight: 400;
-	 line-height: 20px;
-	 margin-bottom: 0px;
-	 margin-top: 5px;
-overflow: hidden;
-	  overflow-x: hidden;
-	  overflow-y: hidden;
-	  padding-bottom: 6px;
-	  padding-left: 15px;
-	  padding-right: 0px;
-	  padding-top: 6px;
-position: relative;
-	  text-alignlefttext-decoration: none;
-	  text-overflow: ellipsis;
-	  vertical-align: middle;
-	  white-space: nowrap;
-width: 170px;
-       -moz-border-bottom-colors: none;
-       -moz-border-left-colors: none;
-       -moz-border-right-colors: none;
-       -moz-border-top-colors: none;
-       -moz-text-decoration-color: #FFF !important;
-       -moz-text-decoration-line: none !important;
-       -moz-text-decoration-style: solid !important;
-       -moz-user-select: none;
 
-}
-</style>
 <header id="home">
 
 <nav id="nav-wrap">
@@ -245,7 +183,7 @@ width: 170px;
 	  <% j=1 %>
 	  <% tag[:articles].each do |a| %>
 	  <li id="<%= @numbers[j] %>" class="<%= @numbers[j] %>animation">
-	  <%= link_to image_tag(a['img'], :alt => a['title'],:width => '400'),a['slug'] %> <!-- Needs fix -->
+	  <%=  image_tag(a['img'], :alt => a['title'],:width => '400') %> <!-- Needs fix -->
 	  <div class="tooltip">
 	  <h1><%= a['title'] %></h1>
 	  </div>
@@ -448,7 +386,6 @@ No events at the moment. Please come back later
 <div id="message-success">
 <i class="fa fa-check"></i>Your message was sent, thank you!<br>
 </div>
--->
 
 <%= simple_form_for(@message,:remote => true ,:validate => true) do |f| %>
 <%= f.error_notification %>

@@ -71,7 +71,8 @@
       </div>
     <% i=0 %>
     <% @articles.each do |a| %>
-      <li><a  class="pull-left" onclick="load_article('<%= a.slug %>')" href='#article_ajax'><%= a.title %></a></li>
+      <li><%= link_to a.title,article_path(a) %>
+      <!-- <a  class="pull-left" onclick="load_article('<%= a.slug %>')" href='#article_ajax'><%= a.title %></a> --></li>
       <li class="pull-right" title="Views"><%= a.views %></li><br>
       <%# raw a.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
       <% i= i+1 %>

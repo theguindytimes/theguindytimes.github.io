@@ -59,7 +59,7 @@
 <h2>Catch the latest</h2>
 <ul class="icon-list" >
 <% @hotArticles.each do |a| %>
-<li><a onclick="load_article('<%= a.slug %>')" href='#article_ajax'><%= a.title[0,100] %></a></li>
+<li><%= link_to a.title,article_path(a) %><!-- <a onclick="load_article('<%= a.slug %>')" href='#article_ajax'><%= a.title[0,100] %></a> --></li>
 <% end %>
 <% if @hotArticles.length == 0 %>
 <li>No Spicy articles today. Come back tomorrow !!</li>
@@ -76,7 +76,7 @@
 <h2>What's hot?</h2>
 <ul class="icon-list">
 <% @hotNews.each do |a| %>
-<li><a onclick="load_article('<%= a.slug %>')" href='#article_ajax'><%= a.title[0,100] %></a></li>
+<li><%= link_to a.title,article_path(a) %><!-- <a onclick="load_article('<%# a.slug %>')" href='#article_ajax'><%# a.title[0,100] %></a> --></li>
 <% end %>
 <% if @hotNews.length == 0 %>
 <li>End semester schedule</li>

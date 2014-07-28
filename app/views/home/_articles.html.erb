@@ -71,7 +71,7 @@
       </div>
     <% i=0 %>
     <% @articles.each do |a| %>
-      <li class="pull-left">
+      <li>
         <div class="pull-left"><%= image_tag(a.first_pic, class: 'article_list_image' , width: '100') %></div>
         <li>
           <div><%= link_to a.title,article_path(a) %></div>

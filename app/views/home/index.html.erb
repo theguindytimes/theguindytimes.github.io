@@ -22,7 +22,7 @@
 </ul>
 </li>
 <li><a class="smoothscroll" href="#articles">Articles</a></li>
-<li><a class="smoothscroll" href="#gallery">Gallery</a></li>
+<!-- <li><a class="smoothscroll" href="#gallery">Gallery</a></li> -->
 <li><a class="smoothscroll" href="#calendar">Calendar</a></li>
 <li><a class="smoothscroll" href="#contact">Contact</a></li>
 <% if user_signed_in? %>
@@ -59,7 +59,7 @@
 <h2>Catch the latest</h2>
 <ul class="icon-list" >
 <% @hotArticles.each do |a| %>
-<li><a onclick="load_article('<%= a.slug %>')" href='#article_ajax'><%= a.title[0,100] %></a></li>
+<li><%= link_to a.title,article_path(a) %><!-- <a onclick="load_article('<%= a.slug %>')" href='#article_ajax'><%= a.title[0,100] %></a> --></li>
 <% end %>
 <% if @hotArticles.length == 0 %>
 <li>No Spicy articles today. Come back tomorrow !!</li>
@@ -248,7 +248,7 @@
 
 <!-- Gallery Section
 ================================================== -->
-<section id="gallery">
+<!-- <section id="gallery">
 
 <div class="row">
 
@@ -263,7 +263,6 @@
 <small><%= link_to "Post new article",new_article_path, class: 'pull-right' %></small>
 </div>
 <% end %>
-<!-- gallery-wrapper -->
 <div id="portfolio-wrapper" class="bgrid-quarters s-bgrid-thirds cf">
 <% if @images.length <= 0 %>
 Add articles with images in them
@@ -287,7 +286,7 @@ Add articles with images in them
 </a>
 
 </div>
-</div> <!-- item end -->
+</div> 
 
 <div id="modal-0<%=j%>" class="popup-modal mfp-hide">
 <img class="scale-with-grid" src="<%=img%>" alt="" />
@@ -298,7 +297,7 @@ Add articles with images in them
 <div class="link-box">
 <a class="popup-modal-dismiss">Close</a>
 </div>
-</div><!-- modal-01 End -->
+</div>
 <% j=j+1 %>
 <% end %>
 
@@ -307,17 +306,17 @@ Add articles with images in them
 <% end %>
 
 
-</div> <!-- portfolio-wrapper end -->
+</div>
 
-</div> <!-- twelve columns end -->
-
-
+</div> 
 
 
 
-</div> <!-- row End -->
 
-</section> <!-- Gallery Section End-->
+
+</div> 
+
+</section>  -->
 
 
 <!-- Calendar Section

@@ -2188,7 +2188,7 @@ qq.extend(qq.FileUploaderInput.prototype, {
             format_created_at: '',
             url_content: "#",
             controller: "assets",
-            url_thumb: "/assets/ckeditor/filebrowser/images/preloader.gif"
+            url_thumb: "/assets/ckeditor/filebrowser/images/preloader-af32ec3646917134f61a77c75720c74b.gif"
           };
           
           var item = $(this._options.template_id)

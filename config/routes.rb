@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :downloads
+match "/list", :to => "downloads#list" , :via=> "get"
 
   resources :events
 

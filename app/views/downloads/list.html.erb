@@ -1,0 +1,24 @@
+<div class="row">
+
+<table class="table table-responsive table-hover">
+  <thead>
+    <tr>
+      <th>Edition</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @downloads.each do |download| %>
+      <tr>
+        <td><%= download.edition %></td>
+        <td><%= link_to "View File", download%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'Back', root_path %>
+
+</div>

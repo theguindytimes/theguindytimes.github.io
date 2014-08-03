@@ -4,11 +4,8 @@
 <table class="table table-responsive table-hover">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Category</th>
       <th>Description</th>
       <th>Edition</th>
-      <th>Download</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,11 +13,8 @@
   <tbody>
     <% @downloads.each do |download| %>
       <tr>
-        <td><%= download.title %></td>
-        <td><%= download.category %></td>
         <td><%= download.description %></td>
         <td><%= download.edition %></td>
-        <td><%= link_to "Download file", download.downloadable.url if download.downloadable.file? %></td>
         <td><%= link_to 'Show', download %></td>
         <td><%= link_to 'Edit', edit_download_path(download) %></td>
         <td><%= link_to 'Destroy', download, method: :delete, data: { confirm: 'Are you sure?' } %></td>

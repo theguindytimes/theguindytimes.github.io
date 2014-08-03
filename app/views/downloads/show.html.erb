@@ -1,27 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @download.title %>
-</p>
 
-<p>
-  <strong>Category:</strong>
-  <%= @download.category %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @download.description %>
-</p>
-
+<%= link_to 'Back', list_path %>
 <p>
   <strong>Edition:</strong>
   <%= @download.edition %>
 </p>
+<p>
+  <iframe src="<%= @download.description%>" style="width:600px; height:500px;" frameborder="0"></iframe>
+</p>
 
-<%= link_to "Download file", @download.downloadable.url if @download.downloadable.file? %>
+
 <br>
 
-<%= link_to 'Edit', edit_download_path(@download) %> |
-<%= link_to 'Back', downloads_path %>

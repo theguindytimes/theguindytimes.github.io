@@ -25,6 +25,7 @@
 <!-- <li><a class="smoothscroll" href="#gallery">Gallery</a></li> -->
 <li><a class="smoothscroll" href="#calendar">Calendar</a></li>
 <li><a class="smoothscroll" href="#contact">Contact</a></li>
+<li><%= link_to "E-Editions",list_path %></li>
 <% if user_signed_in? %>
 <% if current_user and current_user.admin? %>
 <li><%= link_to 'Admin Dashboard', admin_path %></li>

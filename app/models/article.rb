@@ -28,19 +28,22 @@ class Article < ActiveRecord::Base
   end
 
   def filtered_content
-    img_srcs=[]
-    require 'nokogiri'
-    doc = Nokogiri::HTML( self.content )
-    img_srcs = doc.css('img')
-    if img_srcs.length == 0
-      img_srcs=['']
-      return self.content
-    end
-    # self.content[img_srcs[0]]=""
-    # tags = self.content.scan(/<img.*>/)
-    # tags.each do |i|
-    #   self.content[i] = ""
+    # img_srcs=[]
+    # require 'nokogiri'
+    doc = Nokogiri::HTML( self.content ).text.squeeze("\n")
+    # print doc.scan('\n').length
+    return doc
+    # img_srcs = doc.css('img')
+    # print img_srcs.to_json
+    # if img_srcs.length == 0
+    #   img_srcs=['']
+    #   return self.content
     # end
+    # self.content[img_srcs[0]]=""
+    tags = self.content.scan(/<img.*>/)
+    tags.each do |i|
+      self.content[i] = ""
+    end
     # tags = self.content.scan(/<p.*>&nbsp;<\/p>/)
     # tags.each do |i|
     #   self.content[i] = ""

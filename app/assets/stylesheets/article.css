@@ -1,20 +1,30 @@
 .article_list_image {
-    position:relative;
-    left: -20%;
-    margin: auto; 
-    min-height: 120px;
-    width: 120px;
+    /*position:relative;*/
+    /*left: -20%;*/
+    /*top:15px;*/
+    /*margin: auto; */
+    min-height:120px;
+    /*width: 120px;*/*/
 }
 
-.short_description p{
-  margin-bottom: 0px;
-  font-family: arial;
-  font-size: 16;
+.article_image_container{
+  width: 120px; /* or whatever is required */
+  height: 120px;
+  text-align: center; /* ensures the image is always in the h-middle */
+  overflow: hidden; /* hide the cropped portion */
+  margin-bottom: 20px;
+  margin-right: 10px;
+}
+
+.short_description{
+  margin-bottom: 10px;
+  /*font-family: arial;*/
+  font-size: 18px;
 }
 
 .short_description p span{
-  font-family: arial;
-  font-size: 16;
+  /*font-family: arial;*/
+  font-size: 14;
 }
 
 .btn-social a{

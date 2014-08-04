@@ -72,13 +72,13 @@
     <% i=0 %>
     <% @articles.each do |a| %>
       <li>
-        <div class="pull-left"><%= image_tag(a.first_pic, class: 'article_list_image' , width: '100') %></div>
+        <div class="pull-left article_image_container"><%= image_tag(a.first_pic, class: 'article_list_image' ) %></div>
         <li>
           <div><%= link_to a.title,article_path(a) %></div>
         </li>
         <li class="pull-right" title="Views"><%= a.views %></li><br>
         <li>
-          <div class="short_description"><%= simple_format(a.filtered_content[0,400]) %></div>
+          <div class="short_description" style="font-family:Verdana, Tahoma"><%= a.filtered_content[0,400] %></div>
           <!-- <a  class="pull-left" onclick="load_article('<%= a.slug %>')" href='#article_ajax'><%= a.title %></a> -->
         </li>
       </li>

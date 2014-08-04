@@ -1,3 +1,17 @@
+<style type="text/css">
+  body{
+    background: white !important;
+  }
+  p,span{
+    color:black !important;
+  }
+  <% if !@xhr %>
+  .row{
+    width:90% !important; 
+    max-width: initial;
+  }
+  <% end %>
+</style>
 <% if !@xhr %>
 <p id="notice"><%# notice %></p>
 <% end %>

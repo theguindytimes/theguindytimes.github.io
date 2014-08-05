@@ -7,12 +7,10 @@
     <%= devise_error_messages! %>
 
     <div class="form-group">
-      <%= f.label :email %>
-      <%= f.email_field :email, :autofocus => true %>
+      <%= f.email_field :email, :placeholder => "email", :autofocus => true %>
     </div>
     <div class="form-group">
-      <%= f.label :password %>
-      <%= f.password_field :password %>
+      <%= f.password_field :password, :placeholder => "password" %>
     </div>
       <%= f.submit 'Sign in', :class => 'button right' %>
       <% if devise_mapping.rememberable? -%>

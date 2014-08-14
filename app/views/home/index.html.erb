@@ -46,7 +46,7 @@
 
 <div class="row banner">
 <div class="banner-text">
-<h1 class="responsive-headline">The Guindy Times</h1>
+<h1 class="responsive-headline">THE GUINDY TIMES</h1>
 <h3>The campus students' magazine of CEG, AC Tech and SAP</h3>
 <hr />
 <ul class="social">
@@ -59,12 +59,13 @@
 <li><a href="#"><i class="fa fa-skype"></i></a></li>-->
 </ul>
 </div>
+<!--
 <div class="row">
 <div class="bulletin col-md-6 col-xs-12">
 <h2>Catch the latest</h2>
 <ul class="icon-list" >
-<% @hotArticles.each do |a| %>
-<li><%= link_to a.title,article_path(a) %><!-- <a onclick="load_article('<%= a.slug %>')" href='#article_ajax'><%= a.title[0,100] %></a> --></li>
+<!-- <% @hotArticles.each do |a| %>
+<li><%= link_to a.title,article_path(a) %><!-- <a onclick="load_article('<%= a.slug %>')" href='#article_ajax'><%= a.title[0,100] %></a> </li>
 <% end %>
 <% if @hotArticles.length == 0 %>
 <li>No Spicy articles today. Come back tomorrow !!</li>
@@ -74,14 +75,14 @@
 <li>No Spicy articles today. Come back tomorrow !!</li>
 
 <% end %>
-</ul>
+</ul> 
 </div>
 
 <div class="bulletin col-md-6 col-xs-12 pull-right">
 <h2>What's hot?</h2>
 <ul class="icon-list">
 <% @hotNews.each do |a| %>
-<li><%= link_to a.title,article_path(a) %><!-- <a onclick="load_article('<%# a.slug %>')" href='#article_ajax'><%# a.title[0,100] %></a> --></li>
+<li><%= link_to a.title,article_path(a) %> <a onclick="load_article('<%# a.slug %>')" href='#article_ajax'><%# a.title[0,100] %></a> </li>
 <% end %>
 <% if @hotNews.length == 0 %>
 <li>End semester schedule</li>
@@ -91,7 +92,7 @@
 <li>fee pay online</li>
 <% end %>
 </ul>  
-</div>
+</div> -->
 </div>
 
 </div>
@@ -188,7 +189,7 @@
 	  <% j=1 %>
 	  <% tag[:articles].each do |a| %>
 	  <li id="<%= @numbers[j] %>" class="<%= @numbers[j] %>animation">
-	  <%=  image_tag(a['img'], :alt => a['title'],:width => '400') %> <!-- Needs fix -->
+	  <%=  image_tag(a['img'], :alt => a['title'],:size => '200x360') %> <!-- Needs fix -->
 	  <div class="tooltip">
 	  <h1><%= a['title'] %></h1>
 	  </div>

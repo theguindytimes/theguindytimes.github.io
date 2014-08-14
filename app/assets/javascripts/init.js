@@ -22,8 +22,14 @@
     window.location.href = "#article_ajax";
   }
 
+function tagged(){
+ a = getUrlVar('tag');
+if(a!=''){
+window.location.href="#articles"
+}
+
   $('#articletrend').on('click', '.img_load a', function(event) {
-    alert('hey');
+    //alert('hey');
     var id = this;
     var url='/articles/'+id;
     $.get(url).done(function(data,status){
@@ -32,12 +38,15 @@
     });
     window.location.href = "#article_ajax";
   });
+}
 
-
+$(document).on("page:load",tagged());
 
  jQuery(document).ready(function($) {
 
-  window.fbAsyncInit = function() {
+tagged(); 
+
+ window.fbAsyncInit = function() {
         FB.init({
           appId      : '1446095362314014',
           xfbml      : true,

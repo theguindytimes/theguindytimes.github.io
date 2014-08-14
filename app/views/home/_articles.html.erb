@@ -76,12 +76,12 @@
         <li>
           <div><%= link_to a.title,article_path(a) %></div>
         </li>
-        <li class="pull-right" title="Views"><%= a.views %></li><br>
         <li>
           <div class="short_description" style="font-family:Verdana, Tahoma"><%= a.filtered_content[0,400] %></div>
           <!-- <a  class="pull-left" onclick="load_article('<%= a.slug %>')" href='#article_ajax'><%= a.title %></a> -->
         </li>
       </li>
+ <li class="pull-right" title="Views"><%# a.views %></li><br>
       <%# raw a.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
       <% i= i+1 %>
     <% end %>

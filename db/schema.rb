@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20140719095925) do
     t.string   "post_type"
   end
 
+  add_index "articles", ["slug"], name: "index_articles_on_slug"
   add_index "articles", ["user_id"], name: "index_articles_on_user_id"
 
   create_table "authentications", force: true do |t|
@@ -85,11 +86,6 @@ ActiveRecord::Schema.define(version: 20140719095925) do
     t.datetime "updated_at"
   end
 
-  create_table "files", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "messages", force: true do |t|
     t.string   "name"
     t.string   "email"
@@ -132,6 +128,7 @@ ActiveRecord::Schema.define(version: 20140719095925) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.date     "date_of_birth"
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"

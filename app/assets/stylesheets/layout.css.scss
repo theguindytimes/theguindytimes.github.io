@@ -17,7 +17,7 @@
 /* a. General Styles
 /* ------------------------------------------------------------------ */
 
-body { background: #0f0f0f; }
+body { background: #fff; }
 
 /* ------------------------------------------------------------------ */
 /* b. Header Styles
@@ -56,14 +56,15 @@ header .banner-text {
    margin-top: -120px;
 }
 header .banner-text h1 {
-   font: 90px/1.1em font-family:'Audiowide', cursive;
-   color: rgb(193,11,11) ;
+   font: 90px/1.1em;
+  font-family:'Audiowide', cursive;
+   color: rgb(193,11,11);
    letter-spacing: -2px;
    margin-top: 200px;
    text-shadow: 0px 1px 3px rgba(0, 0, 0, .8);
 }
 header .banner-text h3 {
-   font: 18px/1.9em 'librebaskerville-regular', serif;
+   font: 28px/1.9em 'librebaskerville-regular', serif;
    color: rgb(255,192,0);
    margin: 0 auto;
    width: 70%;
@@ -208,7 +209,7 @@ ul#nav li a {
    line-height: 32px;
 	text-decoration: none;
    text-align: left;
-   color: #fff;
+   color: rgb(193,11,11);
 
 	-webkit-transition: color .2s ease-in-out;
 	-moz-transition: color .2s ease-in-out;
@@ -218,7 +219,7 @@ ul#nav li a {
 }
 
 ul#nav li a:active { background-color: transparent !important; }
-ul#nav li.current a { color: #F06000; }
+ul#nav li.current a { color: rgb(255,192,0); }
 
 
 /* ------------------------------------------------------------------ */
@@ -226,7 +227,7 @@ ul#nav li.current a { color: #F06000; }
 /* ------------------------------------------------------------------ */
 
 #about {
-   background: #2B2B2B;
+   background: #fff;
    padding-top: 96px;
    padding-bottom: 66px;
    overflow: hidden;
@@ -236,13 +237,20 @@ ul#nav li.current a { color: #F06000; }
 #about a:hover, #about a:focus { color: #11ABB0; }
 
 #about h2 {
-   font: 22px/30px 'opensans-bold', sans-serif;
-   color: #fff;
+   font: 43px 'opensans-bold', sans-serif;
+   color: rgb(193,11,11);
    margin-bottom: 12px;
 }
+
+#about h3 {
+   font: 29px 'opensans-bold', sans-serif;
+   color: rgb(193,11,11);
+   margin-bottom: 12px;
+}
+
 #about p {
    line-height: 30px;
-   color: #7A7A7A;
+   color: black;
    
 }
 #about .profile-pic {
@@ -251,7 +259,7 @@ ul#nav li.current a { color: #F06000; }
    height: 120px;
    border-radius: 100%;
 }
-#about .contact-details { width: 41.66667%; }
+#about .contact-details { width: 91.66667%; }
 #about .download {
    width: 58.33333%;
    padding-top: 6px;
@@ -270,6 +278,11 @@ ul#nav li.current a { color: #F06000; }
    font-size: 20px;
 }
 
+h1{
+color: rgb(193,11,11);
+font-family: 'opensans-bold', sans-serif;
+font-weight: normal;
+}
 
 /* ------------------------------------------------------------------ */
 /* d. Resume Section

@@ -23,15 +23,15 @@
   <div class="contant_1_left">
 
   <div class="headifyo">         
-  <%= image_tag("favicon.png", :alt => "url icon") %>
+  <%= image_tag("http://guindytimes.com/GT logo.jpg" ,:size => "40x40",:alt => "url icon") %>
      The Guindy Times</div>
   <div class="title">
   <h2>
   	<%= @a['article'].title %>
-     <span>Contributed by <%= raw @a['article'].author_list.map { |t| link_to t, tag_path(t) }.join(', ') %> at <%= @a['article'].created_at.strftime('%d %b %Y') %> </span>
+     <span style="font-size:16px;">Contributed by <%= raw @a['article'].author_list.map { |t| link_to t, tag_path(t) }.join(', ') %> at <%= @a['article'].created_at.strftime('%d %b %Y') %> </span>
   </h2>
   </div>
-  <h3><%= raw @article.tag_list.map { |t| link_to t, tag_path(t) ,:'data-pjax' => '#articles .hs'}.join(', ') %></h3>
+  <h3 style="background:transparent;"><%= raw @article.tag_list.map { |t| link_to t, tag_path(t) ,:'data-pjax' => '#articles .hs'}.join(', ') %></h3>
   <br class="clear bottomClear" />
   <%# image_tag(@a['img'], :alt => "" , :class => 'article_img img-responsive', :style => 'width:60%;') %>
   <div class="content">

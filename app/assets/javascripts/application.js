@@ -22,6 +22,7 @@
 //= require typeahead.min
 //= require bootstrap
 //= require turbolinks
+//= require turn
 //= require_tree .
 
 // require(['init','bootstrap','jquery','ckeditor'], function() {});

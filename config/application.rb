@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module GuindyTimes
     class Application < Rails::Application
+		config.middleware.use Rack::Attack
 
         config.generators do |g|
             g.test_framework :rspec,

@@ -13,6 +13,7 @@ gem 'spring',        group: :development
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'figaro'
+gem 'rack-attack'
 gem 'pundit'
 gem 'simple_form'
 gem 'therubyracer', :platform=>:ruby

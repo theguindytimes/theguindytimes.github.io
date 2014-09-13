@@ -31,7 +31,7 @@
   <div class="title">
   <h2>
   	<%= @a['article'].title %>
-     <span style="font-size:16px;">Contributed by <%= raw @a['article'].author_list.map { |t| link_to t, tag_path(t) }.join(', ') %> at <%= @a['article'].created_at.strftime('%d %b %Y') %> </span>
+     <span style="font-size:16px;">Contributed by <%= raw @a['article'].author_list.map { |t| link_to t, tag_path(t) }.join(', ') %> on <%= @a['article'].created_at.strftime('%d %b %Y') %> </span>
   </h2>
   </div>
   <h3 style="background:transparent;"><%= raw @article.tag_list.map { |t| link_to t, tag_path(t) ,:'data-pjax' => '#articles .hs'}.join(', ') %></h3>

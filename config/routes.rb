@@ -23,6 +23,7 @@ match "/list", :to => "downloads#list" , :via=> "get"
   delete '/authentications"' => 'authentications#destroy'
   get 'autocomplete' => 'articles#autocomplete'
   get 'news/new' => 'articles#new_news'
+  get 'comments' => 'comments#index'
   get 'news' => 'articles#index_news'
   get 'comments-approve/:id' => 'comments#approve', as: :comments_approve
   get 'comments-disapprove/:id' => 'comments#disapprove', as: :comments_disapprove

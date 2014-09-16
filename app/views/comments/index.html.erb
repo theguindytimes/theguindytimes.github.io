@@ -1,11 +1,12 @@
-<h1>Listing comments</h1>
-
-<table>
+<div class="row">
+<h1>Listing All Comments</h1>
+<table class="table table-responsive table-hover">
   <thead>
     <tr>
-      <th>User name</th>
-      <th>Body</th>
+      <th>User Name</th>
+      <th>Comment</th>
       <th>Article</th>
+       <th>Status</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,14 +17,17 @@
         <td><%= comment.user_name %></td>
         <td><%= comment.body %></td>
         <td><%= comment.article_id %></td>
+        <td><%= comment.status %></td>
         <td><%= link_to 'Show', comment %></td>
         <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
         <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
+
+ 
 </table>
 
 <br>
 
-<%= link_to 'New Comment', new_comment_path %>
+<!--%= link_to 'New Comment', new_comment_path %--!>

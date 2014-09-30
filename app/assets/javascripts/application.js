@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require turn.min
 //= require ckeditor/init
 //= require jquery.pjax
 //= require jquery_ujs
@@ -22,7 +23,6 @@
 //= require typeahead.min
 //= require bootstrap
 //= require turbolinks
-//= require turn
 //= require_tree .
 
 // require(['init','bootstrap','jquery','ckeditor'], function() {});

@@ -1,5 +1,7 @@
 <div class="row">
 
+<script src="http://www.turnjs.com/lib/turn.min.js"></script>
+
 <table class="table table-responsive table-hover">
   <thead>
     <tr>
@@ -18,8 +20,6 @@
   </tbody>
 </table>
 
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="js/turn.min.js"></script>
 
 <style type="text/css">
 body{
@@ -33,46 +33,30 @@ body{
   background-color: #ccd;
   background-size:100% 100%;
 }
+.hard{
+background:white;
+}
 </style>
-</head>
-<body>
 
-<div id="magazine">
-  <div style="background-image:url(public/1.jpg);">Page 1</div>
-  <div>Page 2</div>
-  <div>Page 3</div>
-  <div>Page 4</div>
-  <div>Page 5</div>
-  <div>Page 6s</div>
+<div id="flipbook">
+	<div class="hard"> <h1>Guindy Times</h1>  </div>
+	<div class="hard"></div>
+	<div> <%= image_tag('1.JPG') %></div>
+	<div> <%= image_tag('2.JPG') %></div>
+	<div> <%= image_tag('4.JPG') %></div>
+	<div> <%= image_tag('6.JPG') %></div>
+	<div> <%= image_tag('8.JPG') %></div>
+	<div class="hard"></div>
 </div>
 
 
 <script type="text/javascript">
 
-  $(window).ready(function() {
-    $('#magazine').turn({
-              display: 'double',
-              acceleration: true,
-              gradients: !$.isTouch,
-              elevation:50,
-              when: {
-                turned: function(e, page) {
-                  /*console.log('Current view: ', $(this).turn('view'));*/
-                }
-              }
-            });
-  });
-  
-  
-  $(window).bind('keydown', function(e){
-    
-    if (e.keyCode==37)
-      $('#magazine').turn('previous');
-    else if (e.keyCode==39)
-      $('#magazine').turn('next');
-      
-  });
-
+  $("#flipbook").turn({
+		width: 1000,
+		height: 800,
+		autoCenter: true
+	});
 </script>
 
 

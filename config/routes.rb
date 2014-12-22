@@ -11,6 +11,7 @@ match "/list", :to => "downloads#list" , :via=> "get"
   end
 
   root :to => "home#index"
+  get 'e-editions', :to => "home#eEdition"
   devise_for :users, :controllers => {:registrations => "registrations"}
   resources :users
     resources :authentications

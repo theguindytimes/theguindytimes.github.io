@@ -15,6 +15,7 @@ class HomeController < ApplicationController
 		else
         	@tag_flag = false
 			@articles = Article.where(status: "Visible to Public", post_type: 'article').order('views DESC').paginate(:page => params[:page], :per_page => 5)
+			@articlesfresh = Article.where(status: "Visible to Public", post_type: 'article').order('created_at DESC').paginate(:page => params[:page], :per_page => 5)
 		end
 		if request.headers['X-PJAX'] or request.xhr?
 			render :partial => 'home/articles'

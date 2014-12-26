@@ -69,6 +69,102 @@
          </div>
       </div>          
       </div>
+    <h2> Fresh </h2>
+    <% i=0 %>
+    <% @articlesfresh.each do |a| %>
+      <li>
+        <div class="pull-left article_image_container"><%= image_tag(a.first_pic, class: 'article_list_image' ) %></div>
+        <li>
+          <div><%= link_to a.title,article_path(a), :target => "_blank" %></div>
+        </li>
+        <li>
+          <div class="short_description" style="font-family:Verdana, Tahoma"><%= a.filtered_content[0,400] %></div>
+          <!-- <a  class="pull-left" onclick="load_article('<%= a.slug %>')" href='#article_ajax'><%= a.title %></a> -->
+        </li>
+      </li>
+ <li class="pull-right" title="Views"><%raw a.author_list.map { |t| link_to t,tag_path(t) }.join(', ') %></li><br>
+      <%# raw a.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+      <% i= i+1 %>
+    <% end %>
+    <%= will_paginate @articles, renderer: BootstrapPagination::Rails %>    
+    </div>
+  <% end %>
+</ul>
+</div>
+
+
+<% if current_user and current_user.admin? %>
+  <div class="row pull-right">
+    <small><%= link_to "Post new article",new_article_path, class: 'pull-right' %></small>
+  </div>
+<% end %>
+<div class="row">
+  <div class="pull-left">
+    <% if @tag_flag %>
+      <div class="row">
+      <small>Articles <% if !@tag_user %>tagged with <% else %>authored by <% end %><%= params[:tag] %> are being shown. To go back to all articles  
+      <%= link_to "click here", root_path, :'data-pjax' => '#articles .hs' %>
+      </small>
+      </div>
+    <% end %>
+  </div>
+  </div>
+  <!-- <div class="row">
+    <div class="pull-left">
+      <%# form_tag articles_path, class: "form-horizontal", method: :get, id: 'search_article' do |f| %>
+          <div class="form-group">
+            <%# text_field_tag :name, params[:name], class: "form-control", id: "article_search", placeholder: 'Search for articles', autocomplete: 'off' %>
+          </div>
+          <%# submit_tag "Search", class: "btn btn-primary" %>
+          <%# if params[:name].present? %>
+            <%# link_to "clear", root_path, :'data-pjax' => '#articles .hs' %>
+          <%# end %>
+      <%# end %>
+    </div>
+  </div> -->
+<div class="row">
+<ul>
+<% if @articles.empty? %>
+   <div class="empty"> No articles yet </div>
+<% else %>
+  <div class="row">
+      <div id="article_ajax" class="modalDialog">
+         <div id="wrapper">
+         <a href="#close" title="Close" class="close">X</a>
+         <div id="contant">
+         <div class="contant_1">
+         <div class="contant_1_left">
+
+         <div class="headify">         
+         <%= image_tag("favicon.png", :alt => "url icon") %>
+            The Guindy Times</div>
+         <div class="title">
+         <h2>
+            <span>Time </span>
+         </h2>
+         </div>
+         <h3>tags</h3>
+         <br class="clear bottomClear" />
+         <%= image_tag("gt.jpg", :alt => "" , :class => 'article_img') %>
+         <div class="content">
+         </div>
+         </div>
+         <br class="clear" />
+         </div>
+         </div>
+         <div id="footerContainer">
+            <p>
+            <span>Copyright 2014 The Guindy Times. All Rights Reserved</span>
+            </p>
+         </div>
+         <div class="comments">
+         <form>
+         <input type="hidden">
+         </form>
+         </div>
+      </div>          
+      </div>
+    <h2> Trending </h2>
     <% i=0 %>
     <% @articles.each do |a| %>
       <li>
@@ -85,8 +181,13 @@
       <%# raw a.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
       <% i= i+1 %>
     <% end %>
-    <%= will_paginate @articles, renderer: BootstrapPagination::Rails %>
+    <%= will_paginate @articles, renderer: BootstrapPagination::Rails %>    
     </div>
   <% end %>
 </ul>
 </div>
+
+
+
+
+ 

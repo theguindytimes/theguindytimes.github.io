@@ -1,10 +1,11 @@
 class ArticlesController < ApplicationController
     before_action :set_article, only: [:show, :edit, :update, :destroy]
     before_action :check_user,  only: [:index, :new, :new_news, :edit]
-
+    #caches_page :show
     # GET /articles
     # GET /articles.json
     def index
+	@articlesfresh = Article.where(status: "Visible to Public", post_type: 'article').order('created_at DESC').paginate(:page => params[:page], :per_page => 5)
         if params[:tag]
             if params[:name].present?
                 @articles = Article.search(params[:name], title: params[:name]).where(status: "Visible to Public").tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 2)
@@ -36,6 +37,7 @@ class ArticlesController < ApplicationController
     # GET /articles/1
     # GET /articles/1.json
     def show
+	expire_page :action => :index, :controller => :home
         article = Article.friendly.find(params[:id])
         if article.views == nil
             article.views = 0
@@ -77,6 +79,8 @@ class ArticlesController < ApplicationController
 
     # GET /articles/1/edit
     def edit
+	expire_page :action => :show
+	expire_page :action => :index, :controller => :home
     	@type = @article.post_type
 	if @type.blank?
 		@type='article'
@@ -103,6 +107,8 @@ class ArticlesController < ApplicationController
     # PATCH/PUT /articles/1
     # PATCH/PUT /articles/1.json
     def update
+	expire_page :action => :show
+	expire_page :action => :index, :controller => :home
         respond_to do |format|
             if @article.update(article_params)
                 format.html { redirect_to @article, notice: 'Article was successfully updated.' }

@@ -27,5 +27,5 @@ match "/list", :to => "downloads#list" , :via=> "get"
   get 'news' => 'articles#index_news'
   get 'comments-approve/:id' => 'comments#approve', as: :comments_approve
   get 'comments-disapprove/:id' => 'comments#disapprove', as: :comments_disapprove
-
+  get 'trend' => 'home#trending'
 end

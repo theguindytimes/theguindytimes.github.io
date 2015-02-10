@@ -40,6 +40,8 @@ gem "searchkick"
 gem 'social-share-button'
 gem 'open_uri_redirections'
 gem 'nokogiri'
+gem 'actionpack-page_caching'
+gem 'actionpack-action_caching'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_20]

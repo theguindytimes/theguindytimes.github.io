@@ -639,7 +639,7 @@ input.footerSubmit {
   cursor:pointer;
 }
 #footerContainer {
-  background:url(footerContainerBgR.png) repeat-x left top;
+  /*background:url(footerContainerBgR.png) repeat-x left top;*/
   height:50px;
   line-height:50px;
   font-size:12px;

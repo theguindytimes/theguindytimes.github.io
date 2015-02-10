@@ -2,11 +2,33 @@ class HomeController < ApplicationController
 
 	# before_action :old_article_fix
 
+    	#caches_page :index
+	def trending
+		articles = Article.where(status: "Visible to Public", post_type: 'article').order('created_at DESC').select("title","views","created_at","id").limit(20)
+		views = articles.first.views;
+		time =  (Time.now - articles.first.created_at)
+		art = articles.to_a.map(&:serializable_hash).sort! {|a,b| a['views']/((Time.now-a['created_at'])/1.day) <=> b['views']/((Time.now-b['created_at'])/1.day)}.reverse
+		articlesfresh = Article.where(status: "Visible to Public", post_type: 'article').order('created_at DESC').limit(5)
+		nids=[]
+		articlesfresh.each do |a|
+			nids.append(a.id)
+		end
+		ids=[]
+		(0..10).each do |i|
+			ids.append(art[i]['id'])
+		end
+		ids = ids - nids
+		@articles = Article.where(status: "Visible to Public",post_type: 'article').where("id IN (?)", ids)
+		render :text => (views/(time/1.day)).to_s + @articles.to_json
+		#render :text => avg_views.to_s + @articles.to_json.to_s
+	end
+
 	def index
         @message=Message.new
+	@articlesfresh = Article.where(status: "Visible to Public", post_type: 'article').order('created_at DESC').paginate(:page => params[:page], :per_page => 5)
         if params[:tag]
             author = ActsAsTaggableOn::Tagging.where(:context => :author,:'tags.name' => params[:tag]).joins(:tag).select('DISTINCT tags.name').map{ |x| x.name}
-        	@articles = Article.where(status: "Visible to Public", post_type: 'article').tagged_with(params[:tag]).order('DESC').paginate(:page => params[:page], :per_page => 5)
+        	@articles = Article.where(status: "Visible to Public", post_type: 'article').tagged_with(params[:tag]).order('views DESC').paginate(:page => params[:page], :per_page => 5)
         	@tag_flag = params[:tag]
         	@tag_user = author.length>0
 		elsif params[:name]
@@ -14,8 +36,26 @@ class HomeController < ApplicationController
             @articles = Article.where(status: "Visible to Public", post_type: 'article').tagged_with(params[:tag]).search(params[:name], title: params[:name])#.paginate(:page => params[:page], :per_page => 2)
 		else
         	@tag_flag = false
-			@articles = Article.where(status: "Visible to Public", post_type: 'article').order('views DESC').paginate(:page => params[:page], :per_page => 5)
-			@articlesfresh = Article.where(status: "Visible to Public", post_type: 'article').order('created_at DESC').paginate(:page => params[:page], :per_page => 5)
+		#	@articles = Article.where(status: "Visible to Public", post_type: 'article').order('views DESC').paginate(:page => params[:page], :per_page => 5)
+	
+
+		articles = Article.where(status: "Visible to Public", post_type: 'article').order('created_at DESC').select("title","views","created_at","id").limit(20)
+		views = articles.first.views;
+		time =  (Time.now - articles.first.created_at)
+		art = articles.to_a.map(&:serializable_hash).sort! {|a,b| a['views']/((Time.now-a['created_at'])/1.day) <=> b['views']/((Time.now-b['created_at'])/1.day)}.reverse
+		articlesfresh = Article.where(status: "Visible to Public", post_type: 'article').order('created_at DESC').limit(5)
+		nids=[]
+		articlesfresh.each do |a|
+			nids.append(a.id)
+		end
+		ids=[]
+		(0..19).each do |i|
+			ids.append(art[i]['id'])
+		end
+		ids = ids - nids
+		@articles = Article.where(status: "Visible to Public",post_type: 'article').where("id IN (?)", ids).paginate(:page => params[:page], :per_page => 5)
+
+	
 		end
 		if request.headers['X-PJAX'] or request.xhr?
 			render :partial => 'home/articles'
